@@ -25,17 +25,17 @@ export default class HomePage extends Component {
     }.bind(this);
 
     const nConfigList = configList.length;
-    let message = nConfigList + " Random results.";
+    let message = nConfigList + " Random datasets.";
     if (this.state.latestKeywords !== "") {
       message =
-        nConfigList + ' Results matching "' + this.state.latestKeywords + '".';
+        nConfigList + ' datasets matching "' + this.state.latestKeywords + '".';
     }
 
     return (
       <Box sx={{ margin: 2, padding: 1, maxWidth: "80%" }}>
         <Typography variant="caption">
           Search Tool for the Central Bank of Sri Lanka's{" "}
-          <Link href="https://www.cbsl.lk/eresearch/">
+          <Link href="https://www.cbsl.lk/eresearch/" target="_blank">
             Economic Data Library
           </Link>
         </Typography>
