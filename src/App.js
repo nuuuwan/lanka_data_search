@@ -8,7 +8,7 @@ const FONT_FAMILY = "Zen Kaku Gothic New";
 const THEME = createTheme({
   palette: {
     primary: {
-      main: "#888",
+      main: "#844",
     },
     secondary: {
       main: "#f80",

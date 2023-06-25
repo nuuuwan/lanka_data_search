@@ -32,13 +32,11 @@ export default class HomePage extends Component {
     }
 
     return (
-      <Box sx={{margin: 1, padding:1}}>
+      <Box sx={{ margin: 1, padding: 1 }}>
         <Typography variant="caption">
-          Search Tool
-          for the Central Bank of Sri Lanka's
-          {' '}
+          Search Tool for the Central Bank of Sri Lanka's{" "}
           <Link href="https://www.cbsl.lk/eresearch/">
-          Economic Data Library
+            Economic Data Library
           </Link>
         </Typography>
         <TextField

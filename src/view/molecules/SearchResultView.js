@@ -3,6 +3,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import AlarmOnIcon from "@mui/icons-material/AlarmOn";
 export default function SearchResultView({ config }) {
   return (
     <Paper
@@ -14,9 +15,7 @@ export default function SearchResultView({ config }) {
       }}
     >
       <Typography variant="caption">{config.category}</Typography>
-      <Typography variant="subtitle1" color="primary">
-        {config.subCategory}
-      </Typography>
+      <Typography variant="subtitle1">{config.subCategory}</Typography>
       <Typography variant="body2" color="secondary">
         {config.n} data points
       </Typography>
@@ -24,6 +23,10 @@ export default function SearchResultView({ config }) {
         {config.minT} to {config.maxT}
       </Typography>
 
+      <Typography variant="body2">
+        <AlarmOnIcon sx={{ fontSize: 10 }} /> {config.latestValueFormatted} (
+        {config.maxT})
+      </Typography>
       <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
         <CloudDownloadIcon />
       </Link>

@@ -28,6 +28,50 @@ export default class Config {
     return `https://raw.githubusercontent.com/nuuuwan/cbsl/data/latest/${this.category}.${this.subCategory}.json`;
   }
 
+  get scaleFormatted() {
+    if (
+      this.scale === "Million" ||
+      this.scale === "Mn." ||
+      this.scale === "Millions"
+    ) {
+      return "M";
+    }
+    if (this.scale === "Billion" || this.scale === "Bn.") {
+      return "B";
+    }
+    if (this.scale === "Thousand" || this.scale === "Th.") {
+      return "K";
+    }
+
+    if (this.scale === "Percentage") {
+      return "%";
+    }
+    if (
+      this.scale === "Unit" ||
+      this.scale === "Number" ||
+      this.scale === "Numbers"
+    ) {
+      return "";
+    }
+    return this.scale;
+  }
+
+  get unitFormatted() {
+    if (this.unit === "Unit" || this.unit === "Number") {
+      return "";
+    }
+    if (this.unit === "Rs.") {
+      return " LKR";
+    }
+    return this.unit;
+  }
+
+  get latestValueFormatted() {
+    return `${this.latestValue.toLocaleString()}${this.scaleFormatted} ${
+      this.unitFormatted
+    }`;
+  }
+
   isMatch(keywords) {
     if (this.n === 0) {
       return false;
