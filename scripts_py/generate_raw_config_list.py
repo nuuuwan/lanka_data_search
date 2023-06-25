@@ -12,7 +12,6 @@ def main():
 
 export const RAW_CONFIG_LIST = {json.dumps(data, indent=2)};
 
-
     '''
 
     file_path = 'src/nonview/core/RAW_CONFIG_LIST.js'
