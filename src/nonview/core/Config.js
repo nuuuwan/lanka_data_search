@@ -76,10 +76,14 @@ export default class Config {
     return this.unit;
   }
 
+  get scaleAndUnitFormatted() {
+    if (this.scaleFormatted !== this.unitFormatted) {
+      return `${this.scaleFormatted} ${this.unitFormatted}`;
+    }
+    return `${this.scaleFormatted}`;
+  }
   get latestValueFormatted() {
-    return `${this.latestValue.toLocaleString()}${this.scaleFormatted} ${
-      this.unitFormatted
-    }`;
+    return `${this.latestValue.toLocaleString()}${this.scaleAndUnitFormatted}`;
   }
 
   isMatch(keywords) {
