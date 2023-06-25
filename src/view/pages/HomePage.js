@@ -30,7 +30,7 @@ export default class HomePage extends Component {
 
   renderDevAlert() {
     return (
-      <Alert severity="warning" sx={{ margin: 1, width: "90%" }}>
+      <Alert severity="warning" sx={{ margin: 1 }}>
         This tool is still in development.{" "}
         <strong>{CONFIG_LIST.length.toLocaleString()}</strong> datasets are
         currently available. More datasets will be availble in the future.
@@ -71,7 +71,7 @@ export default class HomePage extends Component {
     }
 
     return (
-      <Box sx={{ margin: 2, padding: 1, maxWidth: "80%" }}>
+      <Box sx={{ margin: 2, padding: 1 }}>
         {this.renderDevAlert()}
 
         {this.renderCBSLBanner()}
@@ -81,9 +81,9 @@ export default class HomePage extends Component {
           label="Search Keywords"
           defaultValue={keywords}
           onChange={onChange}
-          sx={{ margin: 1, width: "80%" }}
+          sx={{ margin: 1 }}
         />
-        <Alert severity="info" sx={{ margin: 1, width: "90%" }}>
+        <Alert severity="info" sx={{ margin: 1 }}>
           {message}
         </Alert>
 

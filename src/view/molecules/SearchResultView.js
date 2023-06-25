@@ -23,9 +23,7 @@ export default function SearchResultView({ config }) {
         <span class="superscript">{config.maxT} (Latest)</span>
       </Typography>
 
-      <Typography variant="body2">
-        {config.scaleFormatted} {config.unitFormatted}
-      </Typography>
+      <Typography variant="body2">{config.scaleAndUnitFormatted}</Typography>
 
       <ConfigRemoteDataView config={config} />
 
