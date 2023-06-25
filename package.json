@@ -1,5 +1,7 @@
 {
   "name": "cbsl_app",
+  "homepage": "https://nuuuwan.github.io/cbsl_app",
+  
   "version": "0.1.0",
   "private": true,
   "dependencies": {
