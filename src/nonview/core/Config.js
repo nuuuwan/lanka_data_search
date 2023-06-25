@@ -108,8 +108,7 @@ export default class Config {
   }
 
   async getRemoteDataResult() {
-    const www = new WWW(this.dataURL);
-    const remoteData = await www.readJSON();
+    const remoteData = await WWW.json(this.dataURL);
     return DataResult.fromRemoteData(remoteData);
   }
 }
