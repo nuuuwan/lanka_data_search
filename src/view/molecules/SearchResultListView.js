@@ -1,12 +1,14 @@
-import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import SearchResultView from "../molecules/SearchResultView";
 
 export default function SearchResultListView({ configList }) {
   return (
-    <Box>
+    <Grid container>
       {configList.map((config, i) => (
-        <SearchResultView key={"search-resu;t-" + config.key} config={config} />
+        <Grid item key={"search-result-" + config.key}>
+          <SearchResultView config={config} />
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 }

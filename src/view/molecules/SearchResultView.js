@@ -13,6 +13,8 @@ export default function SearchResultView({ config }) {
         padding: 1,
         background: "#fcfcfc",
         borderRadius: 3,
+        width: 400,
+        height: 400,
       }}
     >
       <Typography variant="h6">{config.subCategory}</Typography>
