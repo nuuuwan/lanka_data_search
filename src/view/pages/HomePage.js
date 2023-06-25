@@ -66,9 +66,8 @@ export default class HomePage extends Component {
 
     const nConfigList = configList.length;
     let message = nConfigList + " Random datasets.";
-    if (this.state.latestKeywords !== "") {
-      message =
-        nConfigList + ' datasets matching "' + this.state.latestKeywords + '".';
+    if (keywords !== "") {
+      message = nConfigList + ' datasets matching "' + keywords + '".';
     }
 
     return (
