@@ -15,6 +15,35 @@ export default class HomePage extends Component {
       latestKeywords: "",
     };
   }
+
+  renderDevAlert() {
+    return (
+      <Alert severity="warning" sx={{ margin: 1, width: "90%" }}>
+        This tool is still in development.{" "}
+        <strong>{CONFIG_LIST.length.toLocaleString()}</strong> datasets are
+        currently available. More datasets will be availble in the future.
+      </Alert>
+    );
+  }
+
+  renderCBSLLink() {
+    return (
+      <Link href="https://www.cbsl.lk/eresearch/" target="_blank">
+        Economic Data Library
+      </Link>
+    );
+  }
+
+  renderCBSLBanner() {
+    return (
+      <Box>
+        <Typography variant="subtitle2">
+          Central Bank of Sri Lanka's {this.renderCBSLLink()}
+        </Typography>
+        <Typography variant="h5">Search Tool</Typography>
+      </Box>
+    );
+  }
   render() {
     const { configList } = this.state;
 
@@ -33,12 +62,9 @@ export default class HomePage extends Component {
 
     return (
       <Box sx={{ margin: 2, padding: 1, maxWidth: "80%" }}>
-        <Typography variant="caption">
-          Search Tool for the Central Bank of Sri Lanka's{" "}
-          <Link href="https://www.cbsl.lk/eresearch/" target="_blank">
-            Economic Data Library
-          </Link>
-        </Typography>
+        {this.renderDevAlert()}
+
+        {this.renderCBSLBanner()}
 
         <TextField
           required
@@ -50,11 +76,7 @@ export default class HomePage extends Component {
         <Alert severity="info" sx={{ margin: 1, width: "90%" }}>
           {message}
         </Alert>
-        <Alert severity="warning" sx={{ margin: 1, width: "90%" }}>
-          This tool is still in development.{" "}
-          <strong>{CONFIG_LIST.length.toLocaleString()}</strong> datasets are
-          currently available. More datasets will be availble in the future.
-        </Alert>
+
         <SearchResultListView configList={configList} />
       </Box>
     );

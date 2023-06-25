@@ -11,23 +11,28 @@ export default function SearchResultView({ config }) {
       sx={{
         margin: 1,
         padding: 1,
-        background: "linear-gradient(45deg, #fefefe 30%, #fff 90%)",
+        background: "#fcfcfc",
+        borderRadius: 3,
       }}
     >
-      <Typography variant="caption">{config.category}</Typography>
       <Typography variant="h6">{config.subCategory}</Typography>
-      <Typography variant="body2" color="secondary">
-        {config.n} data points
-      </Typography>
-      <Typography variant="body1">
-        {config.minT} to {config.maxT}
+      <Typography variant="caption">{config.category}</Typography>
+
+      <Typography variant="body1" color="secondary">
+        {config.latestValueFormatted}
+        <span class="superscript">{config.maxT} (Latest)</span>
       </Typography>
 
       <Typography variant="body2">
-        {config.scale} {config.unit}
+        {config.scaleFormatted} {config.unitFormatted}
       </Typography>
 
       <ConfigRemoteDataView config={config} />
+
+      <Typography variant="body2" color="secondary">
+        n={config.n} ({config.minT} to {config.maxT})
+      </Typography>
+
       <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
         <CloudDownloadIcon />
       </Link>

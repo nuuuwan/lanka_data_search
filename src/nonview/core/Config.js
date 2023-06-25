@@ -45,7 +45,11 @@ export default class Config {
     if (this.scale === "Billion" || this.scale === "Bn.") {
       return "B";
     }
-    if (this.scale === "Thousand" || this.scale === "Th.") {
+    if (
+      this.scale === "Thousand" ||
+      this.scale === "Th." ||
+      this.scale === "' 000"
+    ) {
       return "K";
     }
 
@@ -64,7 +68,7 @@ export default class Config {
 
   get unitFormatted() {
     if (this.unit === "Unit" || this.unit === "Number") {
-      return "";
+      return "Units";
     }
     if (this.unit === "Rs.") {
       return " LKR";
