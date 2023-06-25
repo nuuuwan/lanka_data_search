@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/cbsl_app/static/css/main.073c9b0a.css",
-    "main.js": "/cbsl_app/static/js/main.a12f76ec.js",
+    "main.css": "/cbsl_app/static/css/main.e6c13ad2.css",
+    "main.js": "/cbsl_app/static/js/main.0ef91a2b.js",
     "static/js/787.6c028450.chunk.js": "/cbsl_app/static/js/787.6c028450.chunk.js",
-    "static/media/logo.svg": "/cbsl_app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/cbsl_app/index.html",
-    "main.073c9b0a.css.map": "/cbsl_app/static/css/main.073c9b0a.css.map",
-    "main.a12f76ec.js.map": "/cbsl_app/static/js/main.a12f76ec.js.map",
+    "main.e6c13ad2.css.map": "/cbsl_app/static/css/main.e6c13ad2.css.map",
+    "main.0ef91a2b.js.map": "/cbsl_app/static/js/main.0ef91a2b.js.map",
     "787.6c028450.chunk.js.map": "/cbsl_app/static/js/787.6c028450.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.a12f76ec.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.0ef91a2b.js"
   ]
 }
