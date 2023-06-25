@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/cbsl_app/static/css/main.073c9b0a.css",
+    "main.js": "/cbsl_app/static/js/main.a12f76ec.js",
+    "static/js/787.6c028450.chunk.js": "/cbsl_app/static/js/787.6c028450.chunk.js",
+    "static/media/logo.svg": "/cbsl_app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/cbsl_app/index.html",
+    "main.073c9b0a.css.map": "/cbsl_app/static/css/main.073c9b0a.css.map",
+    "main.a12f76ec.js.map": "/cbsl_app/static/js/main.a12f76ec.js.map",
+    "787.6c028450.chunk.js.map": "/cbsl_app/static/js/787.6c028450.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.a12f76ec.js"
+  ]
+}
