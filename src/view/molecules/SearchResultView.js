@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 export default function SearchResultView({ config }) {
   return (
     <Paper
@@ -17,14 +17,15 @@ export default function SearchResultView({ config }) {
       <Typography variant="subtitle1" color="primary">
         {config.subCategory}
       </Typography>
-      <Typography variant="body1">
-        {config.minT} to {config.maxT}
-      </Typography>
       <Typography variant="body2" color="secondary">
         {config.n} data points
       </Typography>
-      <Link href={config.dataURL} sx={{ fontSize: 8 }}>
-        Raw Data
+      <Typography variant="body1">
+        {config.minT} to {config.maxT}
+      </Typography>
+
+      <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
+        <CloudDownloadIcon />
       </Link>
     </Paper>
   );

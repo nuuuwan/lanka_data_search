@@ -1,12 +1,34 @@
-import "./App.css";
-import HomePage from "./view/pages/HomePage";
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <HomePage />
-    </div>
-  );
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import HomePage from "./view/pages/HomePage.js";
+
+const FONT_FAMILY = "Zen Kaku Gothic New";
+const THEME = createTheme({
+  palette: {
+    primary: {
+      main: "#888",
+    },
+    secondary: {
+      main: "#f80",
+    },
+    info: {
+      main: "#082",
+    },
+  },
+  typography: {
+    fontFamily: [FONT_FAMILY, "sans-serif"].join(","),
+    fontSize: 14,
+  },
+});
+
+export default class App extends Component {
+  render() {
+    return (
+      <ThemeProvider theme={THEME}>
+        <HomePage />
+      </ThemeProvider>
+    );
+  }
 }
-
-export default App;
