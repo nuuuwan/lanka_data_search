@@ -3,7 +3,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import AlarmOnIcon from "@mui/icons-material/AlarmOn";
 import ConfigRemoteDataView from "../organisms/ConfigRemoteDataView";
 export default function SearchResultView({ config }) {
   return (
@@ -25,8 +24,7 @@ export default function SearchResultView({ config }) {
       </Typography>
 
       <Typography variant="body2">
-        <AlarmOnIcon sx={{ fontSize: 10 }} /> {config.latestValueFormatted} (
-        {config.maxT})
+        {config.scale} {config.unit}
       </Typography>
 
       <ConfigRemoteDataView config={config} />

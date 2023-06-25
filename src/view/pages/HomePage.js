@@ -6,7 +6,7 @@ import SearchResultListView from "../molecules/SearchResultListView";
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-
+import CONFIG_LIST from "../../nonview/core/CONFIG_LIST";
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +51,9 @@ export default class HomePage extends Component {
           {message}
         </Alert>
         <Alert severity="warning" sx={{ margin: 1, width: "90%" }}>
-          {"This tool is still in development. Not all data is available."}
+          This tool is still in development.{" "}
+          <strong>{CONFIG_LIST.length.toLocaleString()}</strong> datasets are
+          currently available. More datasets will be availble in the future.
         </Alert>
         <SearchResultListView configList={configList} />
       </Box>

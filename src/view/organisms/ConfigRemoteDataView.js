@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import WWW from "../../nonview/utils/WWW.js";
 import LineChart from "../molecules/LineChart.js";
 export default class ConfigRemoteDataView extends Component {
   constructor(props) {
