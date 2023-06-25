@@ -26,4 +26,21 @@ export default class DataResult {
     const values = cleanedInnerDataEntries.map((x) => x[1]);
     return new DataResult(labels, values);
   }
+
+  getMovingAverage(window) {
+    const n = this.values.length;
+    let values = [];
+    for (let i = 0; i < window; i++) {
+      values.push(undefined);
+    }
+    for (let i = window; i < n; i++) {
+      let sum = 0;
+      for (let j = 0; j < window; j++) {
+        sum += this.values[i - j];
+      }
+      values.push(sum / window);
+    }
+    console.log(values, this.values);
+    return values;
+  }
 }
