@@ -26,6 +26,6 @@ export default class ConfigRemoteDataView extends Component {
   }
 
   render() {
-    return <Box>{this.renderDataResult()}</Box>;
+    return <Box sx={{ maxWidth: "80%" }}>{this.renderDataResult()}</Box>;
   }
 }

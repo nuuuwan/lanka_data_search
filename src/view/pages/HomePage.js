@@ -32,22 +32,26 @@ export default class HomePage extends Component {
     }
 
     return (
-      <Box sx={{ margin: 1, padding: 1 }}>
+      <Box sx={{ margin: 2, padding: 1, maxWidth: "80%" }}>
         <Typography variant="caption">
           Search Tool for the Central Bank of Sri Lanka's{" "}
           <Link href="https://www.cbsl.lk/eresearch/">
             Economic Data Library
           </Link>
         </Typography>
+
         <TextField
           required
           label="Search Keywords"
           defaultValue=""
           onChange={onChange}
-          sx={{ margin: 1, width: "90%" }}
+          sx={{ margin: 1, width: "80%" }}
         />
         <Alert severity="info" sx={{ margin: 1, width: "90%" }}>
           {message}
+        </Alert>
+        <Alert severity="warning" sx={{ margin: 1, width: "90%" }}>
+          {"This tool is still in development. Not all data is available."}
         </Alert>
         <SearchResultListView configList={configList} />
       </Box>
