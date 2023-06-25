@@ -81,7 +81,7 @@ export default class HomePage extends Component {
           label="Search Keywords"
           defaultValue={keywords}
           onChange={onChange}
-          sx={{ margin: 1 }}
+          sx={{ margin: 2, width: "80%"}}
         />
         <Alert severity="info" sx={{ margin: 1 }}>
           {message}
