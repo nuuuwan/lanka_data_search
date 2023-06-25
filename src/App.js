@@ -6,7 +6,9 @@ import HomePage from "./view/pages/HomePage.js";
 
 import "./App.css";
 
-const FONT_FAMILY = "Zen Kaku Gothic New";
+import { defaults } from "chart.js";
+
+const FONT_FAMILY = "Encode Sans";
 const THEME = createTheme({
   palette: {
     primary: {
@@ -24,6 +26,8 @@ const THEME = createTheme({
     fontSize: 14,
   },
 });
+
+defaults.font.family = FONT_FAMILY;
 
 export default class App extends Component {
   render() {
