@@ -30,7 +30,7 @@ export default class Config {
 
   isMatch(keywords) {
     if (this.n === 0) {
-      return false;
+      return false
     }
     if (keywords.length < MIN_KEYWORD_LENGTH) {
       return false;
