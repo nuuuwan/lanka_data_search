@@ -1,3 +1,5 @@
+import WWW from "../utils/WWW.js";
+import DataResult from "./DataResult.js";
 const MIN_KEYWORD_LENGTH = 0;
 export default class Config {
   constructor(category, subCategory, unit, scale, minT, maxT, latestValue, n) {
@@ -22,6 +24,10 @@ export default class Config {
       d.latest_value,
       d.n
     );
+  }
+
+  get key() {
+    return `${this.category}.${this.subCategory}`;
   }
 
   get dataURL() {
@@ -95,5 +101,11 @@ export default class Config {
       }
     }
     return true;
+  }
+
+  async getRemoteDataResult() {
+    const www = new WWW(this.dataURL);
+    const remoteData = await www.readJSON();
+    return DataResult.fromRemoteData(remoteData);
   }
 }

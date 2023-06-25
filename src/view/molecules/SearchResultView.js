@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn";
+import ConfigRemoteDataView from "../organisms/ConfigRemoteDataView";
 export default function SearchResultView({ config }) {
   return (
     <Paper
@@ -27,6 +28,8 @@ export default function SearchResultView({ config }) {
         <AlarmOnIcon sx={{ fontSize: 10 }} /> {config.latestValueFormatted} (
         {config.maxT})
       </Typography>
+
+      <ConfigRemoteDataView config={config} />
       <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
         <CloudDownloadIcon />
       </Link>

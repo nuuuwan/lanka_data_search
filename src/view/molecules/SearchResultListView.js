@@ -5,7 +5,7 @@ export default function SearchResultListView({ configList }) {
   return (
     <Box>
       {configList.map((config, i) => (
-        <SearchResultView key={"search-resu;t-" + i} config={config} />
+        <SearchResultView key={"search-resu;t-" + config.key} config={config} />
       ))}
     </Box>
   );
