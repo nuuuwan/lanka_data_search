@@ -4,6 +4,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import HomePage from "./view/pages/HomePage.js";
 
+import "./App.css";
+
 const FONT_FAMILY = "Zen Kaku Gothic New";
 const THEME = createTheme({
   palette: {
