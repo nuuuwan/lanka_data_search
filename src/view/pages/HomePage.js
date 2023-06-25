@@ -4,10 +4,8 @@ import Box from "@mui/material/Box";
 import Search from "../../nonview/core/Search";
 import SearchResultListView from "../molecules/SearchResultListView";
 import Alert from "@mui/material/Alert";
-const STYLE = {
-  margin: 2,
-  padding: 2,
-};
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -34,7 +32,15 @@ export default class HomePage extends Component {
     }
 
     return (
-      <Box sx={STYLE}>
+      <Box sx={{margin: 1, padding:1}}>
+        <Typography variant="caption">
+          Search Tool
+          for the Central Bank of Sri Lanka's
+          {' '}
+          <Link href="https://www.cbsl.lk/eresearch/">
+          Economic Data Library
+          </Link>
+        </Typography>
         <TextField
           required
           label="Search Keywords"
