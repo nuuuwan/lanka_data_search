@@ -7,13 +7,25 @@ import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import CONFIG_LIST from "../../nonview/core/CONFIG_LIST";
+import URLContext from "../../nonview/utils/URLContext";
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
+
+    const context = URLContext.getContext();
+    const keywords = context.keywords || "";
+    const configList = Search.search(keywords);
+
     this.state = {
-      configList: Search.search(""),
-      latestKeywords: "",
+      configList,
+      keywords,
     };
+  }
+
+  handleOnChangeSearchKeywords(keywords) {
+    const configList = Search.search(keywords);
+    URLContext.setContext({ keywords });
+    this.setState({ configList, keywords });
   }
 
   renderDevAlert() {
@@ -44,13 +56,12 @@ export default class HomePage extends Component {
       </Box>
     );
   }
+
   render() {
-    const { configList } = this.state;
+    const { keywords, configList } = this.state;
 
     const onChange = function (e) {
-      const keywords = e.target.value;
-      const configList = Search.search(keywords);
-      this.setState({ configList, latestKeywords: keywords });
+      this.handleOnChangeSearchKeywords(e.target.value);
     }.bind(this);
 
     const nConfigList = configList.length;
@@ -69,7 +80,7 @@ export default class HomePage extends Component {
         <TextField
           required
           label="Search Keywords"
-          defaultValue=""
+          defaultValue={keywords}
           onChange={onChange}
           sx={{ margin: 1, width: "80%" }}
         />
