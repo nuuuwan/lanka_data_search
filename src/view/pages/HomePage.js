@@ -53,7 +53,7 @@ export default class HomePage extends Component {
     return (
       <Box>
         {this.renderSources()}
-        <Typography variant="h3">Dataset Search </Typography>
+        <Typography variant="h4">Lanka Data Search</Typography>
       </Box>
     );
   }

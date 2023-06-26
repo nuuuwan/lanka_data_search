@@ -39,7 +39,7 @@ export default class ConfigListRemoteDataView extends Component {
       return <CircularProgress />;
     }
 
-    const title = configList.map((config) => config.subCategory).join(" ❌ ");
+    const title = configList.map((config) => config.subCategory).join("✖️");
 
     return (
       <Box sx={{ margin: 2, padding: 2 }}>
