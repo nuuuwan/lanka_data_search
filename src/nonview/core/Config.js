@@ -30,8 +30,36 @@ export default class Config {
     return `${this.category}.${this.subCategory}`;
   }
 
+  get sourceID() {
+    if (this.category === "World Bank - Sri Lanka Data") {
+      return "world_bank";
+    }
+    return "cbsl";
+  }
+
+  get source() {
+    return {
+      world_bank: "World Bank",
+      cbsl: "Central Bank of Sri Lanka",
+    }[this.sourceID];
+  }
+
+  get sourceURL() {
+    return {
+      world_bank: "https://data.worldbank.org/country/LK",
+      cbsl: "https://www.cbsl.gov.lk/eresearch",
+    }[this.sourceID];
+  }
+
+  get baseFolder() {
+    if (this.sourceID === "world_bank") {
+      return "other_sources/world_bank";
+    }
+    return "latest";
+  }
+
   get dataURL() {
-    return `https://raw.githubusercontent.com/nuuuwan/cbsl/data/latest/${this.category}.${this.subCategory}.json`;
+    return `https://raw.githubusercontent.com/nuuuwan/cbsl/data/${this.baseFolder}/${this.category}.${this.subCategory}.json`;
   }
 
   get scaleFormatted() {
@@ -113,6 +141,7 @@ export default class Config {
 
   async getRemoteDataResult() {
     const remoteData = await WWW.json(this.dataURL);
+    console.log(remoteData);
     return DataResult.fromRemoteData(remoteData);
   }
 }

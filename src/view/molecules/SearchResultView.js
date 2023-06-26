@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import ConfigRemoteDataView from "../organisms/ConfigRemoteDataView";
+import Box from "@mui/material/Box";
 export default function SearchResultView({ config }) {
   return (
     <Paper
@@ -14,7 +15,6 @@ export default function SearchResultView({ config }) {
         background: "#fcfcfc",
         borderRadius: 3,
         width: 400,
-        height: 400,
       }}
     >
       <Typography variant="h6">{config.subCategory}</Typography>
@@ -32,10 +32,12 @@ export default function SearchResultView({ config }) {
       <Typography variant="body2" color="secondary">
         n={config.n} ({config.minT} to {config.maxT})
       </Typography>
-
-      <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
-        <CloudDownloadIcon />
-      </Link>
+      <Typography variant="caption">Source: {config.source}</Typography>
+      <Box>
+        <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
+          <CloudDownloadIcon />
+        </Link>
+      </Box>
     </Paper>
   );
 }

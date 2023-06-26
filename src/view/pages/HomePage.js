@@ -46,12 +46,24 @@ export default class HomePage extends Component {
     );
   }
 
-  renderCBSLBanner() {
+  renderWorldBankLink() {
+    return (
+      <Link href="https://data.worldbank.org/country/LK" target="_blank">
+        Sri Lanka Data
+      </Link>
+    );
+  }
+
+  renderTitle() {
     return (
       <Box>
         <Typography variant="subtitle2">
           Central Bank of Sri Lanka's {this.renderCBSLLink()}
         </Typography>
+        <Typography variant="subtitle2">
+          World Bank's {this.renderWorldBankLink()}
+        </Typography>
+
         <Typography variant="h5">Search Tool</Typography>
       </Box>
     );
@@ -74,7 +86,7 @@ export default class HomePage extends Component {
       <Box sx={{ margin: 2, padding: 1 }}>
         {this.renderDevAlert()}
 
-        {this.renderCBSLBanner()}
+        {this.renderTitle()}
 
         <TextField
           required

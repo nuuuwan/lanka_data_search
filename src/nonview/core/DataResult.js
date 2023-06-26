@@ -5,6 +5,10 @@ export default class DataResult {
   }
 
   static parseValue(x) {
+    if (x === null) {
+      return null;
+    }
+    x = x.toString();
     x = x.replaceAll(",", "");
     try {
       if (x.includes(".")) {
