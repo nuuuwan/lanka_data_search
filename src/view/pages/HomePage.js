@@ -5,9 +5,11 @@ import Search from "../../nonview/core/Search";
 import SearchResultListView from "../molecules/SearchResultListView";
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import CONFIG_LIST from "../../nonview/core/CONFIG_LIST";
 import URLContext from "../../nonview/utils/URLContext";
+import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
+import DataSourceLink from "../atoms/DataSourceLink";
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -38,32 +40,22 @@ export default class HomePage extends Component {
     );
   }
 
-  renderCBSLLink() {
+  renderSources() {
     return (
-      <Link href="https://www.cbsl.lk/eresearch/" target="_blank">
-        Economic Data Library
-      </Link>
-    );
-  }
-
-  renderWorldBankLink() {
-    return (
-      <Link href="https://data.worldbank.org/country/LK" target="_blank">
-        Sri Lanka Data
-      </Link>
+      <Box>
+        {DATA_SOURCE_LIST.map((dataSource) => (
+          <DataSourceLink
+            key={"source-link" + dataSource.id}
+            dataSource={dataSource}
+          />
+        ))}
+      </Box>
     );
   }
 
   renderTitle() {
     return (
       <Box>
-        <Typography variant="subtitle2">
-          Central Bank of Sri Lanka's {this.renderCBSLLink()}
-        </Typography>
-        <Typography variant="subtitle2">
-          World Bank's {this.renderWorldBankLink()}
-        </Typography>
-
         <Typography variant="h5">Search Tool</Typography>
       </Box>
     );
@@ -85,7 +77,7 @@ export default class HomePage extends Component {
     return (
       <Box sx={{ margin: 2, padding: 1 }}>
         {this.renderDevAlert()}
-
+        {this.renderSources()}
         {this.renderTitle()}
 
         <TextField

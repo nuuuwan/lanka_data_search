@@ -22,7 +22,7 @@ export default function SearchResultView({ config }) {
 
       <Typography variant="body1" color="secondary">
         {config.latestValueFormatted}
-        <span class="superscript">{config.maxT} (Latest)</span>
+        <span className="superscript">{config.maxT} (Latest)</span>
       </Typography>
 
       <Typography variant="body2">{config.scaleAndUnitFormatted}</Typography>
@@ -32,7 +32,7 @@ export default function SearchResultView({ config }) {
       <Typography variant="body2" color="secondary">
         n={config.n} ({config.minT} to {config.maxT})
       </Typography>
-      <Typography variant="caption">Source: {config.source}</Typography>
+      <Typography variant="caption">Source: {config.source.name}</Typography>
       <Box>
         <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
           <CloudDownloadIcon />

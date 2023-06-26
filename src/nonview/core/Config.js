@@ -1,5 +1,6 @@
 import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
+import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
 const MIN_KEYWORD_LENGTH = 0;
 export default class Config {
   constructor(category, subCategory, unit, scale, minT, maxT, latestValue, n) {
@@ -38,28 +39,11 @@ export default class Config {
   }
 
   get source() {
-    return {
-      world_bank: "World Bank",
-      cbsl: "Central Bank of Sri Lanka",
-    }[this.sourceID];
-  }
-
-  get sourceURL() {
-    return {
-      world_bank: "https://data.worldbank.org/country/LK",
-      cbsl: "https://www.cbsl.gov.lk/eresearch",
-    }[this.sourceID];
-  }
-
-  get baseFolder() {
-    if (this.sourceID === "world_bank") {
-      return "other_sources/world_bank";
-    }
-    return "latest";
+    return DATA_SOURCE_IDX[this.sourceID];
   }
 
   get dataURL() {
-    return `https://raw.githubusercontent.com/nuuuwan/cbsl/data/${this.baseFolder}/${this.category}.${this.subCategory}.json`;
+    return `https://raw.githubusercontent.com/nuuuwan/cbsl/data/${this.source.remoteBaseDir}/${this.category}.${this.subCategory}.json`;
   }
 
   get scaleFormatted() {
@@ -141,7 +125,6 @@ export default class Config {
 
   async getRemoteDataResult() {
     const remoteData = await WWW.json(this.dataURL);
-    console.log(remoteData);
     return DataResult.fromRemoteData(remoteData);
   }
 }
