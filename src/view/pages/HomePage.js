@@ -6,28 +6,25 @@ import SearchResultListView from "../molecules/SearchResultListView";
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
 import CONFIG_LIST from "../../nonview/core/CONFIG_LIST";
-import URLContext from "../../nonview/utils/URLContext";
 import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
 import DataSourceLink from "../atoms/DataSourceLink";
+import ConfigSelector from "../molecules/ConfigSelector";
+import RandomX from "../../nonview/utils/RandomX";
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    const context = URLContext.getContext();
-    const keywords = context.keywords || "";
-    const configList = Search.search(keywords);
+    const configListAll = RandomX.shuffle(CONFIG_LIST);
 
+    const configList = [configListAll[0]];
     this.state = {
       configList,
-      keywords,
     };
   }
 
-  handleOnChangeSearchKeywords(keywords) {
-    const configList = Search.search(keywords);
-    URLContext.setContext({ keywords });
-    this.setState({ configList, keywords });
+  handleOnChangeConfigList(configList) {
+    this.setState({ configList });
   }
 
   renderDevAlert() {
@@ -64,9 +61,6 @@ export default class HomePage extends Component {
   render() {
     const { keywords, configList } = this.state;
 
-    const onChange = function (e) {
-      this.handleOnChangeSearchKeywords(e.target.value);
-    }.bind(this);
 
     const nConfigList = configList.length;
     let message = nConfigList + " Random datasets.";
@@ -80,18 +74,13 @@ export default class HomePage extends Component {
         {this.renderSources()}
         {this.renderTitle()}
 
-        <TextField
-          required
-          label="Search Keywords"
-          defaultValue={keywords}
-          onChange={onChange}
-          sx={{ margin: 2, width: "80%" }}
-        />
+        <ConfigSelector  selectedConfigList={configList} onChangeConfigList={this.handleOnChangeConfigList.bind(this)}/>
         <Alert severity="info" sx={{ margin: 1 }}>
           {message}
         </Alert>
 
         <SearchResultListView configList={configList} />
+        
       </Box>
     );
   }
