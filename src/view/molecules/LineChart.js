@@ -21,6 +21,7 @@ export default function LineChart({ dataResult }) {
     labels: dataResult.labels,
     datasets: [
       {
+        label: "values",
         data: dataResult.values,
         borderColor: "#084",
         backgroundColor: "#fff",

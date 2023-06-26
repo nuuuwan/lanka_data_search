@@ -1,23 +1,23 @@
 import { Component } from "react";
-import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import Search from "../../nonview/core/Search";
-import SearchResultListView from "../molecules/SearchResultListView";
+import ConfigListRemoteDataView from "../organisms/ConfigListRemoteDataView";
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
 import CONFIG_LIST from "../../nonview/core/CONFIG_LIST";
 import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
-import DataSourceLink from "../atoms/DataSourceLink";
+import DataSourceAvatar from "../atoms/DataSourceAvatar";
 import ConfigSelector from "../molecules/ConfigSelector";
+import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
 
+const N_DISPLAY_START = 2;
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
     const configListAll = RandomX.shuffle(CONFIG_LIST);
 
-    const configList = [configListAll[0]];
+    const configList = configListAll.slice(0, N_DISPLAY_START);
     this.state = {
       configList,
     };
@@ -36,51 +36,42 @@ export default class HomePage extends Component {
       </Alert>
     );
   }
-
   renderSources() {
     return (
-      <Box>
+      <Stack direction="row">
         {DATA_SOURCE_LIST.map((dataSource) => (
-          <DataSourceLink
+          <DataSourceAvatar
             key={"source-link" + dataSource.id}
             dataSource={dataSource}
           />
         ))}
-      </Box>
+      </Stack>
     );
   }
 
   renderTitle() {
     return (
       <Box>
-        <Typography variant="h5">Search Tool</Typography>
+        {this.renderSources()}
+        <Typography variant="h3">Dataset Search </Typography>
       </Box>
     );
   }
 
   render() {
-    const { keywords, configList } = this.state;
-
-
-    const nConfigList = configList.length;
-    let message = nConfigList + " Random datasets.";
-    if (keywords !== "") {
-      message = nConfigList + ' datasets matching "' + keywords + '".';
-    }
-
+    const { configList } = this.state;
+    const key = JSON.stringify(configList.map((x) => x.subCategory));
     return (
       <Box sx={{ margin: 2, padding: 1 }}>
-        {this.renderDevAlert()}
-        {this.renderSources()}
         {this.renderTitle()}
 
-        <ConfigSelector  selectedConfigList={configList} onChangeConfigList={this.handleOnChangeConfigList.bind(this)}/>
-        <Alert severity="info" sx={{ margin: 1 }}>
-          {message}
-        </Alert>
+        <ConfigSelector
+          selectedConfigList={configList}
+          onChangeConfigList={this.handleOnChangeConfigList.bind(this)}
+        />
 
-        <SearchResultListView configList={configList} />
-        
+        <ConfigListRemoteDataView key={key} configList={configList} />
+        {this.renderDevAlert()}
       </Box>
     );
   }

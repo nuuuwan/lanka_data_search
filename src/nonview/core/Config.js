@@ -10,7 +10,7 @@ export default class Config {
     this.scale = scale;
     this.minT = minT;
     this.maxT = maxT;
-    this.latestValue = latestValue;
+    this.latestValue = latestValue === null ? 0 : latestValue;
     this.n = n;
   }
 
@@ -98,6 +98,13 @@ export default class Config {
     return `${this.latestValue.toLocaleString()}${this.scaleAndUnitFormatted}`;
   }
 
+  get detailedLabel() {
+    if (this.scaleAndUnitFormatted) {
+      return `${this.subCategory} (${this.scaleAndUnitFormatted})`;
+    }
+    return `${this.subCategory}`;
+  }
+
   isMatch(keywords) {
     if (this.n === 0) {
       return false;
@@ -124,7 +131,11 @@ export default class Config {
   }
 
   async getRemoteDataResult() {
-    const remoteData = await WWW.json(this.dataURL);
-    return DataResult.fromRemoteData(remoteData);
+    try {
+      const remoteData = await WWW.json(this.dataURL);
+      return DataResult.fromRemoteData(remoteData);
+    } catch (e) {
+      return null;
+    }
   }
 }

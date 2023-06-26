@@ -3,7 +3,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import ConfigRemoteDataView from "../organisms/ConfigRemoteDataView";
 import Box from "@mui/material/Box";
 import DataSourceLink from "../atoms/DataSourceLink";
 export default function SearchResultView({ config }) {
@@ -15,7 +14,7 @@ export default function SearchResultView({ config }) {
         padding: 1,
         background: "#fcfcfc",
         borderRadius: 3,
-        width: 400,
+        width: 300,
       }}
     >
       <DataSourceLink dataSource={config.source} />
@@ -28,8 +27,6 @@ export default function SearchResultView({ config }) {
       </Typography>
 
       <Typography variant="body2">{config.scaleAndUnitFormatted}</Typography>
-
-      <ConfigRemoteDataView config={config} />
 
       <Typography variant="body2" color="secondary">
         n={config.n} ({config.minT} to {config.maxT})
