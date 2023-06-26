@@ -8,7 +8,7 @@ import "./App.css";
 
 import { defaults } from "chart.js";
 
-const FONT_FAMILY = "Encode Sans";
+const FONT_FAMILY = "Cabin";
 const THEME = createTheme({
   palette: {
     primary: {
