@@ -58,12 +58,26 @@ export default class HomePage extends Component {
     );
   }
 
+  renderInnerWidthAlert() {
+    const MIN_WIDTH = 640;
+    if (window.innerWidth < MIN_WIDTH) {
+      return (
+        <Alert severity="error">
+          This tool is best viewed on a desktop browser, or a screen with a
+          width of at least {MIN_WIDTH}px.
+        </Alert>
+      );
+    }
+    return null;
+  }
+
   render() {
     const { configList } = this.state;
     const key = JSON.stringify(configList.map((x) => x.subCategory));
     return (
       <Box sx={{ margin: 2, padding: 1 }}>
         {this.renderTitle()}
+        {this.renderInnerWidthAlert()}
 
         <ConfigSelector
           selectedConfigList={configList}

@@ -8,7 +8,7 @@ import "./App.css";
 
 import { defaults } from "chart.js";
 
-const FONT_FAMILY = "Cabin";
+const FONT_FAMILY = "Glory";
 const THEME = createTheme({
   palette: {
     primary: {
