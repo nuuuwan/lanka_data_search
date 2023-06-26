@@ -8,7 +8,7 @@ const DATA_SOURCE_IDX = {
     "latest"
   ),
   world_bank: new DataSource(
-    "cse",
+    "world_bank",
     "World Bank",
     "Sri Lanka - Dataset",
     "https://data.worldbank.org/country/LK",
