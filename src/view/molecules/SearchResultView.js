@@ -25,9 +25,7 @@ export default function SearchResultView({ config }) {
         <span className="superscript">{config.maxT} (Latest)</span>
       </Typography>
 
-      <Typography variant="body2">{config.scaleAndUnitFormatted}</Typography>
-
-      <Typography variant="body2" color="secondary">
+      <Typography variant="body2">
         n={config.n} ({config.minT} to {config.maxT})
       </Typography>
 
