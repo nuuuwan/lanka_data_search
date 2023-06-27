@@ -6,7 +6,7 @@ import DatasetDetailsListView from "../molecules/DatasetDetailsListView.js";
 import { Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
+import Alert from "@mui/material/Alert";
 export default class ConfigListRemoteDataView extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +40,14 @@ export default class ConfigListRemoteDataView extends Component {
     const { dataResultList, sameYAxisScale } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
+    }
+
+    if (dataResultList.length === 0) {
+      return (
+        <Alert severity="warning" sx={{ margin: 1 }}>
+          Select at least one dataset!
+        </Alert>
+      );
     }
 
     const onChangeSameYAxisScale = function (event) {

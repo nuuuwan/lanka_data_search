@@ -29,7 +29,7 @@ export default class HomePage extends Component {
 
   renderDevAlert() {
     return (
-      <Alert severity="warning" sx={{ margin: 1 }}>
+      <Alert severity="info" sx={{ margin: 1 }}>
         This tool is still in development.{" "}
         <strong>{CONFIG_LIST.length.toLocaleString()}</strong> datasets are
         currently available. More datasets will be availble in the future.

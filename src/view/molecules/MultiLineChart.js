@@ -10,6 +10,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { Box } from "@mui/material";
 import DataResult from "../../nonview/core/DataResult.js";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
