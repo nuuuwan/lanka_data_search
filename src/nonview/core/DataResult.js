@@ -42,9 +42,7 @@ export default class DataResult {
     if (label.length === 4) {
       return label + "-01-01";
     }
-    if (label.length === 7) {
-      return label + "-01";
-    }
+ 
     for (let i = 0; i < MONTHS.length; i++) {
       const month = MONTHS[i];
       if (label.endsWith(month)) {
