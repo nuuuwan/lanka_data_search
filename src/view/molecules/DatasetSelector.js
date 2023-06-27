@@ -31,7 +31,6 @@ export default function DatasetSelector({
       </IconButton>
       <Autocomplete
         multiple
-        id="tags-standard"
         options={DATASET_LIST}
         defaultValue={selectedDatasetList}
         getOptionLabel={(dataset) => renderDataset(dataset)}
