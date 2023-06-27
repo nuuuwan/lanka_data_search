@@ -22,7 +22,7 @@ export default function DatasetSelector({
   };
 
   return (
-    <Stack direction="row" sx={{ margin: 1, padding: 0, width: "90%" }}>
+    <Stack direction="row" sx={{ margin: 1, padding: 0, width: "80%" }}>
       <Autocomplete
         multiple
         id="tags-standard"
@@ -33,7 +33,7 @@ export default function DatasetSelector({
           <TextField
             {...params}
             placeholder="Add Datasets"
-            sx={{ minWidth: 400 }}
+            sx={{ minWidth: 200 }}
           />
         )}
         onChange={onChange}
