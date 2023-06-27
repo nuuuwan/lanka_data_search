@@ -22,7 +22,11 @@ export default function DatasetSelector({
   };
 
   return (
-    <Stack direction="row" sx={{ margin: 1, padding: 0, width: "80%" }}>
+    <Stack direction="row">
+      {" "}
+      <IconButton onClick={onClickRandom}>
+        <CasinoIcon />
+      </IconButton>
       <Autocomplete
         multiple
         id="tags-standard"
@@ -33,14 +37,13 @@ export default function DatasetSelector({
           <TextField
             {...params}
             placeholder="Add Datasets"
-            sx={{ minWidth: 200 }}
+            sx={{
+              maxWidth: "70%",
+            }}
           />
         )}
         onChange={onChange}
       />
-      <IconButton onClick={onClickRandom}>
-        <CasinoIcon />
-      </IconButton>
     </Stack>
   );
 }
