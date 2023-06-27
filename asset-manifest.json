@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cbsl_app/static/css/main.96a1df43.css",
-    "main.js": "/cbsl_app/static/js/main.7fdaf97b.js",
+    "main.js": "/cbsl_app/static/js/main.45b9fb1a.js",
     "static/js/787.6c028450.chunk.js": "/cbsl_app/static/js/787.6c028450.chunk.js",
     "index.html": "/cbsl_app/index.html",
     "main.96a1df43.css.map": "/cbsl_app/static/css/main.96a1df43.css.map",
-    "main.7fdaf97b.js.map": "/cbsl_app/static/js/main.7fdaf97b.js.map",
+    "main.45b9fb1a.js.map": "/cbsl_app/static/js/main.45b9fb1a.js.map",
     "787.6c028450.chunk.js.map": "/cbsl_app/static/js/787.6c028450.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.96a1df43.css",
-    "static/js/main.7fdaf97b.js"
+    "static/js/main.45b9fb1a.js"
   ]
 }
