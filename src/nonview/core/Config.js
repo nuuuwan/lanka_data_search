@@ -27,6 +27,10 @@ export default class Config {
     );
   }
 
+  isValidForVisualization() {
+    return this.n > 1;
+  }
+
   get key() {
     return `${this.category}.${this.subCategory}`;
   }

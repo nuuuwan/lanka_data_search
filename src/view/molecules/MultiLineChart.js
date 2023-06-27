@@ -61,8 +61,8 @@ export default function MultiLineChart({
       borderColor: color,
     };
     if (!useSameYAxis) {
-      dataset.yAxisID = label;
-      options.scales[label] = { ticks: { color } };
+      dataset.yAxisID = `y${i}`;
+      options.scales[dataset.yAxisID] = { ticks: { color } };
     } else {
       dataset.yAxisID = "y";
     }

@@ -22,6 +22,7 @@ export default class DataResult {
     if (x === null) {
       return null;
     }
+
     x = x.toString();
     x = x.replaceAll(",", "");
     try {
