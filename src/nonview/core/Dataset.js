@@ -32,7 +32,7 @@ export default class Dataset {
   }
 
   get key() {
-    return `${this.category}.${this.subCategory}`;
+    return this.subCategory;
   }
 
   get sourceID() {
