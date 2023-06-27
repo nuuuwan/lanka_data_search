@@ -49,7 +49,7 @@ export default function MultiLineChart({
     scales: {},
   };
 
-  const labels = DataResult.getAllLabels(dataResultList);
+  const labels = DataResult.getLabelUnion(dataResultList);
 
   const datasets = dataResultList.map(function (dataResult, i) {
     const data = dataResult.getValuesForLabels(labels);

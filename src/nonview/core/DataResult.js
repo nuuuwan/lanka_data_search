@@ -73,7 +73,7 @@ export default class DataResult {
     return labels.map((label) => this.values[this.labels.indexOf(label)]);
   }
 
-  static getAllLabels(dataResultList) {
+  static getLabelUnion(dataResultList) {
     const labelsList = dataResultList.map((dataResult) => dataResult.labels);
     const labels = labelsList.flat();
     const uniqueLabels = [...new Set(labels)];
