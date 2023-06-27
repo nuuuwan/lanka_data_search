@@ -81,4 +81,13 @@ export default class DataResult {
     return sortedUniqueLabels;
   }
 
+  static getLabelIntersection(dataResultList) {
+    return dataResultList.reduce(function (labelIntersection, dataResult) {
+      const labels = dataResult.labels;
+      if (labelIntersection === null) {
+        return labels;
+      }
+      return labelIntersection.filter((x) => labels.includes(x));
+    }, null);
+  }
 }
