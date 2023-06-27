@@ -43,7 +43,6 @@ export default class ConfigListRemoteDataView extends Component {
       <MultiLineChart
         configList={configList}
         dataResultList={dataResultList}
-        isZ={false}
       />
     );
   }

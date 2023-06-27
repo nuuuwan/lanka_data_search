@@ -27,7 +27,7 @@ function getColor(i, n) {
   return `hsla(${hue}, 100%, 50%, 0.5)`;
 }
 
-export default function MultiLineChart({ configList, dataResultList, isZ }) {
+export default function MultiLineChart({ configList, dataResultList }) {
   if (dataResultList.length === 0) {
     return null;
   }
@@ -41,14 +41,13 @@ export default function MultiLineChart({ configList, dataResultList, isZ }) {
         position: "top",
       },
     },
+    scales: {},
   };
 
   const labels = DataResult.getAllLabels(dataResultList);
 
   const datasets = dataResultList.map(function (dataResult, i) {
-    const data = isZ
-      ? dataResult.getZValuesForLabels(labels)
-      : dataResult.getValuesForLabels(labels);
+    const data = dataResult.getValuesForLabels(labels);
     const color = getColor(i, configList.length);
     const label = configList[i].detailedLabel;
     let dataset = {
@@ -57,9 +56,9 @@ export default function MultiLineChart({ configList, dataResultList, isZ }) {
       backgroundColor: color,
       borderColor: color,
     };
-    if (!isZ) {
-      dataset.yAxisID = label;
-    }
+    dataset.yAxisID = label;
+    options.scales[label] = { ticks: { color } };
+
     return dataset;
   });
 
