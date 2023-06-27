@@ -36,7 +36,7 @@ export default function MultiLineChart({
   if (dataResultList.length === 0) {
     return null;
   }
-  const { sameYAxisScale } = options;
+  const { sameYAxisScale, commonDataOnly } = options;
 
   let chartOptions = {
     responsive: true,
@@ -50,7 +50,10 @@ export default function MultiLineChart({
     scales: {},
   };
 
-  const labels = DataResult.getLabelUnion(dataResultList);
+  const getLabels = commonDataOnly
+    ? DataResult.getLabelIntersection
+    : DataResult.getLabelUnion;
+  const labels = getLabels(dataResultList);
 
   const datasets = dataResultList.map(function (dataResult, i) {
     const data = dataResult.getValuesForLabels(labels);
