@@ -81,17 +81,4 @@ export default class DataResult {
     return sortedUniqueLabels;
   }
 
-  get zValues() {
-    const values = this.values;
-    const n = values.length;
-    const mean = values.reduce((a, b) => a + b) / n;
-    const std =
-      Math.sqrt(
-        values.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n
-      ) || 1;
-    return values.map((x) => (x - mean) / std);
-  }
-  getZValuesForLabels(labels) {
-    return labels.map((label) => this.zValues[this.labels.indexOf(label)]);
-  }
 }
