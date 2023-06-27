@@ -30,7 +30,7 @@ function getColor(i, n) {
 export default function MultiLineChart({
   configList,
   dataResultList,
-  useSameYAxis,
+  sameYAxisScale,
 }) {
   if (dataResultList.length === 0) {
     return null;
@@ -60,7 +60,7 @@ export default function MultiLineChart({
       backgroundColor: color,
       borderColor: color,
     };
-    if (!useSameYAxis) {
+    if (!sameYAxisScale) {
       dataset.yAxisID = `y${i}`;
       options.scales[dataset.yAxisID] = { ticks: { color } };
     } else {
