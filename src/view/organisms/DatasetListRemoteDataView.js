@@ -7,6 +7,8 @@ import { Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Alert from "@mui/material/Alert";
+import DataResult from "../../nonview/core/DataResult.js";
+import Paper from "@mui/material/Paper";
 export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +63,71 @@ export default class DatasetListRemoteDataView extends Component {
     );
   }
 
+  renderStatistics() {
+    const { dataResultList } = this.state;
+    if (!dataResultList) {
+      return null;
+    }
+
+    if (dataResultList.length === 2) {
+      const correlation = DataResult.getCorrelation(
+        dataResultList[0],
+        dataResultList[1]
+      );
+      if (!(correlation && correlation <= 1 && correlation >= -1)) {
+        return null;
+      }
+      const isPositive = correlation > 0;
+      const isStrong = Math.abs(correlation) > 0.9;
+      const isMild = Math.abs(correlation) > 0.7;
+      let color = "black";
+      let opacity = 0.25;
+      let correlationText = "";
+      if (isStrong) {
+        correlationText = "strong";
+        opacity = 1;
+      } else if (isMild) {
+        correlationText = "mild";
+        opacity = 0.5;
+      }
+
+      if (correlationText !== "") {
+        if (isPositive) {
+          correlationText += " positive";
+          color = "green";
+        } else {
+          correlationText += " negative";
+          color = "red";
+        }
+        correlationText += " correlation";
+      }
+      return (
+        <Box sx={{ margin: 1, padding: 1 }}>
+          <Typography variant="h5">Statistics</Typography>
+
+          <Paper
+            elevation={0}
+            sx={{
+              color,
+              opacity,
+              margin: 1,
+              padding: 1,
+              background: "#fcfcfc",
+              borderRadius: 3,
+              width: 300,
+            }}
+          >
+            <Typography variant="caption">
+              {"correlation = " + correlation.toLocaleString()}
+            </Typography>
+            <Typography variant="body1">{correlationText}</Typography>
+          </Paper>
+        </Box>
+      );
+    }
+    return null;
+  }
+
   renderDatasetDetails() {
     const { datasetList } = this.props;
     return (
@@ -74,6 +141,7 @@ export default class DatasetListRemoteDataView extends Component {
     return (
       <Box>
         {this.renderMultiLineChart()}
+        {this.renderStatistics()}
         {this.renderDatasetDetails()}
       </Box>
     );
