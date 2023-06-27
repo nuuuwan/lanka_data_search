@@ -2,7 +2,7 @@ import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
 import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
 const MIN_KEYWORD_LENGTH = 0;
-export default class Config {
+export default class Dataset {
   constructor(category, subCategory, unit, scale, minT, maxT, latestValue, n) {
     this.category = category;
     this.subCategory = subCategory;
@@ -15,7 +15,7 @@ export default class Config {
   }
 
   static fromRaw(d) {
-    return new Config(
+    return new Dataset(
       d.category,
       d.sub_category,
       d.unit,

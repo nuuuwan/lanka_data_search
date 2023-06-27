@@ -1,12 +1,12 @@
 import Grid from "@mui/material/Grid";
 import DatasetDetailsView from "./DatasetDetailsView";
 
-export default function DatasetDetailsListView({ configList }) {
+export default function DatasetDetailsListView({ datasetList }) {
   return (
     <Grid container>
-      {configList.map((config, i) => (
-        <Grid item key={"search-result-" + config.key}>
-          <DatasetDetailsView config={config} />
+      {datasetList.map((dataset, i) => (
+        <Grid item key={"search-result-" + dataset.key}>
+          <DatasetDetailsView dataset={dataset} />
         </Grid>
       ))}
     </Grid>

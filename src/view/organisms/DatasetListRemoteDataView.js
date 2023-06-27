@@ -7,7 +7,7 @@ import { Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Alert from "@mui/material/Alert";
-export default class ConfigListRemoteDataView extends Component {
+export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,26 +17,26 @@ export default class ConfigListRemoteDataView extends Component {
   }
 
   async componentDidMount() {
-    const { configList } = this.props;
+    const { datasetList } = this.props;
     const dataResultListUnfiltered = await Promise.all(
-      configList.map((config) => config.getRemoteDataResult())
+      datasetList.map((dataset) => dataset.getRemoteDataResult())
     );
     const dataResultList = dataResultListUnfiltered.filter((x) => x !== null);
     this.setState({ dataResultList });
   }
 
   renderDatasetDetails() {
-    const { configList } = this.props;
+    const { datasetList } = this.props;
     return (
       <Box sx={{ margin: 1, padding: 1 }}>
         <Typography variant="h5">Dataset Details</Typography>
-        <DatasetDetailsListView configList={configList} />
+        <DatasetDetailsListView datasetList={datasetList} />
       </Box>
     );
   }
 
   renderMultiLineChart() {
-    const { configList } = this.props;
+    const { datasetList } = this.props;
     const { dataResultList, sameYAxisScale } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
@@ -57,7 +57,7 @@ export default class ConfigListRemoteDataView extends Component {
     return (
       <Box>
         <MultiLineChart
-          configList={configList}
+          datasetList={datasetList}
           dataResultList={dataResultList}
           sameYAxisScale={sameYAxisScale}
         />

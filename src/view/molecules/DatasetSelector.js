@@ -2,18 +2,18 @@ import React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import CONFIG_LIST from "../../nonview/core/CONFIG_LIST.js";
+import DATASET_LIST from "../../nonview/core/DATASET_LIST.js";
 
-function renderConfig(config) {
-  return config.detailedLabel;
+function renderDataset(dataset) {
+  return dataset.detailedLabel;
 }
 
-export default function ConfigSelector({
-  selectedConfigList,
-  onChangeConfigList,
+export default function DatasetSelector({
+  selectedDatasetList,
+  onChangeDatasetList,
 }) {
-  const onChange = function (_, configList) {
-    onChangeConfigList(configList);
+  const onChange = function (_, datasetList) {
+    onChangeDatasetList(datasetList);
   };
 
   return (
@@ -21,9 +21,9 @@ export default function ConfigSelector({
       <Autocomplete
         multiple
         id="tags-standard"
-        options={CONFIG_LIST}
-        defaultValue={selectedConfigList}
-        getOptionLabel={(config) => renderConfig(config)}
+        options={DATASET_LIST}
+        defaultValue={selectedDatasetList}
+        getOptionLabel={(dataset) => renderDataset(dataset)}
         renderInput={(params) => (
           <TextField {...params} placeholder="Add Datasets" />
         )}

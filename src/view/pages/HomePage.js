@@ -1,12 +1,12 @@
 import { Component } from "react";
 import Box from "@mui/material/Box";
-import ConfigListRemoteDataView from "../organisms/ConfigListRemoteDataView";
+import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
-import CONFIG_LIST from "../../nonview/core/CONFIG_LIST";
+import DATASET_LIST from "../../nonview/core/DATASET_LIST";
 import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
 import DataSourceAvatar from "../atoms/DataSourceAvatar";
-import ConfigSelector from "../molecules/ConfigSelector";
+import DatasetSelector from "../molecules/DatasetSelector";
 import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
 
@@ -15,23 +15,23 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    const configListAll = RandomX.shuffle(CONFIG_LIST);
+    const datasetListAll = RandomX.shuffle(DATASET_LIST);
 
-    const configList = configListAll.slice(0, N_DISPLAY_START);
+    const datasetList = datasetListAll.slice(0, N_DISPLAY_START);
     this.state = {
-      configList,
+      datasetList,
     };
   }
 
-  handleOnChangeConfigList(configList) {
-    this.setState({ configList });
+  handleOnChangeDatasetList(datasetList) {
+    this.setState({ datasetList });
   }
 
   renderDevAlert() {
     return (
       <Alert severity="info" sx={{ margin: 1 }}>
         This tool is still in development.{" "}
-        <strong>{CONFIG_LIST.length.toLocaleString()}</strong> datasets are
+        <strong>{DATASET_LIST.length.toLocaleString()}</strong> datasets are
         currently available. More datasets will be availble in the future.
       </Alert>
     );
@@ -59,18 +59,18 @@ export default class HomePage extends Component {
   }
 
   render() {
-    const { configList } = this.state;
-    const key = JSON.stringify(configList.map((x) => x.subCategory));
+    const { datasetList } = this.state;
+    const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     return (
       <Box sx={{ margin: 2, padding: 1 }}>
         {this.renderTitle()}
 
-        <ConfigSelector
-          selectedConfigList={configList}
-          onChangeConfigList={this.handleOnChangeConfigList.bind(this)}
+        <DatasetSelector
+          selectedDatasetList={datasetList}
+          onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
         />
 
-        <ConfigListRemoteDataView key={key} configList={configList} />
+        <DatasetListRemoteDataView key={key} datasetList={datasetList} />
         {this.renderDevAlert()}
       </Box>
     );

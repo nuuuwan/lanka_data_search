@@ -29,7 +29,7 @@ function getColor(i, n) {
 }
 
 export default function MultiLineChart({
-  configList,
+  datasetList,
   dataResultList,
   sameYAxisScale,
 }) {
@@ -53,8 +53,8 @@ export default function MultiLineChart({
 
   const datasets = dataResultList.map(function (dataResult, i) {
     const data = dataResult.getValuesForLabels(labels);
-    const color = getColor(i, configList.length);
-    const label = configList[i].detailedLabel;
+    const color = getColor(i, datasetList.length);
+    const label = datasetList[i].detailedLabel;
     let dataset = {
       label,
       data,

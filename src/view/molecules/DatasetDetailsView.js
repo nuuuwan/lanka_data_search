@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Box from "@mui/material/Box";
 import DataSourceLink from "../atoms/DataSourceLink";
-export default function DatasetDetailsView({ config }) {
+export default function DatasetDetailsView({ dataset }) {
   return (
     <Paper
       elevation={0}
@@ -17,20 +17,20 @@ export default function DatasetDetailsView({ config }) {
         width: 300,
       }}
     >
-      <DataSourceLink dataSource={config.source} />
-      <Typography variant="subtitle1">{config.subCategory}</Typography>
+      <DataSourceLink dataSource={dataset.source} />
+      <Typography variant="subtitle1">{dataset.subCategory}</Typography>
 
       <Typography variant="body1" color="secondary">
-        {config.latestValueFormatted}
-        <span className="superscript">{config.maxT} (Latest)</span>
+        {dataset.latestValueFormatted}
+        <span className="superscript">{dataset.maxT} (Latest)</span>
       </Typography>
 
       <Typography variant="body2">
-        n={config.n} ({config.minT} to {config.maxT})
+        n={dataset.n} ({dataset.minT} to {dataset.maxT})
       </Typography>
 
       <Box>
-        <Link href={config.dataURL} sx={{ fontSize: 8 }} target="_blank">
+        <Link href={dataset.dataURL} sx={{ fontSize: 8 }} target="_blank">
           <CloudDownloadIcon />
         </Link>
       </Box>
