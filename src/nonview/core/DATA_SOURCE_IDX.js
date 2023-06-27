@@ -4,7 +4,7 @@ const DATA_SOURCE_IDX = {
     "cbsl",
     "Central Bank of Sri Lanka",
     "Economic Data Library",
-    "https://www.cbsl.gov.lk/eresearch",
+    "https://www.cbsl.lk/eresearch",
     "latest"
   ),
   world_bank: new DataSource(
