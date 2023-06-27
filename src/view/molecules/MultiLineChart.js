@@ -31,13 +31,14 @@ function getColor(i, n) {
 export default function MultiLineChart({
   datasetList,
   dataResultList,
-  sameYAxisScale,
+  options,
 }) {
   if (dataResultList.length === 0) {
     return null;
   }
+  const { sameYAxisScale } = options;
 
-  let options = {
+  let chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
 
@@ -63,7 +64,7 @@ export default function MultiLineChart({
     };
     if (!sameYAxisScale) {
       dataset.yAxisID = `y${i}`;
-      options.scales[dataset.yAxisID] = { ticks: { color } };
+      chartOptions.scales[dataset.yAxisID] = { ticks: { color } };
     } else {
       dataset.yAxisID = "y";
     }
@@ -79,7 +80,7 @@ export default function MultiLineChart({
   const height = Math.max(400, parseInt((window.innerWidth * 0.8 * 9) / 16));
   return (
     <Box>
-      <Line options={options} data={chartData} height={height} />
+      <Line options={chartOptions} data={chartData} height={height} />
     </Box>
   );
 }

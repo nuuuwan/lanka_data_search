@@ -9,13 +9,23 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Alert from "@mui/material/Alert";
 import DataResult from "../../nonview/core/DataResult.js";
 import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
 export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dataResultList: null,
-      sameYAxisScale: false,
+      options: {
+        sameYAxisScale: false,
+        commonDataOnly: false,
+      },
     };
+  }
+
+  handleChangeOptions(newOptions) {
+    let options = this.state.options;
+    options = { ...options, ...newOptions };
+    this.setState({ options });
   }
 
   async componentDidMount() {
@@ -27,9 +37,35 @@ export default class DatasetListRemoteDataView extends Component {
     this.setState({ dataResultList });
   }
 
+  renderOptions() {
+    const { options } = this.state;
+
+    const renderedInner = Object.entries(options).map(
+      function ([optionName, optionValue]) {
+        const onChange = function (event) {
+          const newOptions = {};
+          newOptions[optionName] = event.target.checked;
+          this.handleChangeOptions(newOptions);
+        }.bind(this);
+        return (
+          <FormControlLabel
+            control={<Checkbox checked={optionValue} />}
+            label={optionName}
+            onChange={onChange}
+          />
+        );
+      }.bind(this)
+    );
+    return (
+      <Stack direction="row" spacing={1}>
+        {renderedInner}
+      </Stack>
+    );
+  }
+
   renderMultiLineChart() {
     const { datasetList } = this.props;
-    const { dataResultList, sameYAxisScale } = this.state;
+    const { dataResultList, options } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
     }
@@ -42,23 +78,15 @@ export default class DatasetListRemoteDataView extends Component {
       );
     }
 
-    const onChangeSameYAxisScale = function (event) {
-      this.setState({ sameYAxisScale: event.target.checked });
-    }.bind(this);
-
     return (
       <Box>
         <MultiLineChart
           datasetList={datasetList}
           dataResultList={dataResultList}
-          sameYAxisScale={sameYAxisScale}
+          options={options}
         />
 
-        <FormControlLabel
-          control={<Checkbox checked={sameYAxisScale} />}
-          label="Same Y-Axis Scale"
-          onChange={onChangeSameYAxisScale}
-        />
+        {this.renderOptions()}
       </Box>
     );
   }
