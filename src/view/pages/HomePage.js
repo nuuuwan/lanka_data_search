@@ -3,27 +3,38 @@ import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
-import DATASET_LIST from "../../nonview/core/DATASET_LIST";
+import DATASET_LIST, { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
 import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
 import DataSourceAvatar from "../atoms/DataSourceAvatar";
 import DatasetSelector from "../molecules/DatasetSelector";
 import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
+import URLContext from "../../nonview/utils/URLContext";
 
 const N_DISPLAY_START = 2;
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    const datasetListAll = RandomX.shuffle(DATASET_LIST);
+    const datasetKeyList = URLContext.getContext().datasetKeyList;
 
-    const datasetList = datasetListAll.slice(0, N_DISPLAY_START);
+    let datasetList;
+    if (datasetKeyList !== undefined) {
+      datasetList = datasetKeyList.map((key) => DATASET_IDX[key]);
+    } else {
+      const datasetListAll = RandomX.shuffle(DATASET_LIST);
+      datasetList = datasetListAll.slice(0, N_DISPLAY_START);
+      const datasetKeyList = datasetList.map((x) => x.key);
+      URLContext.setContext({ datasetKeyList });
+    }
     this.state = {
       datasetList,
     };
   }
 
   handleOnChangeDatasetList(datasetList) {
+    const datasetKeyList = datasetList.map((x) => x.key);
+    URLContext.setContext({ datasetKeyList });
     this.setState({ datasetList });
   }
 

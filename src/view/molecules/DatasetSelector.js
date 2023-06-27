@@ -5,6 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import DATASET_LIST from "../../nonview/core/DATASET_LIST.js";
 import CasinoIcon from "@mui/icons-material/Casino";
 import IconButton from "@mui/material/IconButton";
+import URLContext from "../../nonview/utils/URLContext.js";
 function renderDataset(dataset) {
   return dataset.detailedLabel;
 }
@@ -18,6 +19,7 @@ export default function DatasetSelector({
   };
 
   const onClickRandom = function () {
+    URLContext.setContext({ datasetKeyList: undefined });
     window.location.reload();
   };
 
