@@ -7,10 +7,11 @@ import { Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Alert from "@mui/material/Alert";
-import DataResult from "../../nonview/core/DataResult.js";
-import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import StringX from "../../nonview/utils/StringX.js";
+import StatCorrelationView from "../molecules/StatCorrelationView.js";
+import StatEquationView from "../molecules/StatEquationView.js";
+
 export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
     super(props);
@@ -100,67 +101,13 @@ export default class DatasetListRemoteDataView extends Component {
       return null;
     }
 
-    if (dataResultList.length === 2) {
-      const correlation = DataResult.getCorrelation(
-        dataResultList[0],
-        dataResultList[1]
-      );
-      if (!(correlation && correlation <= 1 && correlation >= -1)) {
-        return null;
-      }
-      const isPositive = correlation > 0;
-      const isStrong = Math.abs(correlation) > 0.9;
-      const isMild = Math.abs(correlation) > 0.7;
-      let color = "black";
-      let opacity = 0.25;
-      let correlationText = "";
-      if (isStrong) {
-        correlationText = "strong";
-        opacity = 1;
-      } else if (isMild) {
-        correlationText = "mild";
-        opacity = 0.5;
-      }
-
-      if (correlationText !== "") {
-        if (isPositive) {
-          correlationText += " positive";
-          color = "green";
-        } else {
-          correlationText += " negative";
-          color = "red";
-        }
-        correlationText += " correlation";
-      }
-
-      const { m, c } = DataResult.fitLine(dataResultList[0], dataResultList[1]);
-      const lineEquation = `y2 = ${m.toFixed(2)}y1 + ${c.toFixed(2)}`;
-      return (
-        <Box sx={{ margin: 1, padding: 1 }}>
-          <Typography variant="h5">Statistics</Typography>
-
-          <Paper
-            elevation={0}
-            sx={{
-              color,
-              opacity,
-              margin: 1,
-              padding: 1,
-              background: "#fcfcfc",
-              borderRadius: 3,
-              width: 300,
-            }}
-          >
-            <Typography variant="caption">
-              {"correlation = " + correlation.toLocaleString()}
-            </Typography>
-            <Typography variant="body1">{correlationText}</Typography>
-            <Typography variant="body1">{lineEquation}</Typography>
-          </Paper>
-        </Box>
-      );
-    }
-    return null;
+    return (
+      <Box sx={{ margin: 1, padding: 1 }}>
+        <Typography variant="h5">Statistics</Typography>
+        <StatCorrelationView dataResultList={dataResultList} />
+        <StatEquationView dataResultList={dataResultList} />
+      </Box>
+    );
   }
 
   renderDatasetDetails() {
