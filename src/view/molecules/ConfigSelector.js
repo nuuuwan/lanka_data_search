@@ -25,7 +25,7 @@ export default function ConfigSelector({
         defaultValue={selectedConfigList}
         getOptionLabel={(config) => renderConfig(config)}
         renderInput={(params) => (
-          <TextField {...params} placeholder="Datasets" />
+          <TextField {...params} placeholder="Add Datasets" />
         )}
         onChange={onChange}
       />
