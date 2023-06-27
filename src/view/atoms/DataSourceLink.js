@@ -2,7 +2,6 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Link from "@mui/material/Link";
 import DataSourceAvatar from "./DataSourceAvatar";
-import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 export default function DataSourceLink({ dataSource }) {
   return (
