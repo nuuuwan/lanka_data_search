@@ -10,6 +10,7 @@ import Alert from "@mui/material/Alert";
 import DataResult from "../../nonview/core/DataResult.js";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import StringX from "../../nonview/utils/StringX.js";
 export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
     super(props);
@@ -47,10 +48,11 @@ export default class DatasetListRemoteDataView extends Component {
           newOptions[optionName] = event.target.checked;
           this.handleChangeOptions(newOptions);
         }.bind(this);
+        const label = StringX.camelToNormal(optionName);
         return (
           <FormControlLabel
             control={<Checkbox checked={optionValue} />}
-            label={optionName}
+            label={label}
             onChange={onChange}
           />
         );
