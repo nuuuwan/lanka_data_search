@@ -18,34 +18,17 @@ export default function DatasetSelector({
     onChangeDatasetList(datasetList);
   };
 
-  const onClickRandom = function () {
-    URLContext.setContext({ datasetKeyList: undefined });
-    window.location.reload();
-  };
-
   return (
-    <Stack direction="row">
-      {" "}
-      <IconButton onClick={onClickRandom}>
-        <CasinoIcon />
-      </IconButton>
-      <Autocomplete
-        multiple
-        options={DATASET_LIST}
-        defaultValue={selectedDatasetList}
-        getOptionLabel={(dataset) => renderDataset(dataset)}
-        sx={{ minWidth: 320 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            placeholder="Add Datasets"
-            sx={{
-              maxWidth: "90%",
-            }}
-          />
-        )}
-        onChange={onChange}
-      />
-    </Stack>
+    <Autocomplete
+      multiple
+      options={DATASET_LIST}
+      defaultValue={selectedDatasetList}
+      getOptionLabel={(dataset) => renderDataset(dataset)}
+      sx={{ minWidth: 320 }}
+      renderInput={(params) => (
+        <TextField {...params} placeholder="Add Datasets" />
+      )}
+      onChange={onChange}
+    />
   );
 }
