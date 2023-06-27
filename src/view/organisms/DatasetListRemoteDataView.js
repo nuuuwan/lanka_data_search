@@ -131,6 +131,9 @@ export default class DatasetListRemoteDataView extends Component {
         }
         correlationText += " correlation";
       }
+
+      const { m, c } = DataResult.fitLine(dataResultList[0], dataResultList[1]);
+      const lineEquation = `y2 = ${m.toFixed(2)}y1 + ${c.toFixed(2)}`;
       return (
         <Box sx={{ margin: 1, padding: 1 }}>
           <Typography variant="h5">Statistics</Typography>
@@ -151,6 +154,7 @@ export default class DatasetListRemoteDataView extends Component {
               {"correlation = " + correlation.toLocaleString()}
             </Typography>
             <Typography variant="body1">{correlationText}</Typography>
+            <Typography variant="body1">{lineEquation}</Typography>
           </Paper>
         </Box>
       );
