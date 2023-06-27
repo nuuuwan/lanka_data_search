@@ -90,4 +90,24 @@ export default class DataResult {
       return labelIntersection.filter((x) => labels.includes(x));
     }, null);
   }
+
+  static getCorrelation(dataResult1, dataResult2) {
+    const commonLabels = DataResult.getLabelIntersection([
+      dataResult1,
+      dataResult2,
+    ]);
+    const values1 = dataResult1.getValuesForLabels(commonLabels);
+    const values2 = dataResult2.getValuesForLabels(commonLabels);
+    const n = commonLabels.length;
+    const sum1 = values1.reduce((a, b) => a + b, 0);
+    const sum2 = values2.reduce((a, b) => a + b, 0);
+    const sum1Squared = values1.reduce((a, b) => a + b * b, 0);
+    const sum2Squared = values2.reduce((a, b) => a + b * b, 0);
+    const sumProduct = values1.reduce((a, b, i) => a + b * values2[i], 0);
+    const numerator = n * sumProduct - sum1 * sum2;
+    const denominator = Math.sqrt(
+      (n * sum1Squared - sum1 * sum1) * (n * sum2Squared - sum2 * sum2)
+    );
+    return numerator / denominator;
+  }
 }
