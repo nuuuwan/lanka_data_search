@@ -1,9 +1,10 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import DATASET_LIST from "../../nonview/core/DATASET_LIST.js";
-
+import CasinoIcon from "@mui/icons-material/Casino";
+import IconButton from "@mui/material/IconButton";
 function renderDataset(dataset) {
   return dataset.detailedLabel;
 }
@@ -16,8 +17,12 @@ export default function DatasetSelector({
     onChangeDatasetList(datasetList);
   };
 
+  const onClickRandom = function () {
+    window.location.reload();
+  };
+
   return (
-    <Box sx={{ margin: 1, padding: 0 }}>
+    <Stack direction="row" sx={{ margin: 1, padding: 0, width: "90%" }}>
       <Autocomplete
         multiple
         id="tags-standard"
@@ -25,10 +30,17 @@ export default function DatasetSelector({
         defaultValue={selectedDatasetList}
         getOptionLabel={(dataset) => renderDataset(dataset)}
         renderInput={(params) => (
-          <TextField {...params} placeholder="Add Datasets" />
+          <TextField
+            {...params}
+            placeholder="Add Datasets"
+            sx={{ minWidth: 400 }}
+          />
         )}
         onChange={onChange}
       />
-    </Box>
+      <IconButton onClick={onClickRandom}>
+        <CasinoIcon />
+      </IconButton>
+    </Stack>
   );
 }
