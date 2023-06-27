@@ -25,16 +25,6 @@ export default class DatasetListRemoteDataView extends Component {
     this.setState({ dataResultList });
   }
 
-  renderDatasetDetails() {
-    const { datasetList } = this.props;
-    return (
-      <Box sx={{ margin: 1, padding: 1 }}>
-        <Typography variant="h5">Dataset Details</Typography>
-        <DatasetDetailsListView datasetList={datasetList} />
-      </Box>
-    );
-  }
-
   renderMultiLineChart() {
     const { datasetList } = this.props;
     const { dataResultList, sameYAxisScale } = this.state;
@@ -71,6 +61,15 @@ export default class DatasetListRemoteDataView extends Component {
     );
   }
 
+  renderDatasetDetails() {
+    const { datasetList } = this.props;
+    return (
+      <Box sx={{ margin: 1, padding: 1 }}>
+        <Typography variant="h5">Dataset Details</Typography>
+        <DatasetDetailsListView datasetList={datasetList} />
+      </Box>
+    );
+  }
   render() {
     return (
       <Box>
