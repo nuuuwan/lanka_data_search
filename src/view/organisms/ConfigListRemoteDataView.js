@@ -25,7 +25,7 @@ export default class ConfigListRemoteDataView extends Component {
   renderDatasetDetails() {
     const { configList } = this.props;
     return (
-      <Box sx={{ margin: 2, padding: 2 }}>
+      <Box sx={{ margin: 1, padding: 1 }}>
         <Typography variant="h5">Dataset Details</Typography>
         <SearchResultListView configList={configList} />
       </Box>
@@ -39,17 +39,12 @@ export default class ConfigListRemoteDataView extends Component {
       return <CircularProgress />;
     }
 
-    const title = configList.map((config) => config.subCategory).join("✖️");
-
     return (
-      <Box sx={{ margin: 2, padding: 2 }}>
-        <Typography variant="h5">{title}</Typography>
-        <MultiLineChart
-          configList={configList}
-          dataResultList={dataResultList}
-          isZ={false}
-        />
-      </Box>
+      <MultiLineChart
+        configList={configList}
+        dataResultList={dataResultList}
+        isZ={false}
+      />
     );
   }
 

@@ -17,7 +17,7 @@ export default function ConfigSelector({
   };
 
   return (
-    <Box sx={{ margin: 1, padding: 1 }}>
+    <Box sx={{ margin: 1, padding: 0 }}>
       <Autocomplete
         multiple
         id="tags-standard"
