@@ -19,7 +19,7 @@ export default function SearchResultView({ config }) {
     >
       <DataSourceLink dataSource={config.source} />
       <Typography variant="subtitle1">{config.subCategory}</Typography>
-      
+
       <Typography variant="body1" color="secondary">
         {config.latestValueFormatted}
         <span className="superscript">{config.maxT} (Latest)</span>
