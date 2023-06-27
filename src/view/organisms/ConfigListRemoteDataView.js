@@ -12,7 +12,7 @@ export default class ConfigListRemoteDataView extends Component {
     super(props);
     this.state = {
       dataResultList: null,
-      useSameYAxis: false,
+      sameYAxisScale: false,
     };
   }
 
@@ -37,13 +37,13 @@ export default class ConfigListRemoteDataView extends Component {
 
   renderMultiLineChart() {
     const { configList } = this.props;
-    const { dataResultList, useSameYAxis } = this.state;
+    const { dataResultList, sameYAxisScale } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
     }
 
     const onChangeSameYAxisScale = function (event) {
-      this.setState({ useSameYAxis: event.target.checked });
+      this.setState({ sameYAxisScale: event.target.checked });
     }.bind(this);
 
     return (
@@ -51,11 +51,11 @@ export default class ConfigListRemoteDataView extends Component {
         <MultiLineChart
           configList={configList}
           dataResultList={dataResultList}
-          useSameYAxis={useSameYAxis}
+          sameYAxisScale={sameYAxisScale}
         />
 
         <FormControlLabel
-          control={<Checkbox checked={useSameYAxis} />}
+          control={<Checkbox checked={sameYAxisScale} />}
           label="Same Y-Axis Scale"
           onChange={onChangeSameYAxisScale}
         />
