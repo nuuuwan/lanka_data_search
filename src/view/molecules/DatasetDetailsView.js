@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Box from "@mui/material/Box";
 import DataSourceLink from "../atoms/DataSourceLink";
-export default function SearchResultView({ config }) {
+export default function DatasetDetailsView({ config }) {
   return (
     <Paper
       elevation={0}

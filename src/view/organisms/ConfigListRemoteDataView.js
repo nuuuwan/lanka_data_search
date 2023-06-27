@@ -2,7 +2,7 @@ import { Component } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import MultiLineChart from "../molecules/MultiLineChart.js";
 import Box from "@mui/material/Box";
-import SearchResultListView from "../molecules/SearchResultListView.js";
+import DatasetDetailsListView from "../molecules/DatasetDetailsListView.js";
 import { Typography } from "@mui/material";
 
 export default class ConfigListRemoteDataView extends Component {
@@ -27,7 +27,7 @@ export default class ConfigListRemoteDataView extends Component {
     return (
       <Box sx={{ margin: 1, padding: 1 }}>
         <Typography variant="h5">Dataset Details</Typography>
-        <SearchResultListView configList={configList} />
+        <DatasetDetailsListView configList={configList} />
       </Box>
     );
   }

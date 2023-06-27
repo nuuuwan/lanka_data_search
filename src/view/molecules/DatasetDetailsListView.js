@@ -1,12 +1,12 @@
 import Grid from "@mui/material/Grid";
-import SearchResultView from "../molecules/SearchResultView";
+import DatasetDetailsView from "./DatasetDetailsView";
 
-export default function SearchResultListView({ configList }) {
+export default function DatasetDetailsListView({ configList }) {
   return (
     <Grid container>
       {configList.map((config, i) => (
         <Grid item key={"search-result-" + config.key}>
-          <SearchResultView config={config} />
+          <DatasetDetailsView config={config} />
         </Grid>
       ))}
     </Grid>
