@@ -10,11 +10,11 @@ export default class URLContext {
   static contextToURL(context) {
     const origin = window.location.origin;
     let urlBase = origin + process.env.PUBLIC_URL; // TODO: Is origin needed?
-    return urlBase + "#" + URLContext.contextToStr(context);
+    return urlBase + "/?context=" + URLContext.contextToStr(context);
   }
 
   static urlToContext(url) {
-    const urlTokens = url.split("#");
+    const urlTokens = url.split("/?context=");
     if (urlTokens.length !== 2) {
       return {};
     }
