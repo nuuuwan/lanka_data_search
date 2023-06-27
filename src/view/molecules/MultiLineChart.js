@@ -27,7 +27,11 @@ function getColor(i, n) {
   return `hsla(${hue}, 100%, 50%, 0.5)`;
 }
 
-export default function MultiLineChart({ configList, dataResultList, useSameYAxis }) {
+export default function MultiLineChart({
+  configList,
+  dataResultList,
+  useSameYAxis,
+}) {
   if (dataResultList.length === 0) {
     return null;
   }
@@ -59,9 +63,10 @@ export default function MultiLineChart({ configList, dataResultList, useSameYAxi
     if (!useSameYAxis) {
       dataset.yAxisID = label;
       options.scales[label] = { ticks: { color } };
-  
+    } else {
+      dataset.yAxisID = "y";
     }
-    
+
     return dataset;
   });
 

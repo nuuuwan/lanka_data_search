@@ -4,12 +4,15 @@ import MultiLineChart from "../molecules/MultiLineChart.js";
 import Box from "@mui/material/Box";
 import DatasetDetailsListView from "../molecules/DatasetDetailsListView.js";
 import { Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default class ConfigListRemoteDataView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dataResultList: null,
+      useSameYAxis: false,
     };
   }
 
@@ -34,16 +37,29 @@ export default class ConfigListRemoteDataView extends Component {
 
   renderMultiLineChart() {
     const { configList } = this.props;
-    const { dataResultList } = this.state;
+    const { dataResultList, useSameYAxis } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
     }
 
+    const onChangeSameYAxisScale = function (event) {
+      this.setState({ useSameYAxis: event.target.checked });
+    }.bind(this);
+
     return (
-      <MultiLineChart
-        configList={configList}
-        dataResultList={dataResultList}
-      />
+      <Box>
+        <MultiLineChart
+          configList={configList}
+          dataResultList={dataResultList}
+          useSameYAxis={useSameYAxis}
+        />
+
+        <FormControlLabel
+          control={<Checkbox checked={useSameYAxis} />}
+          label="Same Y-Axis Scale"
+          onChange={onChangeSameYAxisScale}
+        />
+      </Box>
     );
   }
 
