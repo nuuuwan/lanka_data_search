@@ -51,6 +51,7 @@ export default class DatasetListRemoteDataView extends Component {
         const label = StringX.camelToNormal(optionName);
         return (
           <FormControlLabel
+            key={"option-" + optionName}
             control={<Checkbox checked={optionValue} />}
             label={label}
             onChange={onChange}
