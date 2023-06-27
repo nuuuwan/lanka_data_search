@@ -31,6 +31,7 @@ defaults.font.family = FONT_FAMILY;
 
 export default class App extends Component {
   render() {
+    console.log(window.location);
     return (
       <ThemeProvider theme={THEME}>
         <HomePage />
