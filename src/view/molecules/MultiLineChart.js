@@ -5,7 +5,6 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
@@ -16,7 +15,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
+
   Legend
 );
 
@@ -35,13 +34,11 @@ export default function MultiLineChart({ configList, dataResultList, isZ }) {
 
   let options = {
     responsive: true,
+    maintainAspectRatio: false,
 
     plugins: {
       legend: {
         position: "top",
-      },
-      title: {
-        display: true,
       },
     },
   };
@@ -71,9 +68,10 @@ export default function MultiLineChart({ configList, dataResultList, isZ }) {
     datasets: datasets,
   };
 
+  const height = Math.max(400, parseInt((window.innerWidth * 0.8 * 9) / 16));
   return (
     <Box>
-      <Line options={options} data={chartData} />
+      <Line options={options} data={chartData} height={height} />
     </Box>
   );
 }
