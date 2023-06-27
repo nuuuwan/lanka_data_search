@@ -12,6 +12,9 @@ const MONTHS = [
   "Nov",
   "Dec",
 ];
+
+const QUARTERS = ["Q1", "Q2", "Q3", "Q4"];
+const HALVES = ["H1", "H2"];
 export default class DataResult {
   constructor(labels, values) {
     this.labels = labels;
@@ -53,6 +56,31 @@ export default class DataResult {
         );
       }
     }
+
+    for (let i = 0; i < QUARTERS.length; i++) {
+      const quarter = QUARTERS[i];
+      if (label.endsWith(quarter)) {
+        return (
+          label.substring(0, 4) +
+          "-" +
+          (i * 3 + 1).toString().padStart(2, "0") +
+          "-01"
+        );
+      }
+    }
+
+    for (let i = 0; i < HALVES.length; i++) {
+      const half = HALVES[i];
+      if (label.endsWith(half)) {
+        return (
+          label.substring(0, 4) +
+          "-" +
+          (i * 6 + 1).toString().padStart(2, "0") +
+          "-01"
+        );
+      }
+    }
+
     return label;
   }
 

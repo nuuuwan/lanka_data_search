@@ -22,7 +22,7 @@ export default function DatasetSelector({
   };
 
   return (
-    <Stack direction="row" >
+    <Stack direction="row">
       {" "}
       <IconButton onClick={onClickRandom}>
         <CasinoIcon />
@@ -33,7 +33,7 @@ export default function DatasetSelector({
         options={DATASET_LIST}
         defaultValue={selectedDatasetList}
         getOptionLabel={(dataset) => renderDataset(dataset)}
-        sx={{minWidth: 320}}
+        sx={{ minWidth: 320 }}
         renderInput={(params) => (
           <TextField
             {...params}
