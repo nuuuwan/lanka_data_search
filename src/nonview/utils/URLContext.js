@@ -4,7 +4,11 @@ export default class URLContext {
   }
 
   static strToContext(contextStr) {
-    return JSON.parse(atob(decodeURIComponent(contextStr)));
+    try {
+      return JSON.parse(atob(decodeURIComponent(contextStr)));
+    } catch (e) {
+      return {};
+    }
   }
 
   static contextToURL(context) {
