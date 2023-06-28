@@ -46,7 +46,7 @@ export default function MultiLineChart({
   let chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-
+    spanGaps: true,
     plugins: {
       legend: {
         position: "top",
