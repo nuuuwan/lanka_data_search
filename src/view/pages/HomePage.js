@@ -14,24 +14,26 @@ import TopMenu from "../molecules/TopMenu";
 import DataSourceMenuButton from "../atoms/DataSourceMenuButton";
 import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
 
-const N_DISPLAY_START = 1;
+function getDatasetList() {
+  const N_DISPLAY_START = 1;
+  const datasetKeyList = URLContext.getContext().datasetKeyList;
+  let datasetList;
+  if (datasetKeyList !== undefined) {
+    datasetList = datasetKeyList.map((key) => DATASET_IDX[key]);
+  } else {
+    const datasetListAll = RandomX.shuffle(DATASET_LIST);
+    datasetList = datasetListAll.slice(0, N_DISPLAY_START);
+    const datasetKeyList = datasetList.map((x) => x.key);
+    URLContext.setContext({ datasetKeyList });
+  }
+  return datasetList;
+}
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
-
-    const datasetKeyList = URLContext.getContext().datasetKeyList;
-
-    let datasetList;
-    if (datasetKeyList !== undefined) {
-      datasetList = datasetKeyList.map((key) => DATASET_IDX[key]);
-    } else {
-      const datasetListAll = RandomX.shuffle(DATASET_LIST);
-      datasetList = datasetListAll.slice(0, N_DISPLAY_START);
-      const datasetKeyList = datasetList.map((x) => x.key);
-      URLContext.setContext({ datasetKeyList });
-    }
     this.state = {
-      datasetList,
+      datasetList: getDatasetList(),
     };
   }
 
