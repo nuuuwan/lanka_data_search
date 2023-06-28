@@ -1,18 +1,14 @@
 import { Component, createRef } from "react";
 import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
-import Typography from "@mui/material/Typography";
 import DATASET_LIST, { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
-import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
 import DatasetSelector from "../molecules/DatasetSelector";
-import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
 import URLContext from "../../nonview/utils/URLContext";
 import AlertDatasets from "../atoms/AlertDatasets";
 import AlertCBSLApp from "../atoms/AlertCBSLApp";
-import TopMenu from "../molecules/TopMenu";
-import DataSourceMenuButton from "../atoms/DataSourceMenuButton";
 import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
+import CustomAppBar from "../molecules/CustomAppBar";
 
 function getDatasetList() {
   const N_DISPLAY_START = 1;
@@ -59,34 +55,24 @@ export default class HomePage extends Component {
     this.setState({ datasetList });
   }
 
-  renderSources() {
-    return DATA_SOURCE_LIST.map(function (dataSource) {
-      return (
-        <DataSourceMenuButton
-          key={"data-source-menu-item-" + dataSource.id}
-          dataSource={dataSource}
-        />
-      );
-    });
+  renderHeader() {
+    const { datasetList } = this.state;
+    const refChart = createRef(null);
+    return <CustomAppBar datasetList={datasetList} refChart={refChart} />;
   }
 
-  render() {
+  renderBody() {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
     const refChart = createRef(null);
     return (
-      <Box sx={{ margin: 1, padding: 0 }}>
+      <Box>
         <SocialMediaMetaTags
           title={title}
           description={description}
           imageURL={imageURL}
         />
-        <Stack direction="row">
-          {this.renderSources()}
-          <TopMenu datasetList={datasetList} refChart={refChart} />
-        </Stack>
-        <Typography variant="h4">Lanka Data Search</Typography>
 
         <DatasetSelector
           selectedDatasetList={datasetList}
@@ -100,6 +86,39 @@ export default class HomePage extends Component {
         />
         <AlertDatasets />
         <AlertCBSLApp />
+      </Box>
+    );
+  }
+
+  render() {
+    return (
+      <Box sx={{ margin: 0, padding: 0 }}>
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            overflowY: "scroll",
+            overflowX: "hidden",
+          }}
+        >
+          {this.renderHeader()}
+        </Box>
+        <Box
+          sx={{
+            position: "fixed",
+            top: 60,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            overflow: "scroll",
+            paddingLeft: 2,
+            paddingRight: 2,
+          }}
+        >
+          {this.renderBody()}
+        </Box>
       </Box>
     );
   }
