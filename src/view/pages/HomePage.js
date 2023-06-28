@@ -88,6 +88,7 @@ export default class HomePage extends Component {
         dataSetText,
         "",
         "#LankaDataSearch by @nuuuwan",
+        "",
         window.location.href,
       ].join("\n");
       const tweetURL =
@@ -151,6 +152,9 @@ export default class HomePage extends Component {
         <title>{title}</title>
         <meta name="description" content={description} />
 
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@lanka_data" />
+        <meta name="twitter:creator" content="@nuuuwan" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
 
