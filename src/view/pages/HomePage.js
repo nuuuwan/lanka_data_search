@@ -15,6 +15,8 @@ import CasinoIcon from "@mui/icons-material/Casino";
 import Tooltip from "@mui/material/Tooltip";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Link from "@mui/material/Link";
+import { Helmet } from "react-helmet";
+
 const N_DISPLAY_START = 1;
 export default class HomePage extends Component {
   constructor(props) {
@@ -34,6 +36,11 @@ export default class HomePage extends Component {
     this.state = {
       datasetList,
     };
+  }
+
+  get title() {
+    const { datasetList } = this.state;
+    return datasetList.map((x) => x.subCategory).join(" ");
   }
 
   handleOnChangeDatasetList(datasetList) {
@@ -130,11 +137,22 @@ export default class HomePage extends Component {
     );
   }
 
+  renderMetaTags() {
+    return (
+      <Helmet>
+        <title>{this.title}</title>
+        <meta name="description" content={this.title} />
+        <meta name="twitter:description" content={this.title} />
+      </Helmet>
+    );
+  }
+
   render() {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     return (
       <Box sx={{ margin: 1, padding: 0 }}>
+        {this.renderMetaTags()}
         {this.renderSourcesAndMenu()}
         {this.renderTitle()}
 
