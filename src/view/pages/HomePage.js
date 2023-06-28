@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
-import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
 import DATASET_LIST, { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
 import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
@@ -14,8 +13,9 @@ import IconButton from "@mui/material/IconButton";
 import CasinoIcon from "@mui/icons-material/Casino";
 import Tooltip from "@mui/material/Tooltip";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import Link from "@mui/material/Link";
 import { Helmet } from "react-helmet";
+import AlertDatasets from "../atoms/AlertDatasets";
+import AlertCBSLApp from "../atoms/AlertCBSLApp";
 
 const N_DISPLAY_START = 1;
 export default class HomePage extends Component {
@@ -58,25 +58,6 @@ export default class HomePage extends Component {
     const datasetKeyList = datasetList.map((x) => x.key);
     URLContext.setContext({ datasetKeyList });
     this.setState({ datasetList });
-  }
-
-  renderDevAlert() {
-    return (
-      <>
-        <Alert severity="warning" sx={{ margin: 1 }}>
-          This tool is still in development.{" "}
-          <strong>{DATASET_LIST.length.toLocaleString()}</strong> datasets are
-          currently available. More datasets will be availble in the future.
-        </Alert>
-        <Alert severity="info" sx={{ margin: 1 }}>
-          This app was formerly{" "}
-          <Link href="https://nuuuwan.github.io/cbsl_app">
-            https://nuuuwan.github.io/cbsl_app
-          </Link>
-          .
-        </Alert>
-      </>
-    );
   }
 
   renderMenu() {
@@ -186,7 +167,8 @@ export default class HomePage extends Component {
         />
 
         <DatasetListRemoteDataView key={key} datasetList={datasetList} />
-        {this.renderDevAlert()}
+        <AlertDatasets />
+        <AlertCBSLApp />
       </Box>
     );
   }
