@@ -20,6 +20,10 @@ ChartJS.register(
   Legend
 );
 
+const MAX_HEIGHT = 630;
+const ASPECT_RATIO = 16 / 9;
+const MIN_HEIGHT = MAX_HEIGHT * 0.5;
+
 function getColor(i, n) {
   if (i < 3) {
     return ["#080", "#f80", "#800"][i];
@@ -80,10 +84,19 @@ export default function MultiLineChart({
     datasets: datasets,
   };
 
-  const height = Math.max(400, parseInt((window.innerWidth * 0.8 * 9) / 16));
+  const height = Math.min(
+    MAX_HEIGHT,
+    Math.max(MIN_HEIGHT, parseInt((window.innerWidth * 0.8 * 9) / 16))
+  );
+  const width = height * ASPECT_RATIO;
   return (
     <Box>
-      <Line options={chartOptions} data={chartData} height={height} />
+      <Line
+        options={chartOptions}
+        data={chartData}
+        height={height}
+        width={width}
+      />
     </Box>
   );
 }
