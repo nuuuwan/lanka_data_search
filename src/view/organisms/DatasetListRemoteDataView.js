@@ -40,6 +40,10 @@ export default class DatasetListRemoteDataView extends Component {
   }
 
   renderOptions() {
+    const { dataResultList } = this.state;
+    if (!dataResultList || dataResultList.length < 2) {
+      return null;
+    }
     const { options } = this.state;
 
     const renderedInner = Object.entries(options).map(
@@ -97,7 +101,7 @@ export default class DatasetListRemoteDataView extends Component {
 
   renderStatistics() {
     const { dataResultList } = this.state;
-    if (!dataResultList) {
+    if (!dataResultList || dataResultList.length !== 2) {
       return null;
     }
 
@@ -112,6 +116,10 @@ export default class DatasetListRemoteDataView extends Component {
 
   renderDatasetDetails() {
     const { datasetList } = this.props;
+    if (!datasetList || datasetList.length === 0) {
+      return null;
+    }
+
     return (
       <Box sx={{ margin: 1, padding: 1 }}>
         <Typography variant="h5">Dataset Details</Typography>
