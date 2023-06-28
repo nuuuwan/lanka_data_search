@@ -14,6 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import CasinoIcon from "@mui/icons-material/Casino";
 import Tooltip from "@mui/material/Tooltip";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import Link from "@mui/material/Link";
 const N_DISPLAY_START = 1;
 export default class HomePage extends Component {
   constructor(props) {
@@ -43,11 +44,20 @@ export default class HomePage extends Component {
 
   renderDevAlert() {
     return (
-      <Alert severity="info" sx={{ margin: 1 }}>
-        This tool is still in development.{" "}
-        <strong>{DATASET_LIST.length.toLocaleString()}</strong> datasets are
-        currently available. More datasets will be availble in the future.
-      </Alert>
+      <>
+        <Alert severity="warning" sx={{ margin: 1 }}>
+          This tool is still in development.{" "}
+          <strong>{DATASET_LIST.length.toLocaleString()}</strong> datasets are
+          currently available. More datasets will be availble in the future.
+        </Alert>
+        <Alert severity="info" sx={{ margin: 1 }}>
+          This app was formerly{" "}
+          <Link href="https://nuuuwan.github.io/cbsl_app">
+            https://nuuuwan.github.io/cbsl_app
+          </Link>
+          .
+        </Alert>
+      </>
     );
   }
 
