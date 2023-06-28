@@ -44,6 +44,10 @@ export default class HomePage extends Component {
     return `#LankaDataSearch (${n})`;
   }
 
+  get image_url() {
+    return 'https://raw.githubusercontent.com'+'/nuuuwan/lanka_data_search/master/public/sri_lanka.png'
+  }
+
   get description() {
     const { datasetList } = this.state;
     const datasetListStr = datasetList.map((x) => x.subCategory).join(" ");
@@ -146,21 +150,23 @@ export default class HomePage extends Component {
   }
 
   renderMetaTags() {
-    const { title, description } = this;
+    const { title, description, image_url } = this;
     return (
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@lanka_data" />
         <meta name="twitter:creator" content="@nuuuwan" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
+        <meta property="twitter:image" content={image_url} />
 
         <meta name="og:type" content="article" />
         <meta name="og:title" content={title} />
         <meta name="og:description" content={description} />
+        <meta property="og:image" content={image_url} />
       </Helmet>
     );
   }
