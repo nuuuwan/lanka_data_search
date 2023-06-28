@@ -4,17 +4,15 @@ import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
 import Typography from "@mui/material/Typography";
 import DATASET_LIST, { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
 import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
-import DataSourceAvatar from "../atoms/DataSourceAvatar";
 import DatasetSelector from "../molecules/DatasetSelector";
 import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
 import URLContext from "../../nonview/utils/URLContext";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
 import { Helmet } from "react-helmet";
 import AlertDatasets from "../atoms/AlertDatasets";
 import AlertCBSLApp from "../atoms/AlertCBSLApp";
 import TopMenu from "../molecules/TopMenu";
+import DataSourceMenuButton from "../atoms/DataSourceMenuButton";
 
 const N_DISPLAY_START = 1;
 export default class HomePage extends Component {
@@ -61,15 +59,11 @@ export default class HomePage extends Component {
 
   renderSources() {
     return DATA_SOURCE_LIST.map(function (dataSource) {
-      const onClick = function () {
-        window.open(dataSource.url, "_blank");
-      };
       return (
-        <Tooltip key={"source-link" + dataSource.id} title={dataSource.url}>
-          <IconButton onClick={onClick}>
-            <DataSourceAvatar dataSource={dataSource} />
-          </IconButton>
-        </Tooltip>
+        <DataSourceMenuButton
+          key={"data-source-menu-item-" + dataSource.id}
+          dataSource={dataSource}
+        />
       );
     });
   }
