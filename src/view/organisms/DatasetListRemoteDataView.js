@@ -11,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import StringX from "../../nonview/utils/StringX.js";
 import StatCorrelationView from "../molecules/StatCorrelationView.js";
 import StatEquationView from "../molecules/StatEquationView.js";
+import Grid from "@mui/material/Grid";
 
 export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
@@ -105,11 +106,22 @@ export default class DatasetListRemoteDataView extends Component {
       return null;
     }
 
+    const { datasetList } = this.props;
+
     return (
       <Box sx={{ margin: 1, padding: 1 }}>
         <Typography variant="h5">Statistics</Typography>
-        <StatCorrelationView dataResultList={dataResultList} />
-        <StatEquationView dataResultList={dataResultList} />
+        <Grid container>
+          <Grid item>
+            <StatCorrelationView dataResultList={dataResultList} />
+          </Grid>
+          <Grid item>
+            <StatEquationView
+              dataResultList={dataResultList}
+              datasetList={datasetList}
+            />
+          </Grid>
+        </Grid>
       </Box>
     );
   }
