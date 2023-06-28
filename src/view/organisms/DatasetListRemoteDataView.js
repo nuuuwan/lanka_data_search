@@ -81,8 +81,8 @@ export default class DatasetListRemoteDataView extends Component {
 
     if (dataResultList.length === 0) {
       return (
-        <Alert severity="warning" sx={{ margin: 1 }}>
-          Select at least one dataset!
+        <Alert severity="error" sx={{ margin: 1 }}>
+          You must select at least ONE dataset!
         </Alert>
       );
     }
