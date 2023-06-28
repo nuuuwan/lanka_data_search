@@ -18,7 +18,7 @@ jobs:
           node-version: 19.x
 
       - name: Install NPM packages
-        run: npm ci
+        run: npm ci --force
 
       - name: Build project
         run: npm run build
