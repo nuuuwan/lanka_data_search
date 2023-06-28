@@ -18,7 +18,7 @@ export default function DatasetSelector({
     <Autocomplete
       multiple
       options={DATASET_LIST}
-      defaultValue={selectedDatasetList}
+      value={selectedDatasetList}
       getOptionLabel={(dataset) => renderDataset(dataset)}
       sx={{ minWidth: 320 }}
       renderInput={(params) => (
