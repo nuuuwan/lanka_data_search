@@ -7,6 +7,7 @@ import HomePage from "./view/pages/HomePage.js";
 import "./App.css";
 
 import { defaults } from "chart.js";
+import VersionView from "./view/atoms/VersionView.js";
 
 const FONT_FAMILY = "Livvic";
 const THEME = createTheme({
@@ -35,6 +36,7 @@ export default class App extends Component {
     return (
       <ThemeProvider theme={THEME}>
         <HomePage />
+        <VersionView />
       </ThemeProvider>
     );
   }
