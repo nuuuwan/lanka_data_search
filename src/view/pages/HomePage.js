@@ -72,7 +72,7 @@ export default class HomePage extends Component {
             <CasinoIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Tweet">
+        <Tooltip title="Tweet this chart">
           <IconButton onClick={onClickTweet}>
             <TwitterIcon />
           </IconButton>
