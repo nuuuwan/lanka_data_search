@@ -13,7 +13,7 @@ import URLContext from "../../nonview/utils/URLContext";
 import IconButton from "@mui/material/IconButton";
 import CasinoIcon from "@mui/icons-material/Casino";
 import Tooltip from "@mui/material/Tooltip";
-
+import TwitterIcon from "@mui/icons-material/Twitter";
 const N_DISPLAY_START = 2;
 export default class HomePage extends Component {
   constructor(props) {
@@ -52,16 +52,29 @@ export default class HomePage extends Component {
   }
 
   renderMenu() {
-    const onClick = function () {
+    const onClickRandom = function () {
       URLContext.setContext({ datasetKeyList: undefined });
       window.location.reload();
+    };
+
+    const onClickTweet = function () {
+      const tweetURL =
+        "https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent("#LankaDataSearch by @nuuuwan\n\n") +
+        encodeURIComponent(window.location.href);
+      window.open(tweetURL, "_blank");
     };
 
     return (
       <>
         <Tooltip title="Open random datasets">
-          <IconButton onClick={onClick}>
+          <IconButton onClick={onClickRandom}>
             <CasinoIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Tweet">
+          <IconButton onClick={onClickTweet}>
+            <TwitterIcon />
           </IconButton>
         </Tooltip>
       </>
@@ -76,9 +89,7 @@ export default class HomePage extends Component {
       return (
         <Tooltip key={"source-link" + dataSource.id} title={dataSource.url}>
           <IconButton onClick={onClick}>
-            <DataSourceAvatar
-              dataSource={dataSource}
-            />
+            <DataSourceAvatar dataSource={dataSource} />
           </IconButton>
         </Tooltip>
       );
