@@ -32,6 +32,7 @@ export default class HomePage extends Component {
     this.state = {
       datasetList: getDatasetList(),
     };
+    this.refChart = createRef();
   }
 
   get title() {
@@ -58,15 +59,13 @@ export default class HomePage extends Component {
 
   renderHeader() {
     const { datasetList } = this.state;
-    const refChart = createRef(null);
-    return <CustomAppBar datasetList={datasetList} refChart={refChart} />;
+    return <CustomAppBar datasetList={datasetList} refChart={this.refChart} />;
   }
 
   renderBody() {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
-    const refChart = createRef(null);
     return (
       <Box>
         <SocialMediaMetaTags
@@ -83,7 +82,7 @@ export default class HomePage extends Component {
         <DatasetListRemoteDataView
           key={key}
           datasetList={datasetList}
-          refChart={refChart}
+          refChart={this.refChart}
         />
         <AlertDatasets />
         <AlertCBSLApp />
@@ -93,6 +92,7 @@ export default class HomePage extends Component {
   }
 
   render() {
+    
     return (
       <Box sx={{ margin: 0, padding: 0 }}>
         <Box
