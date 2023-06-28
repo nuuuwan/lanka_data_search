@@ -36,6 +36,7 @@ export default function MultiLineChart({
   datasetList,
   dataResultList,
   options,
+  refChart,
 }) {
   if (dataResultList.length === 0) {
     return null;
@@ -91,7 +92,7 @@ export default function MultiLineChart({
   const width = height * ASPECT_RATIO;
   return (
     <Box>
-      <div id="multi-line-chart">
+      <div id="multi-line-chart" ref={refChart}>
         <Line
           options={chartOptions}
           data={chartData}

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
 import Typography from "@mui/material/Typography";
@@ -74,6 +74,7 @@ export default class HomePage extends Component {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
+    const refChart = createRef(null);
     return (
       <Box sx={{ margin: 1, padding: 0 }}>
         <SocialMediaMetaTags
@@ -83,7 +84,7 @@ export default class HomePage extends Component {
         />
         <Stack direction="row">
           {this.renderSources()}
-          <TopMenu />
+          <TopMenu datasetList={datasetList} refChart={refChart} />
         </Stack>
         <Typography variant="h4">Lanka Data Search</Typography>
 
@@ -92,7 +93,11 @@ export default class HomePage extends Component {
           onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
         />
 
-        <DatasetListRemoteDataView key={key} datasetList={datasetList} />
+        <DatasetListRemoteDataView
+          key={key}
+          datasetList={datasetList}
+          refChart={refChart}
+        />
         <AlertDatasets />
         <AlertCBSLApp />
       </Box>

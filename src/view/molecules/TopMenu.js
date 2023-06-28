@@ -4,15 +4,15 @@ import CasinoIcon from "@mui/icons-material/Casino";
 import Tooltip from "@mui/material/Tooltip";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import URLContext from "../../nonview/utils/URLContext";
+import ScreenCaptureButton from "./ScreenCaptureButton.js";
 
-export default function TopMenu() {
+export default function TopMenu({ datasetList, refChart }) {
   const onClickRandom = function () {
     URLContext.setContext({ datasetKeyList: undefined });
     window.location.reload();
   };
 
   const onClickTweet = function () {
-    const { datasetList } = this.state;
     const dataSetText = datasetList.map((x) => x.tweetText).join("\n");
     const tweetText = [
       dataSetText,
@@ -24,7 +24,7 @@ export default function TopMenu() {
     const tweetURL =
       "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
     window.open(tweetURL, "_blank");
-  }.bind(this);
+  };
 
   return (
     <>
@@ -38,6 +38,8 @@ export default function TopMenu() {
           <TwitterIcon />
         </IconButton>
       </Tooltip>
+
+      <ScreenCaptureButton refChart={refChart} />
     </>
   );
 }

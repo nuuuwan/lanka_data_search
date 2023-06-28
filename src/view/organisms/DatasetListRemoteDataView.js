@@ -73,7 +73,7 @@ export default class DatasetListRemoteDataView extends Component {
   }
 
   renderMultiLineChart() {
-    const { datasetList } = this.props;
+    const { datasetList, refChart } = this.props;
     const { dataResultList, options } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
@@ -93,6 +93,7 @@ export default class DatasetListRemoteDataView extends Component {
           datasetList={datasetList}
           dataResultList={dataResultList}
           options={options}
+          refChart={refChart}
         />
 
         {this.renderOptions()}
