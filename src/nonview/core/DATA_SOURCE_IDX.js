@@ -5,14 +5,16 @@ const DATA_SOURCE_IDX = {
     "Central Bank of Sri Lanka",
     "Economic Data Library",
     "https://www.cbsl.lk/eresearch",
-    "latest"
+    "latest",
+    "CBSL"
   ),
   world_bank: new DataSource(
     "world_bank",
     "World Bank",
     "Sri Lanka - Dataset",
     "https://data.worldbank.org/country/LK",
-    "other_sources/world_bank"
+    "other_sources/world_bank",
+    "WorldBank"
   ),
 };
 
