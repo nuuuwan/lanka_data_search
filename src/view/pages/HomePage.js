@@ -68,23 +68,6 @@ export default class HomePage extends Component {
     });
   }
 
-  renderSourcesAndMenu() {
-    return (
-      <Stack direction="row">
-        {this.renderSources()}
-        <TopMenu />
-      </Stack>
-    );
-  }
-
-  renderTitle() {
-    return (
-      <Box sx={{ margin: 1, padding: 0 }}>
-        <Typography variant="h4">Lanka Data Search</Typography>
-      </Box>
-    );
-  }
-
   render() {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
@@ -96,8 +79,11 @@ export default class HomePage extends Component {
           description={description}
           imageURL={imageURL}
         />
-        {this.renderSourcesAndMenu()}
-        {this.renderTitle()}
+        <Stack direction="row">
+          {this.renderSources()}
+          <TopMenu />
+        </Stack>
+        <Typography variant="h4">Lanka Data Search</Typography>
 
         <DatasetSelector
           selectedDatasetList={datasetList}
