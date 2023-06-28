@@ -40,7 +40,14 @@ export default class HomePage extends Component {
 
   get title() {
     const { datasetList } = this.state;
-    return datasetList.map((x) => x.subCategory).join(" ");
+    const n = datasetList.length;
+    return `#LankaDataSearch (${n})`;
+  }
+
+  get description() {
+    const { datasetList } = this.state;
+    const datasetListStr = datasetList.map((x) => x.subCategory).join(" ");
+    return `${datasetListStr}`;
   }
 
   handleOnChangeDatasetList(datasetList) {
@@ -138,12 +145,18 @@ export default class HomePage extends Component {
   }
 
   renderMetaTags() {
+    const { title, description } = this;
     return (
       <Helmet>
-        <title>{this.title}</title>
-        <meta name="description" content={this.title} />
-        <meta name="twitter:title" content={'#LankaDataSearch'} />
-        <meta name="twitter:description" content={this.title} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+
+        <meta name="og:type" content="article" />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
       </Helmet>
     );
   }
