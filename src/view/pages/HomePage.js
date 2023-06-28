@@ -161,11 +161,11 @@ export default class HomePage extends Component {
         <meta name="twitter:creator" content="@nuuuwan" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta property="twitter:image" content={image_url} />
+        <meta name="twitter:image" content={image_url} />
 
-        <meta name="og:type" content="article" />
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
         <meta property="og:image" content={image_url} />
       </Helmet>
     );
