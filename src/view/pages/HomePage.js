@@ -74,10 +74,9 @@ export default class HomePage extends Component {
         window.open(dataSource.url, "_blank");
       };
       return (
-        <Tooltip title={dataSource.url}>
+        <Tooltip key={"source-link" + dataSource.id} title={dataSource.url}>
           <IconButton onClick={onClick}>
             <DataSourceAvatar
-              key={"source-link" + dataSource.id}
               dataSource={dataSource}
             />
           </IconButton>
