@@ -45,7 +45,7 @@ export default class HomePage extends Component {
   }
 
   get image_url() {
-    return 'https://raw.githubusercontent.com'+'/nuuuwan/lanka_data_search/master/public/sri_lanka.png'
+    return "https://raw.githubusercontent.com/nuuuwan/lanka_data_search/master/public/sri_lanka.png";
   }
 
   get description() {
