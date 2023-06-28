@@ -10,6 +10,9 @@ import DatasetSelector from "../molecules/DatasetSelector";
 import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
 import URLContext from "../../nonview/utils/URLContext";
+import IconButton from "@mui/material/IconButton";
+import CasinoIcon from "@mui/icons-material/Casino";
+import Tooltip from "@mui/material/Tooltip";
 
 const N_DISPLAY_START = 2;
 export default class HomePage extends Component {
@@ -47,23 +50,54 @@ export default class HomePage extends Component {
       </Alert>
     );
   }
+
+  renderMenu() {
+    const onClick = function () {
+      URLContext.setContext({ datasetKeyList: undefined });
+      window.location.reload();
+    };
+
+    return (
+      <>
+        <Tooltip title="Open random datasets">
+          <IconButton onClick={onClick}>
+            <CasinoIcon />
+          </IconButton>
+        </Tooltip>
+      </>
+    );
+  }
+
   renderSources() {
+    return DATA_SOURCE_LIST.map(function (dataSource) {
+      const onClick = function () {
+        window.open(dataSource.url, "_blank");
+      };
+      return (
+        <Tooltip title={dataSource.url}>
+          <IconButton onClick={onClick}>
+            <DataSourceAvatar
+              key={"source-link" + dataSource.id}
+              dataSource={dataSource}
+            />
+          </IconButton>
+        </Tooltip>
+      );
+    });
+  }
+
+  renderSourcesAndMenu() {
     return (
       <Stack direction="row">
-        {DATA_SOURCE_LIST.map((dataSource) => (
-          <DataSourceAvatar
-            key={"source-link" + dataSource.id}
-            dataSource={dataSource}
-          />
-        ))}
+        {this.renderSources()}
+        {this.renderMenu()}
       </Stack>
     );
   }
 
   renderTitle() {
     return (
-      <Box>
-        {this.renderSources()}
+      <Box sx={{ margin: 1, padding: 0 }}>
         <Typography variant="h4">Lanka Data Search</Typography>
       </Box>
     );
@@ -73,7 +107,8 @@ export default class HomePage extends Component {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     return (
-      <Box sx={{ margin: 2, padding: 1 }}>
+      <Box sx={{ margin: 1, padding: 0 }}>
+        {this.renderSourcesAndMenu()}
         {this.renderTitle()}
 
         <DatasetSelector
