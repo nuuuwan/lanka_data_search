@@ -19,6 +19,7 @@ function getCorrelationText(isPositive, isStrong, isMild) {
     }
     correlationText += " correlation";
   }
+  return correlationText;
 }
 
 function getColor(isPositive, isMild) {
@@ -63,8 +64,8 @@ export default function StatCorrelationView({ dataResultList }) {
         width: 300,
       }}
     >
-      <Typography variant="caption">correlation</Typography>
-      <Typography variant="h6">{correlation.toLocaleString()}</Typography>
+      <Typography variant="caption">Pearson Correlation Roefficient</Typography>
+      <Typography variant="h6">r = {correlation.toLocaleString()}</Typography>
       <Typography variant="h5">{correlationText}</Typography>
     </Paper>
   );
