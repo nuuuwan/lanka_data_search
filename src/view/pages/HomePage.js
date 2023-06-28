@@ -8,11 +8,11 @@ import DatasetSelector from "../molecules/DatasetSelector";
 import Stack from "@mui/material/Stack";
 import RandomX from "../../nonview/utils/RandomX";
 import URLContext from "../../nonview/utils/URLContext";
-import { Helmet } from "react-helmet";
 import AlertDatasets from "../atoms/AlertDatasets";
 import AlertCBSLApp from "../atoms/AlertCBSLApp";
 import TopMenu from "../molecules/TopMenu";
 import DataSourceMenuButton from "../atoms/DataSourceMenuButton";
+import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
 
 const N_DISPLAY_START = 1;
 export default class HomePage extends Component {
@@ -41,7 +41,7 @@ export default class HomePage extends Component {
     return `#LankaDataSearch (${n})`;
   }
 
-  get image_url() {
+  get imageURL() {
     return "https://raw.githubusercontent.com/nuuuwan/lanka_data_search/master/public/sri_lanka.png";
   }
 
@@ -85,34 +85,17 @@ export default class HomePage extends Component {
     );
   }
 
-  renderMetaTags() {
-    const { title, description, image_url } = this;
-    return (
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@lanka_data" />
-        <meta name="twitter:creator" content="@nuuuwan" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image_url} />
-
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image_url} />
-      </Helmet>
-    );
-  }
-
   render() {
     const { datasetList } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
+    const { title, description, imageURL } = this;
     return (
       <Box sx={{ margin: 1, padding: 0 }}>
-        {this.renderMetaTags()}
+        <SocialMediaMetaTags
+          title={title}
+          description={description}
+          imageURL={imageURL}
+        />
         {this.renderSourcesAndMenu()}
         {this.renderTitle()}
 
