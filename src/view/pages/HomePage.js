@@ -92,7 +92,6 @@ export default class HomePage extends Component {
   }
 
   render() {
-    
     return (
       <Box sx={{ margin: 0, padding: 0 }}>
         <Box
