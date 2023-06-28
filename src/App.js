@@ -18,6 +18,15 @@ const THEME = createTheme({
     secondary: {
       main: "#f80",
     },
+    info: {
+      main: "#084",
+    },
+    warning: {
+      main: "#f80",
+    },
+    error: {
+      main: "#800",
+    },
   },
   typography: {
     fontFamily: [FONT_FAMILY, "sans-serif"].join(","),

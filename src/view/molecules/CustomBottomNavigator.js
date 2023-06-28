@@ -8,6 +8,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import URLContext from "../../nonview/utils/URLContext";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
+import Tooltip from "@mui/material/Tooltip";
 export default function CustomBottomNavigator({ datasetList, refChart }) {
   const onClickRandom = function () {
     URLContext.setContext({ datasetKeyList: undefined });
@@ -48,16 +49,24 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
         elevation={3}
       >
         <BottomNavigation>
-          <BottomNavigationAction
-            icon={<CasinoIcon />}
-            onClick={onClickRandom}
-          />
-          <BottomNavigationAction
-            icon={<TwitterIcon onClick={onClickTweet} />}
-          />
-          <BottomNavigationAction
-            icon={<BarChartIcon onClick={onClickDownloadChartImage} />}
-          />
+          <Tooltip title="Open Random Dataset">
+            <BottomNavigationAction
+              icon={<CasinoIcon />}
+              onClick={onClickRandom}
+            />
+          </Tooltip>
+
+          <Tooltip title="Tweet Dataset">
+            <BottomNavigationAction
+              icon={<TwitterIcon onClick={onClickTweet} />}
+            />
+          </Tooltip>
+
+          <Tooltip title="Download Chart Image">
+            <BottomNavigationAction
+              icon={<BarChartIcon onClick={onClickDownloadChartImage} />}
+            />
+          </Tooltip>
         </BottomNavigation>
       </Paper>
     </Box>
