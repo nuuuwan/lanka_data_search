@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 const MAX_HEIGHT = 630;
-const ASPECT_RATIO = 16 / 9;
+const ASPECT_RATIO = 1;
 const MIN_HEIGHT = MAX_HEIGHT * 0.5;
 
 function getColor(i, n) {
@@ -91,12 +91,14 @@ export default function MultiLineChart({
   const width = height * ASPECT_RATIO;
   return (
     <Box>
+      <div id="multi-line-chart">
       <Line
         options={chartOptions}
         data={chartData}
         height={height}
         width={width}
       />
+      </div>
     </Box>
   );
 }
