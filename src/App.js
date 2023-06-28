@@ -13,13 +13,10 @@ const FONT_FAMILY = "Livvic";
 const THEME = createTheme({
   palette: {
     primary: {
-      main: "#844",
+      main: "#888",
     },
     secondary: {
-      main: "#f80",
-    },
-    info: {
-      main: "#082",
+      main: "#ccc",
     },
   },
   typography: {
