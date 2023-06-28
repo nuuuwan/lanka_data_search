@@ -22,7 +22,7 @@ export default function DatasetSelector({
       getOptionLabel={(dataset) => renderDataset(dataset)}
       sx={{ minWidth: 320 }}
       renderInput={(params) => (
-        <TextField {...params} placeholder="Add Datasets" />
+        <TextField {...params} placeholder="Search Datasets" />
       )}
       onChange={onChange}
     />
