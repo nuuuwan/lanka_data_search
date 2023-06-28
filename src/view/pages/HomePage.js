@@ -10,6 +10,7 @@ import AlertCBSLApp from "../atoms/AlertCBSLApp";
 import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
 import CustomAppBar from "../molecules/CustomAppBar";
 import VersionView from "../atoms/VersionView";
+import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
 
 function getDatasetList() {
   const N_DISPLAY_START = 1;
@@ -58,8 +59,7 @@ export default class HomePage extends Component {
   }
 
   renderHeader() {
-    const { datasetList } = this.state;
-    return <CustomAppBar datasetList={datasetList} refChart={this.refChart} />;
+    return <CustomAppBar />;
   }
 
   renderBody() {
@@ -91,6 +91,16 @@ export default class HomePage extends Component {
     );
   }
 
+  renderFooter() {
+    const { datasetList } = this.state;
+    return (
+      <CustomBottomNavigator
+        datasetList={datasetList}
+        refChart={this.refChart}
+      />
+    );
+  }
+
   render() {
     return (
       <Box sx={{ margin: 0, padding: 0 }}>
@@ -110,7 +120,7 @@ export default class HomePage extends Component {
           sx={{
             position: "fixed",
             top: 60,
-            bottom: 0,
+            bottom: 60,
             left: 0,
             right: 0,
             overflow: "scroll",
@@ -119,6 +129,16 @@ export default class HomePage extends Component {
           }}
         >
           {this.renderBody()}
+        </Box>{" "}
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+          }}
+        >
+          {this.renderFooter()}
         </Box>
       </Box>
     );
