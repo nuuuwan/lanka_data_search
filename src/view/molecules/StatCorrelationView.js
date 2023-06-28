@@ -64,7 +64,7 @@ export default function StatCorrelationView({ dataResultList }) {
         width: 300,
       }}
     >
-      <Typography variant="caption">Pearson Correlation Roefficient</Typography>
+      <Typography variant="caption">Pearson Correlation Coefficient</Typography>
       <Typography variant="h6">r = {correlation.toLocaleString()}</Typography>
       <Typography variant="h5">{correlationText}</Typography>
     </Paper>
