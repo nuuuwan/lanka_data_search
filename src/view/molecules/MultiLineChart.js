@@ -50,6 +50,8 @@ export default function MultiLineChart({
     plugins: {
       legend: {
         position: "top",
+        align: "start",
+        itemWrap: true,
       },
     },
     scales: {},
@@ -72,7 +74,10 @@ export default function MultiLineChart({
     };
     if (!sameYAxisScale) {
       dataset.yAxisID = `y${i}`;
-      chartOptions.scales[dataset.yAxisID] = { ticks: { color } };
+      chartOptions.scales[dataset.yAxisID] = {
+        ticks: { color },
+        display: true,
+      };
     } else {
       dataset.yAxisID = "y";
     }
