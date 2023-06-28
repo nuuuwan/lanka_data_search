@@ -58,12 +58,19 @@ export default class HomePage extends Component {
     };
 
     const onClickTweet = function () {
+      const { datasetList } = this.state;
+      const dataSetText = datasetList.map((x) => x.tweetText).join("\n");
+      const tweetText = [
+        dataSetText,
+        "",
+        "#LankaDataSearch by @nuuuwan",
+        window.location.href,
+      ].join("\n");
       const tweetURL =
         "https://twitter.com/intent/tweet?text=" +
-        encodeURIComponent("#LankaDataSearch by @nuuuwan\n\n") +
-        encodeURIComponent(window.location.href);
+        encodeURIComponent(tweetText);
       window.open(tweetURL, "_blank");
-    };
+    }.bind(this);
 
     return (
       <>

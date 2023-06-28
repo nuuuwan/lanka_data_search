@@ -31,6 +31,10 @@ export default class Dataset {
     return this.n > 1;
   }
 
+  get tweetText() {
+    return `📊 ${this.subCategory} - @${this.source.twitterHandle}`;
+  }
+
   get key() {
     return this.subCategory;
   }
