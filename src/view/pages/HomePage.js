@@ -9,6 +9,7 @@ import AlertDatasets from "../atoms/AlertDatasets";
 import AlertCBSLApp from "../atoms/AlertCBSLApp";
 import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
 import CustomAppBar from "../molecules/CustomAppBar";
+import VersionView from "../atoms/VersionView";
 
 function getDatasetList() {
   const N_DISPLAY_START = 1;
@@ -86,6 +87,7 @@ export default class HomePage extends Component {
         />
         <AlertDatasets />
         <AlertCBSLApp />
+        <VersionView />
       </Box>
     );
   }
