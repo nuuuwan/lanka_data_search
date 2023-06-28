@@ -92,12 +92,12 @@ export default function MultiLineChart({
   return (
     <Box>
       <div id="multi-line-chart">
-      <Line
-        options={chartOptions}
-        data={chartData}
-        height={height}
-        width={width}
-      />
+        <Line
+          options={chartOptions}
+          data={chartData}
+          height={height}
+          width={width}
+        />
       </div>
     </Box>
   );

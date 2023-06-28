@@ -14,7 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import CasinoIcon from "@mui/icons-material/Casino";
 import Tooltip from "@mui/material/Tooltip";
 import TwitterIcon from "@mui/icons-material/Twitter";
-const N_DISPLAY_START = 2;
+const N_DISPLAY_START = 1;
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
