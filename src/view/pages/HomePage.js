@@ -142,6 +142,7 @@ export default class HomePage extends Component {
       <Helmet>
         <title>{this.title}</title>
         <meta name="description" content={this.title} />
+        <meta name="twitter:title" content={'#LankaDataSearch'} />
         <meta name="twitter:description" content={this.title} />
       </Helmet>
     );
