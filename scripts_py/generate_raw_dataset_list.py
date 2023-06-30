@@ -2,8 +2,9 @@ import json
 from utils import WWW, File, Log, hashx
 log = Log('generate_raw_dataset_list.py')
 
-URL = 'https://raw.githubusercontent.com'+'/nuuuwan/cbsl/data/edl_summary.json'
-URL_WORLDBANK = 'https://raw.githubusercontent.com'+'/nuuuwan/cbsl/data/other_sources/world_bank/summary.json'
+URL_BASE = 'https://raw.githubusercontent.com/nuuuwan/lanka_data_search/data'
+URL = URL_BASE + '/edl_summary.json'
+URL_WORLDBANK = URL_BASE+'/other_sources/world_bank/summary.json'
 
 def main_cbsl():
     data = WWW(URL).readJSON()
