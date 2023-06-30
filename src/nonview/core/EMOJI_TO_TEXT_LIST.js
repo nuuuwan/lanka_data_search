@@ -5,7 +5,7 @@ const EMOJI_TO_TEXT_LIST = {
   "🚸": ["child"],
   "🌲": ["forest"],
   "✈️": ["touri"],
-  "💡": ["electric","energy", "power"],
+  "💡": ["electric", "energy", "power"],
   "🐟": ["fish"],
   "🪙": [
     "bank",
