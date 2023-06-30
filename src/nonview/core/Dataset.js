@@ -7,8 +7,6 @@ const MIN_KEYWORD_LENGTH = 0;
 const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
-const HACK_DEFAULT_FREQUENCY_NAME = "Annual";
-
 function formatT(t) {
   return t.replaceAll("-01", "");
 }
@@ -76,7 +74,7 @@ export default class Dataset {
   }
 
   get id() {
-    return `${this.sourceID}.${this.subCategory}.${HACK_DEFAULT_FREQUENCY_NAME}`;
+    return `${this.sourceID}.${this.subCategory}.${this.frequencyName}`;
   }
 
   get shortID() {
@@ -155,11 +153,8 @@ export default class Dataset {
   }
 
   get detailedLabel() {
-    if (this.scaleAndUnitFormatted) {
-      return `${this.subCategory} (${this.scaleAndUnitFormatted})`;
+    return `${this.subCategory} [${this.frequencyName}] - ${this.source.name}`;
     }
-    return `${this.subCategory}`;
-  }
 
   get minTFormatted() {
     return formatT(this.minT);
