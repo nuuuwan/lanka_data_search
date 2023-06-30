@@ -154,7 +154,11 @@ export default class Dataset {
   }
 
   get emojis() {
-    const haystack = (this.subCategory + '' + this.category.replace('World Bank - Sri Lanka Data','')).toLowerCase();
+    const haystack = (
+      this.subCategory +
+      "" +
+      this.category.replace("World Bank - Sri Lanka Data", "")
+    ).toLowerCase();
     return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (
       s,
       [emoji, textList]

@@ -22,13 +22,12 @@ export default function AlertCBSLApp() {
         {renderedSources}
       </Box>
 
-      <Box sx={{marginTop: 1}}>
+      <Box sx={{ marginTop: 1 }}>
         This app was formerly{" "}
         <Link href="https://nuuuwan.github.io/cbsl_app">
           https://nuuuwan.github.io/cbsl_app
         </Link>
       </Box>
-      
     </Alert>
   );
 }
