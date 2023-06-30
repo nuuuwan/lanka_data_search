@@ -1,7 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import DATASET_LIST from "../../nonview/core/DATASET_LIST.js";
 import Box from "@mui/material/Box";
 
 function renderDataset(dataset) {
@@ -9,6 +8,7 @@ function renderDataset(dataset) {
 }
 
 export default function DatasetSelector({
+  allDatasetList,
   selectedDatasetList,
   onChangeDatasetList,
 }) {
@@ -20,7 +20,7 @@ export default function DatasetSelector({
     <Box sx={{ margin: 2 }}>
       <Autocomplete
         multiple
-        options={DATASET_LIST}
+        options={allDatasetList}
         value={selectedDatasetList}
         getOptionLabel={(dataset) => renderDataset(dataset)}
         sx={{ minWidth: 320 }}

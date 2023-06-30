@@ -1,9 +1,8 @@
 import { Component, createRef } from "react";
 import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
-import DATASET_LIST, { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
+import { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
 import DatasetSelector from "../molecules/DatasetSelector";
-import RandomX from "../../nonview/utils/RandomX";
 import URLContext from "../../nonview/utils/URLContext";
 import AlertDatasets from "../atoms/AlertDatasets";
 import AlertCBSLApp from "../atoms/AlertCBSLApp";
@@ -11,35 +10,23 @@ import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
 import CustomAppBar from "../molecules/CustomAppBar";
 import VersionView from "../atoms/VersionView";
 import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
+import { CircularProgress } from "@mui/material";
 
-function getDatasetList() {
-  const N_DISPLAY_START = 1;
-  const datasetKeyList = URLContext.getContext().datasetKeyList;
-  let datasetList;
-  if (datasetKeyList !== undefined) {
-    datasetList = datasetKeyList.map((key) => DATASET_IDX[key]);
-  } else {
-    const datasetListAll = RandomX.shuffle(DATASET_LIST);
-    datasetList = datasetListAll.slice(0, N_DISPLAY_START);
-    const datasetKeyList = datasetList.map((x) => x.key);
-    URLContext.setContext({ datasetKeyList });
-  }
-  return datasetList;
-}
+const DEFAULT_DATASET_ID = "world_bank.GDP per capita (current US$).Annual";
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      datasetList: getDatasetList(),
+      datasetIDList: URLContext.getContext().datasetIDList || [
+        DEFAULT_DATASET_ID,
+      ],
     };
     this.refChart = createRef();
   }
 
   get title() {
-    const { datasetList } = this.state;
-    const n = datasetList.length;
-    return `#LankaDataSearch (${n})`;
+    return `#LankaDataSearch`;
   }
 
   get imageURL() {
@@ -47,23 +34,33 @@ export default class HomePage extends Component {
   }
 
   get description() {
-    const { datasetList } = this.state;
-    const datasetListStr = datasetList.map((x) => x.subCategory).join(" ");
-    return `${datasetListStr}`;
+    return "Public Datasets about #SriLanka.";
   }
 
-  handleOnChangeDatasetList(datasetList) {
-    const datasetKeyList = datasetList.map((x) => x.key);
-    URLContext.setContext({ datasetKeyList });
-    this.setState({ datasetList });
+  async handleOnChangeDatasetList(datasetList) {
+    const datasetIDList = datasetList.map((x) => x.id);
+    URLContext.setContext({ datasetIDList });
+    this.setState({ datasetIDList, datasetList });
   }
 
   renderHeader() {
     return <CustomAppBar />;
   }
 
+  async componentDidMount() {
+    const { datasetIDList } = this.state;
+    const datasetList = datasetIDList.map(
+      (datasetID) => DATASET_IDX[datasetID]
+    );
+    const allDatasetList = Object.values(DATASET_IDX);
+    this.setState({ datasetList, allDatasetList });
+  }
+
   renderBody() {
-    const { datasetList } = this.state;
+    const { allDatasetList, datasetList } = this.state;
+    if (!allDatasetList || allDatasetList.length === 0) {
+      return <CircularProgress />;
+    }
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
     return (
@@ -75,6 +72,7 @@ export default class HomePage extends Component {
         />
 
         <DatasetSelector
+          allDatasetList={allDatasetList}
           selectedDatasetList={datasetList}
           onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
         />

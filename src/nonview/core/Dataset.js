@@ -6,6 +6,8 @@ const MIN_KEYWORD_LENGTH = 0;
 const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
+const HACK_DEFAULT_FREQUENCY_NAME = "Annual";
+
 export default class Dataset {
   constructor(category, subCategory, unit, scale, minT, maxT, latestValue, n) {
     this.category = category;
@@ -43,6 +45,10 @@ export default class Dataset {
     return this.subCategory;
   }
 
+  get id() {
+    return `${this.sourceID}.${this.subCategory}.${HACK_DEFAULT_FREQUENCY_NAME}`;
+  }
+
   get sourceID() {
     if (this.category === "World Bank - Sri Lanka Data") {
       return "world_bank";
@@ -59,8 +65,7 @@ export default class Dataset {
   }
 
   get dataFileNameOnly() {
-    const HACK_DEFAULT_FREQUENCY_NAME = "Annual";
-    return `${this.sourceID}.${this.subCategory}.${HACK_DEFAULT_FREQUENCY_NAME}.json`;
+    return `${this.id}.json`;
   }
 
   get dataURL() {
