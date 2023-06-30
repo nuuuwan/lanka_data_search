@@ -1,10 +1,30 @@
 const EMOJI_TO_TEXT_LIST = {
-  "🎓": ["universi", "educat", "school"],
+  // demographics
+  "🚸": ["child"],
+  "🚼": ['infant', 'baby'],
+  '👨🏽‍👩🏾‍👧🏽‍👦🏾': ['family'],
+  '🏠': ['house'],
   "♀️": ["female", "women"],
   "♂️": [" male", " men"],
-  "🚸": ["child"],
+  
+  // industries
+  "🎓": ["universi", "educat", "school"],
   "🌲": ["forest"],
   "✈️": ["touri"],
+  "☁️": ["carbon", "CO2", "pollut", "emission", "smoke", "smog"],
+  "⚕️": ["doctor", "nurse", "medic", "pharma", "health", "nurse"],
+  "🛣️": ["transport", "road"],
+  "🌾": ["agri", "farm"],
+  "☎️": ["phone", "telecom"],
+  "🏬": ["business"],
+  "✈️": ["air", "aero", "airline", "aviation"],
+
+
+  // concepts
+  "☠️": ["mortal", "death", "icide"],
+  "👶🏽": ['birth'],
+  "⚒️": ["work", "employ", "manufacture", "factory", "industr"],
+  "💧": ["water", "hydro"],
   "💡": ["electric", "energy", "power"],
   "🐟": ["fish"],
   "🪙": [
@@ -17,15 +37,9 @@ const EMOJI_TO_TEXT_LIST = {
     "revenue",
     "tax",
   ],
-  "☁️": ["carbon", "CO2", "pollut", "emission", "smoke", "smog"],
-  "⚕️": ["doctor", "nurse", "medic", "pharma", "health", "nurse"],
-  "🛣️": ["transport", "road"],
-  "🌾": ["agri", "farm"],
-  "☠️": ["mortal", "death", "icide"],
-  "⚒️": ["work", "employ", "manufacture", "factory", "industr"],
-  "💧": ["water", "hydro"],
-  "☎️": ["phone", "telecom"],
-  "🏬": ["business"],
+  "⚙️": ["machine", "mechanic", "engineer", "tech"],
+  '💻': ['computer', 'tech', 'software', 'hardware'],
+  
 };
 
 export default EMOJI_TO_TEXT_LIST;
