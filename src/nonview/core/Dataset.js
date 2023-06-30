@@ -152,8 +152,36 @@ export default class Dataset {
     return `${this.maxValue.toLocaleString()}${this.scaleAndUnitFormatted}`;
   }
 
+  get emojis() {
+    const haystack = this.subCategory;
+    return Object.entries({
+      '🎓': ['universi','educat'],
+      '♀️': ['female', 'women'],
+      '♂️': [' male',' men'],
+      '🚸': ['child'],
+      '🌲': ['forest'],
+      '✈️': ['touri'],
+      '💡': ['electric'],
+      '🐟': ['fish'],
+    }).reduce(
+      function(s, [emoji, textList]) {
+        for (const text of textList) {
+          if (haystack.toLowerCase().includes(text)) {
+            return `${emoji}${s}`;
+          }
+        }
+        return s;
+      },
+      '',
+    )
+  }
+
+  get subCategoryEmojied() {
+    return `${this.emojis} ${this.subCategory}`;
+  }
+
   get detailedLabel() {
-    return `${this.subCategory} [${this.frequencyName}] - ${this.source.name}`;
+    return `${this.subCategoryEmojied} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
     }
 
   get minTFormatted() {
