@@ -9,10 +9,10 @@ export default function CustomAppBar({ allDatasetIdx }) {
   if (allDatasetIdx) {
     const nData = Dataset.getDatasetListLength(allDatasetIdx);
     renderedStats = (
-      <span>(
-      {nData.toLocaleString()}{" "}
-          <span className="subscript">Datasets</span>
-          )</span>);
+      <span>
+        ({nData.toLocaleString()} <span className="subscript">Datasets</span>)
+      </span>
+    );
   }
 
   return (
