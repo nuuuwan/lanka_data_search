@@ -103,26 +103,28 @@ export default class DataResult {
     const labelsList = dataResultList.map((dataResult) => dataResult.labels);
     let labels = labelsList.flat();
     const labelYears = labels.map((label) => parseInt(label.substring(0, 4)));
-    const minYear = Math.min(...labelYears)
-    const maxYear = Math.max(...labelYears)
+    const minYear = Math.min(...labelYears);
+    const maxYear = Math.max(...labelYears);
     for (let year = minYear; year <= maxYear; year++) {
-      const yearLabel = year.toString() + '-01-01';
+      const yearLabel = year.toString() + "-01-01";
       labels.push(yearLabel);
-    }  
-  
-    const uniqueLabels = [...new Set(labels)];  
+    }
+
+    const uniqueLabels = [...new Set(labels)];
     const sortedUniqueLabels = uniqueLabels.sort();
     return sortedUniqueLabels;
   }
 
   static getLabelIntersection(dataResultList) {
-    return dataResultList.reduce(function (labelIntersection, dataResult) {
-      const labels = dataResult.labels;
-      if (labelIntersection === null) {
-        return labels;
-      }
-      return labelIntersection.filter((x) => labels.includes(x));
-    }, null).sort();
+    return dataResultList
+      .reduce(function (labelIntersection, dataResult) {
+        const labels = dataResult.labels;
+        if (labelIntersection === null) {
+          return labels;
+        }
+        return labelIntersection.filter((x) => labels.includes(x));
+      }, null)
+      .sort();
   }
 
   static getCorrelation(dataResult1, dataResult2) {
