@@ -24,23 +24,26 @@ export default function DatasetDetailsView({ dataset }) {
         n={dataset.n} ({dataset.minTFormatted} to {dataset.maxTFormatted})
       </Typography>
 
-      {Object.entries(dataset.footnotes).map(
-        function(entry) {
-          let [k,v] = entry;
-          if (!v) {
-            return null;
-          }
-          if (k=== 'source_file') {
-            k = 'Source File';
-          }
-          return (
-            <Box key={"footnote-" + k}>
-                  <Typography variant="caption" sx={{color: '#ccc',fontSize:"60%"}}>{k}</Typography>
-                  <Typography variant="body2">{v}</Typography>
-            </Box>
-          )
+      {Object.entries(dataset.footnotes).map(function (entry) {
+        let [k, v] = entry;
+        if (!v) {
+          return null;
         }
-      )}
+        if (k === "source_file") {
+          k = "Source File";
+        }
+        return (
+          <Box key={"footnote-" + k}>
+            <Typography
+              variant="caption"
+              sx={{ color: "#ccc", fontSize: "60%" }}
+            >
+              {k}
+            </Typography>
+            <Typography variant="body2">{v}</Typography>
+          </Box>
+        );
+      })}
 
       <Box>
         <Link href={dataset.dataURL} sx={{ fontSize: 8 }} target="_blank">

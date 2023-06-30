@@ -9,9 +9,8 @@ const URL_BASE =
 
 const HACK_DEFAULT_FREQUENCY_NAME = "Annual";
 
-
 function formatT(t) {
-  return t.replaceAll("-01", "")
+  return t.replaceAll("-01", "");
 }
 
 export default class Dataset {
