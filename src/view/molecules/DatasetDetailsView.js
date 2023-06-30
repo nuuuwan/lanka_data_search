@@ -20,14 +20,27 @@ export default function DatasetDetailsView({ dataset }) {
       <DataSourceLink dataSource={dataset.source} />
       <Typography variant="subtitle1">{dataset.subCategory}</Typography>
 
-      <Typography variant="body1" color="secondary">
-        {dataset.maxValueFormatted}
-        <span className="superscript">{dataset.maxT} (Latest)</span>
+      <Typography variant="body2" color="secondary">
+        n={dataset.n} ({dataset.minTFormatted} to {dataset.maxTFormatted})
       </Typography>
 
-      <Typography variant="body2">
-        n={dataset.n} ({dataset.minT} to {dataset.maxT})
-      </Typography>
+      {Object.entries(dataset.footnotes).map(
+        function(entry) {
+          let [k,v] = entry;
+          if (!v) {
+            return null;
+          }
+          if (k=== 'source_file') {
+            k = 'Source File';
+          }
+          return (
+            <Box key={"footnote-" + k}>
+                  <Typography variant="caption" sx={{color: '#ccc',fontSize:"60%"}}>{k}</Typography>
+                  <Typography variant="body2">{v}</Typography>
+            </Box>
+          )
+        }
+      )}
 
       <Box>
         <Link href={dataset.dataURL} sx={{ fontSize: 8 }} target="_blank">
