@@ -4,7 +4,7 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
 import CasinoIcon from "@mui/icons-material/Casino";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import URLContext from "../../nonview/utils/URLContext";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
@@ -30,7 +30,7 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
   };
 
   const takeScreenshot = useScreenshot()[1];
-  const imagePrefix = datasetList.map(dataset => dataset.id).join("-");
+  const imagePrefix = datasetList.map((dataset) => dataset.id).join("-");
 
   const download = function (image) {
     const link = document.createElement("a");
