@@ -54,8 +54,17 @@ export default class Dataset {
     return DATA_SOURCE_IDX[this.sourceID];
   }
 
+  get dataURLSource() {
+    return `${URL_BASE}/sources/${this.sourceID}`;
+  }
+
+  get dataFileNameOnly() {
+    const HACK_DEFAULT_FREQUENCY_NAME = "Annual";
+    return `${this.sourceID}.${this.subCategory}.${HACK_DEFAULT_FREQUENCY_NAME}.json`;
+  }
+
   get dataURL() {
-    return `${URL_BASE}/${this.source.remoteBaseDir}/${this.category}.${this.subCategory}.json`;
+    return `${this.dataURLSource}/${this.dataFileNameOnly}`;
   }
 
   get scaleFormatted() {
@@ -147,6 +156,9 @@ export default class Dataset {
       const remoteData = await WWW.json(this.dataURL);
       return DataResult.fromRemoteData(remoteData);
     } catch (e) {
+      console.error(
+        `getRemoteDataResult: Could not acces "${this.dataURL}" (${e})`
+      );
       return null;
     }
   }

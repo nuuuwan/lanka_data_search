@@ -83,7 +83,7 @@ export default class DataResult {
   }
 
   static fromRemoteData(remoteData) {
-    const innerData = remoteData.data;
+    const innerData = remoteData.cleaned_data;
     const cleanedInnerDataEntries = Object.entries(innerData)
       .map(([k, v]) => [k, DataResult.parseValue(v)])
       .filter(([_, v]) => v);
