@@ -203,8 +203,10 @@ export default class Dataset {
     );
     const datasetListWorldBank =
       await Dataset.multigetRemoteDatasetListForSource("world_bank");
-    const datasetList =  [].concat(datasetListCBSL, datasetListWorldBank);
-    return datasetList.sort((a, b) => a.subCategory.localeCompare(b.subCategory));
+    const datasetList = [].concat(datasetListCBSL, datasetListWorldBank);
+    return datasetList.sort((a, b) =>
+      a.subCategory.localeCompare(b.subCategory)
+    );
   }
 
   static async multigetRemoteDatasetIdx() {
