@@ -7,12 +7,15 @@ const EMOJI_TO_TEXT_LIST = {
   "✈️": ["touri"],
   "💡": ["electric"],
   "🐟": ["fish"],
-  "🪙": ["bank", "money", "credit", "debit", "debt", "deposit"],
-  "☁️": ["carbon", "CO2", "pollut"],
-  "⚕️": ["doctor", "nurse", "medic", "pharma"],
+  "🪙": ["bank", "money", "credit", "debit", "debt", "deposit","revenue", "tax"],
+  "☁️": ["carbon", "CO2", "pollut", "emission", "smoke", "smog"],
+  "⚕️": ["doctor", "nurse", "medic", "pharma","health","nurse"],
   "🛣️": ["transport", "road"],
   "🌾": ["agri", "farm"],
   "☠️": ["mortal", "death", "icide"],
+  '⚒️' : ['work','employ','manufacture','factory','industr'], 
+  '💧': ['water','hydro'],
+  '☎️': ['phone', 'telecom'],
 };
 
 export default EMOJI_TO_TEXT_LIST;
