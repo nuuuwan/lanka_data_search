@@ -36,6 +36,9 @@ const THEME = createTheme({
 
 defaults.font.family = FONT_FAMILY;
 
+localStorage.clear();
+console.info("localStorage cleared.");
+
 export default class App extends Component {
   render() {
     return (
