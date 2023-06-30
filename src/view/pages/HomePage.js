@@ -11,16 +11,13 @@ import VersionView from "../atoms/VersionView";
 import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
 import { CircularProgress } from "@mui/material";
 import Dataset from "../../nonview/core/Dataset";
-
-const DEFAULT_DATASET_ID = "world_bank.GDP per capita (current US$).Annual";
+import RandomX from "../../nonview/utils/RandomX";
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      datasetIDList: URLContext.getContext().datasetIDList || [
-        DEFAULT_DATASET_ID,
-      ],
+      datasetIDList: URLContext.getContext().datasetIDList || undefined,
     };
     this.refChart = createRef();
   }
@@ -48,12 +45,21 @@ export default class HomePage extends Component {
   }
 
   async componentDidMount() {
-    const { datasetIDList } = this.state;
+    let { datasetIDList } = this.state;
+
     const allDatasetIdx = await Dataset.multigetRemoteDatasetIdx();
+
+    if (datasetIDList === undefined) {
+      const  allDatasetIDList = Object.values(allDatasetIdx).map((x) => x.id);
+      const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
+      datasetIDList = randomDatasetIDList.slice(0, 1);
+      URLContext.setContext({ datasetIDList });
+    }
+
     const datasetList = datasetIDList.map(
       (datasetID) => allDatasetIdx[datasetID]
     );
-    this.setState({ datasetList, allDatasetIdx });
+    this.setState({ datasetIDList, datasetList, allDatasetIdx });
   }
 
   renderBody() {
