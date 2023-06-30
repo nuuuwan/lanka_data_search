@@ -16,11 +16,11 @@ export default function DatasetSelector({
     onChangeDatasetList(datasetList);
   };
 
-  const filterOptions = function(allDatasetList, state) {
+  const filterOptions = function (allDatasetList, state) {
     return allDatasetList.filter((dataset) => {
-      return dataset.isMatch(state.inputValue)
+      return dataset.isMatch(state.inputValue);
     });
-  }
+  };
 
   return (
     <Box sx={{ margin: 2 }}>
