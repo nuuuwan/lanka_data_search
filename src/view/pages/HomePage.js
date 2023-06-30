@@ -17,7 +17,6 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     const context = URLContext.getContext();
-    console.log(context);
     const datasetIDList =
       context.datasetIDList || context.datasetKeyList || undefined;
     this.state = {
