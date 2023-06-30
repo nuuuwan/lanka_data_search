@@ -2,6 +2,7 @@ import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
 import DATA_SOURCE_IDX, { DATA_SOURCE_ID_LIST } from "./DATA_SOURCE_IDX.js";
 import md5 from "md5-hash";
+import EMOJI_TO_TEXT_LIST from "./EMOJI_TO_TEXT_LIST.js";
 const MIN_KEYWORD_LENGTH = 0;
 
 const URL_BASE =
@@ -153,17 +154,8 @@ export default class Dataset {
   }
 
   get emojis() {
-    const haystack = this.subCategory;
-    return Object.entries({
-      "🎓": ["universi", "educat"],
-      "♀️": ["female", "women"],
-      "♂️": [" male", " men"],
-      "🚸": ["child"],
-      "🌲": ["forest"],
-      "✈️": ["touri"],
-      "💡": ["electric"],
-      "🐟": ["fish"],
-    }).reduce(function (s, [emoji, textList]) {
+    const haystack = this.subCategory + ' ' + this.category;
+    return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (s, [emoji, textList]) {
       for (const text of textList) {
         if (haystack.toLowerCase().includes(text)) {
           return `${emoji}${s}`;
@@ -173,13 +165,15 @@ export default class Dataset {
     }, "");
   }
 
-  get subCategoryEmojied() {
-    return `${this.emojis} ${this.subCategory}`;
-  }
 
   get detailedLabel() {
-    return `${this.subCategoryEmojied} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
+    return `${this.subCategory} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
   }
+
+  get detailedLabelWithEmojis() {
+    return `${this.emojis} ${this.subCategory} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
+  }
+
 
   get minTFormatted() {
     return formatT(this.minT);

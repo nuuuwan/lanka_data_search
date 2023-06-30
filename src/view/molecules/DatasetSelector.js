@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 
 function renderDataset(dataset) {
-  return dataset.detailedLabel;
+  return dataset.detailedLabelWithEmojis;
 }
 
 export default function DatasetSelector({
