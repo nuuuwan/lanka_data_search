@@ -155,25 +155,22 @@ export default class Dataset {
   get emojis() {
     const haystack = this.subCategory;
     return Object.entries({
-      '🎓': ['universi','educat'],
-      '♀️': ['female', 'women'],
-      '♂️': [' male',' men'],
-      '🚸': ['child'],
-      '🌲': ['forest'],
-      '✈️': ['touri'],
-      '💡': ['electric'],
-      '🐟': ['fish'],
-    }).reduce(
-      function(s, [emoji, textList]) {
-        for (const text of textList) {
-          if (haystack.toLowerCase().includes(text)) {
-            return `${emoji}${s}`;
-          }
+      "🎓": ["universi", "educat"],
+      "♀️": ["female", "women"],
+      "♂️": [" male", " men"],
+      "🚸": ["child"],
+      "🌲": ["forest"],
+      "✈️": ["touri"],
+      "💡": ["electric"],
+      "🐟": ["fish"],
+    }).reduce(function (s, [emoji, textList]) {
+      for (const text of textList) {
+        if (haystack.toLowerCase().includes(text)) {
+          return `${emoji}${s}`;
         }
-        return s;
-      },
-      '',
-    )
+      }
+      return s;
+    }, "");
   }
 
   get subCategoryEmojied() {
@@ -182,7 +179,7 @@ export default class Dataset {
 
   get detailedLabel() {
     return `${this.subCategoryEmojied} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
-    }
+  }
 
   get minTFormatted() {
     return formatT(this.minT);
