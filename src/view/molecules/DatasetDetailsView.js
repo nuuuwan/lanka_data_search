@@ -18,7 +18,7 @@ export default function DatasetDetailsView({ dataset }) {
       }}
     >
       <DataSourceLink dataSource={dataset.source} />
-      <Typography variant="subtitle1">{dataset.subCategory}</Typography>
+      <Typography variant="subtitle1">{dataset.emojis}{dataset.subCategory}</Typography>
 
       <Typography variant="body2" color="secondary">
         n={dataset.n} ({dataset.minTFormatted} to {dataset.maxTFormatted})
