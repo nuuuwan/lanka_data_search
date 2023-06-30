@@ -63,9 +63,8 @@ export default class HomePage extends Component {
 
   renderHeader() {
     const { allDatasetIdx } = this.state;
-    return <CustomAppBar allDatasetIdx={allDatasetIdx}/>;
+    return <CustomAppBar allDatasetIdx={allDatasetIdx} />;
   }
-
 
   renderBody() {
     const { allDatasetIdx, datasetList } = this.state;
@@ -75,7 +74,7 @@ export default class HomePage extends Component {
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
 
-    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx)
+    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx);
     const nData = Dataset.getDatasetListLength(allDatasetIdx);
 
     return (
@@ -97,7 +96,7 @@ export default class HomePage extends Component {
           datasetList={datasetList}
           refChart={this.refChart}
         />
-        <AlertDatasets nData={nData}/>
+        <AlertDatasets nData={nData} />
         <AlertCBSLApp />
         <VersionView />
       </Box>
