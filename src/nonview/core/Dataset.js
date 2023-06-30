@@ -66,7 +66,7 @@ export default class Dataset {
     return `📊 ${this.subCategory} - @${this.source.twitterHandle}`;
   }
 
-  get key() {
+  get legacyID() {
     return this.subCategory;
   }
 
@@ -212,6 +212,8 @@ export default class Dataset {
     const datasetIdx = {};
     for (const dataset of datasetList) {
       datasetIdx[dataset.id] = dataset;
+      // DEPRECATED: Support legacyID in URLContext
+      datasetIdx[dataset.legacyID] = dataset;
     }
     return datasetIdx;
   }

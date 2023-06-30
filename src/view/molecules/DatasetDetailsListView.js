@@ -5,7 +5,7 @@ export default function DatasetDetailsListView({ datasetList }) {
   return (
     <Grid container>
       {datasetList.map((dataset, i) => (
-        <Grid item key={"search-result-" + dataset.key}>
+        <Grid item key={"search-result-" + dataset.id}>
           <DatasetDetailsView dataset={dataset} />
         </Grid>
       ))}
