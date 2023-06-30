@@ -2,6 +2,10 @@ import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
 import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
 const MIN_KEYWORD_LENGTH = 0;
+
+
+const URL_BASE = 'https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data'
+
 export default class Dataset {
   constructor(category, subCategory, unit, scale, minT, maxT, latestValue, n) {
     this.category = category;
@@ -51,7 +55,7 @@ export default class Dataset {
   }
 
   get dataURL() {
-    return `https://raw.githubusercontent.com/nuuuwan/cbsl/data/${this.source.remoteBaseDir}/${this.category}.${this.subCategory}.json`;
+    return `${URL_BASE}/${this.source.remoteBaseDir}/${this.category}.${this.subCategory}.json`;
   }
 
   get scaleFormatted() {
