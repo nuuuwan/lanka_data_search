@@ -1,12 +1,12 @@
 const EMOJI_TO_TEXT_LIST = {
   // demographics
   "🚸": ["child"],
-  "🚼": ['infant', 'baby'],
-  '👨🏽‍👩🏾‍👧🏽‍👦🏾': ['family'],
-  '🏠': ['house'],
+  "🚼": ["infant", "baby"],
+  "👨🏽‍👩🏾‍👧🏽‍👦🏾": ["family"],
+  "🏠": ["house"],
   "♀️": ["female", "women"],
   "♂️": [" male", " men"],
-  
+
   // industries
   "🎓": ["universi", "educat", "school"],
   "🌲": ["forest"],
@@ -19,10 +19,9 @@ const EMOJI_TO_TEXT_LIST = {
   "🏬": ["business"],
   "✈️": ["air", "aero", "airline", "aviation"],
 
-
   // concepts
   "☠️": ["mortal", "death", "icide"],
-  "👶🏽": ['birth'],
+  "👶🏽": ["birth"],
   "⚒️": ["work", "employ", "manufacture", "factory", "industr"],
   "💧": ["water", "hydro"],
   "💡": ["electric", "energy", "power"],
@@ -38,8 +37,7 @@ const EMOJI_TO_TEXT_LIST = {
     "tax",
   ],
   "⚙️": ["machine", "mechanic", "engineer", "tech"],
-  '💻': ['computer', 'tech', 'software', 'hardware'],
-  
+  "💻": ["computer", "tech", "software", "hardware"],
 };
 
 export default EMOJI_TO_TEXT_LIST;
