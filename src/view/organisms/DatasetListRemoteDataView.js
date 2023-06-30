@@ -144,8 +144,8 @@ export default class DatasetListRemoteDataView extends Component {
     return (
       <Box>
         {this.renderMultiLineChart()}
-        {this.renderStatistics()}
         {this.renderDatasetDetails()}
+        {this.renderStatistics()}
       </Box>
     );
   }
