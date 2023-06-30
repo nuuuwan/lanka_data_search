@@ -154,13 +154,13 @@ export default class Dataset {
   }
 
   get emojis() {
-    const haystack = this.subCategory + " " + this.category;
+    const haystack = this.subCategory.toLowerCase();
     return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (
       s,
       [emoji, textList]
     ) {
       for (const text of textList) {
-        if (haystack.toLowerCase().includes(text)) {
+        if (haystack.includes(text.toLowerCase())) {
           return `${emoji}${s}`;
         }
       }
