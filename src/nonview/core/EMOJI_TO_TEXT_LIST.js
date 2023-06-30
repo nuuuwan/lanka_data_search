@@ -5,7 +5,7 @@ const EMOJI_TO_TEXT_LIST = {
   "🚸": ["child"],
   "🌲": ["forest"],
   "✈️": ["touri"],
-  "💡": ["electric"],
+  "💡": ["electric","energy", "power"],
   "🐟": ["fish"],
   "🪙": [
     "bank",
@@ -25,6 +25,7 @@ const EMOJI_TO_TEXT_LIST = {
   "⚒️": ["work", "employ", "manufacture", "factory", "industr"],
   "💧": ["water", "hydro"],
   "☎️": ["phone", "telecom"],
+  "🏬": ["business"],
 };
 
 export default EMOJI_TO_TEXT_LIST;
