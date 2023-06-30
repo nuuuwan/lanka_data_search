@@ -244,7 +244,9 @@ export default class Dataset {
   static getUniqueDatasetList(datasetIdx) {
     const allDatasetIDList = Object.values(datasetIdx).map((x) => x.id);
     const uniqueDatasetIDList = [...new Set(allDatasetIDList)];
-    return uniqueDatasetIDList.map((datasetID) => datasetIdx[datasetID]);
+    return uniqueDatasetIDList.map((datasetID) => datasetIdx[datasetID]).sort(
+      (a, b) => a.subCategory.localeCompare(b.subCategory)
+    );
   }
 
   static getDatasetListLength(datasetIdx) {
