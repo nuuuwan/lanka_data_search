@@ -69,6 +69,14 @@ export default class HomePage extends Component {
     }
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
+
+    // DEPRECATE! HACK for supporting legacyIDs!
+    const allDatasetIDList = Object.values(allDatasetIdx).map((x) => x.id);
+    const uniqueDatasetIDList = [...new Set(allDatasetIDList)];
+    const allDatasetList = uniqueDatasetIDList.map(
+      (datasetID) => allDatasetIdx[datasetID]
+    );
+
     return (
       <Box>
         <SocialMediaMetaTags
@@ -78,7 +86,7 @@ export default class HomePage extends Component {
         />
 
         <DatasetSelector
-          allDatasetList={Object.values(allDatasetIdx)}
+          allDatasetList={allDatasetList}
           selectedDatasetList={datasetList}
           onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
         />
