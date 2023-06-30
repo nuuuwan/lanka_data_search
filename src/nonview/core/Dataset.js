@@ -1,6 +1,7 @@
 import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
-import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
+import DATA_SOURCE_IDX, {DATA_SOURCE_ID_LIST} from "./DATA_SOURCE_IDX.js";
+
 const MIN_KEYWORD_LENGTH = 0;
 
 const URL_BASE =
@@ -203,7 +204,17 @@ export default class Dataset {
     );
     const datasetListWorldBank =
       await Dataset.multigetRemoteDatasetListForSource("world_bank");
-    const datasetList = [].concat(datasetListCBSL, datasetListWorldBank);
+
+    const datasetListList = await Promise.all(
+      DATA_SOURCE_ID_LIST.map(
+        async function(sourceID) {
+          return await Dataset.multigetRemoteDatasetListForSource(
+            sourceID
+          );
+        }
+      )
+    );
+    const datasetList = datasetListList.flat();
     return datasetList.sort((a, b) =>
       a.subCategory.localeCompare(b.subCategory)
     );
