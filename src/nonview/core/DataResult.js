@@ -101,8 +101,16 @@ export default class DataResult {
 
   static getLabelUnion(dataResultList) {
     const labelsList = dataResultList.map((dataResult) => dataResult.labels);
-    const labels = labelsList.flat();
-    const uniqueLabels = [...new Set(labels)];
+    let labels = labelsList.flat();
+    const labelYears = labels.map((label) => parseInt(label.substring(0, 4)));
+    const minYear = Math.min(...labelYears)
+    const maxYear = Math.max(...labelYears)
+    for (let year = minYear; year <= maxYear; year++) {
+      const yearLabel = year.toString() + '-01-01';
+      labels.push(yearLabel);
+    }  
+  
+    const uniqueLabels = [...new Set(labels)];  
     const sortedUniqueLabels = uniqueLabels.sort();
     return sortedUniqueLabels;
   }
@@ -114,7 +122,7 @@ export default class DataResult {
         return labels;
       }
       return labelIntersection.filter((x) => labels.includes(x));
-    }, null);
+    }, null).sort();
   }
 
   static getCorrelation(dataResult1, dataResult2) {
