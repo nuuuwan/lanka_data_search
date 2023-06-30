@@ -5,8 +5,7 @@ import Typography from "@mui/material/Typography";
 import Dataset from "../../nonview/core/Dataset";
 
 export default function CustomAppBar({ allDatasetIdx }) {
-  let nData = 0,
-    nSources = 0;
+  let nData = 0;
   if (allDatasetIdx) {
     nData = Dataset.getDatasetListLength(allDatasetIdx);
   }
