@@ -138,6 +138,9 @@ export default class DataResult {
     const values1 = dataResult1.getValuesForLabels(commonLabels);
     const values2 = dataResult2.getValuesForLabels(commonLabels);
     const n = commonLabels.length;
+    if (n < 5) {
+      return null;
+    }
     const sum1 = values1.reduce((a, b) => a + b, 0);
     const sum2 = values2.reduce((a, b) => a + b, 0);
     const sum1Squared = values1.reduce((a, b) => a + b * b, 0);
