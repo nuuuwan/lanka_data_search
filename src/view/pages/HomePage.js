@@ -1,7 +1,6 @@
 import { Component, createRef } from "react";
 import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
-import { DATASET_IDX } from "../../nonview/core/DATASET_LIST";
 import DatasetSelector from "../molecules/DatasetSelector";
 import URLContext from "../../nonview/utils/URLContext";
 import AlertDatasets from "../atoms/AlertDatasets";
@@ -11,6 +10,7 @@ import CustomAppBar from "../molecules/CustomAppBar";
 import VersionView from "../atoms/VersionView";
 import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
 import { CircularProgress } from "@mui/material";
+import Dataset from "../../nonview/core/Dataset";
 
 const DEFAULT_DATASET_ID = "world_bank.GDP per capita (current US$).Annual";
 
@@ -49,16 +49,16 @@ export default class HomePage extends Component {
 
   async componentDidMount() {
     const { datasetIDList } = this.state;
+    const allDatasetIdx = await Dataset.multigetRemoteDatasetIdx();
     const datasetList = datasetIDList.map(
-      (datasetID) => DATASET_IDX[datasetID]
+      (datasetID) => allDatasetIdx[datasetID]
     );
-    const allDatasetList = Object.values(DATASET_IDX);
-    this.setState({ datasetList, allDatasetList });
+    this.setState({ datasetList, allDatasetIdx });
   }
 
   renderBody() {
-    const { allDatasetList, datasetList } = this.state;
-    if (!allDatasetList || allDatasetList.length === 0) {
+    const { allDatasetIdx, datasetList } = this.state;
+    if (!allDatasetIdx) {
       return <CircularProgress />;
     }
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
@@ -72,7 +72,7 @@ export default class HomePage extends Component {
         />
 
         <DatasetSelector
-          allDatasetList={allDatasetList}
+          allDatasetList={Object.values(allDatasetIdx)}
           selectedDatasetList={datasetList}
           onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
         />

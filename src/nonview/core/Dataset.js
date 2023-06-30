@@ -9,27 +9,52 @@ const URL_BASE =
 const HACK_DEFAULT_FREQUENCY_NAME = "Annual";
 
 export default class Dataset {
-  constructor(category, subCategory, unit, scale, minT, maxT, latestValue, n) {
+  constructor(
+    sourceID,
+    category,
+    subCategory,
+    scale,
+    unit,
+    frequencyName,
+    iSubject,
+    footnotes,
+    n,
+    minT,
+    maxT,
+    minValue,
+    maxValue
+  ) {
+    this.sourceID = sourceID;
     this.category = category;
     this.subCategory = subCategory;
-    this.unit = unit;
     this.scale = scale;
+    this.unit = unit;
+    this.frequencyName = frequencyName;
+    this.iSubject = iSubject;
+    this.footnotes = footnotes;
+    this.n = n;
     this.minT = minT;
     this.maxT = maxT;
-    this.latestValue = latestValue === null ? 0 : latestValue;
-    this.n = n;
+    this.minValue = minValue;
+    this.maxValue = maxValue;
   }
 
-  static fromRaw(d) {
+  static fromRaw(raw) {
+    const summaryStatistics = raw.summary_statistics;
     return new Dataset(
-      d.category,
-      d.sub_category,
-      d.unit,
-      d.scale,
-      d.min_t,
-      d.max_t,
-      d.latest_value,
-      d.n
+      raw.source_id,
+      raw.category,
+      raw.sub_category,
+      raw.scale,
+      raw.unit,
+      raw.frequency_name,
+      raw.i_subject,
+      raw.footnotes | {},
+      summaryStatistics.n,
+      summaryStatistics.min_t,
+      summaryStatistics.max_t,
+      summaryStatistics.min_value,
+      summaryStatistics.max_value
     );
   }
 
@@ -47,13 +72,6 @@ export default class Dataset {
 
   get id() {
     return `${this.sourceID}.${this.subCategory}.${HACK_DEFAULT_FREQUENCY_NAME}`;
-  }
-
-  get sourceID() {
-    if (this.category === "World Bank - Sri Lanka Data") {
-      return "world_bank";
-    }
-    return "cbsl";
   }
 
   get source() {
@@ -120,8 +138,11 @@ export default class Dataset {
     }
     return `${this.scaleFormatted}`;
   }
-  get latestValueFormatted() {
-    return `${this.latestValue.toLocaleString()}${this.scaleAndUnitFormatted}`;
+  get maxValueFormatted() {
+    if (!this.maxValue) {
+      return "";
+    }
+    return `${this.maxValue.toLocaleString()}${this.scaleAndUnitFormatted}`;
   }
 
   get detailedLabel() {
@@ -166,5 +187,31 @@ export default class Dataset {
       );
       return null;
     }
+  }
+
+  static async multigetRemoteDatasetListForSource(sourceID) {
+    const urlRemote = `${URL_BASE}/sources/${sourceID}/summary.json`;
+    const dataListRaw = await WWW.json(urlRemote);
+    const filteredDataListRaw = dataListRaw.filter((d) => d.summary_statistics);
+    return filteredDataListRaw.map((d) => Dataset.fromRaw(d));
+  }
+
+  static async multigetRemoteDatasetList() {
+    // TODO: Change to use DATA_SOURCE_IDX!
+    const datasetListCBSL = await Dataset.multigetRemoteDatasetListForSource(
+      "cbsl"
+    );
+    const datasetListWorldBank =
+      await Dataset.multigetRemoteDatasetListForSource("world_bank");
+    return [].concat(datasetListCBSL, datasetListWorldBank);
+  }
+
+  static async multigetRemoteDatasetIdx() {
+    const datasetList = await Dataset.multigetRemoteDatasetList();
+    const datasetIdx = {};
+    for (const dataset of datasetList) {
+      datasetIdx[dataset.id] = dataset;
+    }
+    return datasetIdx;
   }
 }
