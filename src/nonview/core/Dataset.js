@@ -203,9 +203,11 @@ export default class Dataset {
       })
     );
     const datasetList = datasetListList.flat();
-    return datasetList.sort((a, b) =>
+    const validDatasetList = datasetList.filter((d) => d.isValidForVisualization());
+    const sortedValidDatasetList = validDatasetList.sort((a, b) =>
       a.subCategory.localeCompare(b.subCategory)
     );
+    return sortedValidDatasetList;
   }
 
   static async multigetRemoteDatasetIdx() {
