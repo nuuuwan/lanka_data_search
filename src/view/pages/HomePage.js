@@ -18,9 +18,11 @@ export default class HomePage extends Component {
     super(props);
     const context = URLContext.getContext();
     console.log(context);
-    const datasetIDList = context.datasetIDList || context.datasetKeyList || undefined;
+    const datasetIDList =
+      context.datasetIDList || context.datasetKeyList || undefined;
     this.state = {
-      datasetIDList};
+      datasetIDList,
+    };
     this.refChart = createRef();
   }
 
