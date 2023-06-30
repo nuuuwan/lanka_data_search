@@ -198,13 +198,6 @@ export default class Dataset {
   }
 
   static async multigetRemoteDatasetList() {
-    // TODO: Change to use DATA_SOURCE_IDX!
-    const datasetListCBSL = await Dataset.multigetRemoteDatasetListForSource(
-      "cbsl"
-    );
-    const datasetListWorldBank =
-      await Dataset.multigetRemoteDatasetListForSource("world_bank");
-
     const datasetListList = await Promise.all(
       DATA_SOURCE_ID_LIST.map(
         async function(sourceID) {
