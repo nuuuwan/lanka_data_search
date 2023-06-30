@@ -222,4 +222,23 @@ export default class Dataset {
     }
     return datasetIdx;
   }
+
+  // DEPRECATE! HACK for supporting legacyIDs!
+  static getUniqueDatasetList(datasetIdx) {
+    const allDatasetIDList = Object.values(datasetIdx).map((x) => x.id);
+    const uniqueDatasetIDList = [...new Set(allDatasetIDList)];
+    return uniqueDatasetIDList.map(
+      (datasetID) => datasetIdx[datasetID]
+    );
+  }
+
+  static getDatasetListLength(datasetIdx) {
+    return Object.values(Dataset.getUniqueDatasetList(datasetIdx)).length;
+  }
+
+  static getDataSourceListLength(datasetIdx) {
+    const allSourceIDList = Object.values(datasetIdx).map((x) => x.sourceID);
+    const uniqueSourceIDList = [...new Set(allSourceIDList)];
+    return uniqueSourceIDList.length;
+  }
 }

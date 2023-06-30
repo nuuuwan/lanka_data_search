@@ -10,3 +10,10 @@ a {
   line-height: 0;
   padding: 0 0.25em;
 }
+
+.subscript {
+  font-size: 0.5em;
+  vertical-align: sub;
+  line-height: 0;
+  padding: 0 0.25em;
+}

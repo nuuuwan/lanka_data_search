@@ -38,16 +38,6 @@ export default class HomePage extends Component {
     return "Public Datasets about #SriLanka.";
   }
 
-  async handleOnChangeDatasetList(datasetList) {
-    const datasetIDList = datasetList.map((x) => x.id);
-    URLContext.setContext({ datasetIDList });
-    this.setState({ datasetIDList, datasetList });
-  }
-
-  renderHeader() {
-    return <CustomAppBar />;
-  }
-
   async componentDidMount() {
     let { datasetIDList } = this.state;
 
@@ -65,6 +55,17 @@ export default class HomePage extends Component {
     );
     this.setState({ datasetIDList, datasetList, allDatasetIdx });
   }
+  async handleOnChangeDatasetList(datasetList) {
+    const datasetIDList = datasetList.map((x) => x.id);
+    URLContext.setContext({ datasetIDList });
+    this.setState({ datasetIDList, datasetList });
+  }
+
+  renderHeader() {
+    const { allDatasetIdx } = this.state;
+    return <CustomAppBar allDatasetIdx={allDatasetIdx}/>;
+  }
+
 
   renderBody() {
     const { allDatasetIdx, datasetList } = this.state;
@@ -74,12 +75,8 @@ export default class HomePage extends Component {
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
 
-    // DEPRECATE! HACK for supporting legacyIDs!
-    const allDatasetIDList = Object.values(allDatasetIdx).map((x) => x.id);
-    const uniqueDatasetIDList = [...new Set(allDatasetIDList)];
-    const allDatasetList = uniqueDatasetIDList.map(
-      (datasetID) => allDatasetIdx[datasetID]
-    );
+    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx)
+    const nData = Dataset.getDatasetListLength(allDatasetIdx);
 
     return (
       <Box>
@@ -100,7 +97,7 @@ export default class HomePage extends Component {
           datasetList={datasetList}
           refChart={this.refChart}
         />
-        <AlertDatasets />
+        <AlertDatasets nData={nData}/>
         <AlertCBSLApp />
         <VersionView />
       </Box>
@@ -109,6 +106,9 @@ export default class HomePage extends Component {
 
   renderFooter() {
     const { datasetList } = this.state;
+    if (!datasetList) {
+      return <CircularProgress />;
+    }
     return (
       <CustomBottomNavigator
         datasetList={datasetList}
