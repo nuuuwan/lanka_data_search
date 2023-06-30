@@ -20,4 +20,6 @@ const DATA_SOURCE_IDX = {
 
 export const DATA_SOURCE_LIST = Object.values(DATA_SOURCE_IDX);
 
+export const DATA_SOURCE_ID_LIST = DATA_SOURCE_LIST.map((d) => d.id);
+
 export default DATA_SOURCE_IDX;
