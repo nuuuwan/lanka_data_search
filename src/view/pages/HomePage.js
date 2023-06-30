@@ -50,7 +50,7 @@ export default class HomePage extends Component {
     const allDatasetIdx = await Dataset.multigetRemoteDatasetIdx();
 
     if (datasetIDList === undefined) {
-      const  allDatasetIDList = Object.values(allDatasetIdx).map((x) => x.id);
+      const allDatasetIDList = Object.values(allDatasetIdx).map((x) => x.id);
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
       datasetIDList = randomDatasetIDList.slice(0, 1);
       URLContext.setContext({ datasetIDList });
