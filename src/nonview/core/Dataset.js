@@ -193,8 +193,7 @@ export default class Dataset {
   static async multigetRemoteDatasetListForSource(sourceID) {
     const urlRemote = `${URL_BASE}/sources/${sourceID}/summary.json`;
     const dataListRaw = await WWW.json(urlRemote);
-    const filteredDataListRaw = dataListRaw.filter((d) => d.summary_statistics);
-    return filteredDataListRaw.map((d) => Dataset.fromRaw(d));
+    return dataListRaw.map((d) => Dataset.fromRaw(d));
   }
 
   static async multigetRemoteDatasetList() {
