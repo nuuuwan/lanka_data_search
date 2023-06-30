@@ -7,7 +7,12 @@ import { DATA_SOURCE_LIST } from "../../nonview/core/DATA_SOURCE_IDX";
 
 export default function AlertCBSLApp() {
   const renderedSources = DATA_SOURCE_LIST.map(function (dataSource) {
-    return <DataSourceLink key={'data-source-' + dataSource.id} dataSource={dataSource} />;
+    return (
+      <DataSourceLink
+        key={"data-source-" + dataSource.id}
+        dataSource={dataSource}
+      />
+    );
   });
 
   return (
