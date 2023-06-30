@@ -30,11 +30,12 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
   };
 
   const takeScreenshot = useScreenshot()[1];
+  const imagePrefix = datasetList.map(dataset => dataset.id).join("-");
 
   const download = function (image) {
     const link = document.createElement("a");
     link.href = image;
-    link.download = "image.png";
+    link.download = `${imagePrefix}.png`;
     link.click();
   };
 
