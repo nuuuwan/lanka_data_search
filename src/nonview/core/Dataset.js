@@ -1,7 +1,7 @@
 import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
 import DATA_SOURCE_IDX, { DATA_SOURCE_ID_LIST } from "./DATA_SOURCE_IDX.js";
-
+import md5 from "md5-hash";
 const MIN_KEYWORD_LENGTH = 0;
 
 const URL_BASE =
@@ -73,6 +73,10 @@ export default class Dataset {
 
   get id() {
     return `${this.sourceID}.${this.subCategory}.${HACK_DEFAULT_FREQUENCY_NAME}`;
+  }
+
+  get shortID() {
+    return md5(this.id).slice(0, 8);
   }
 
   get source() {
@@ -216,6 +220,7 @@ export default class Dataset {
     const datasetList = await Dataset.multigetRemoteDatasetList();
     const datasetIdx = {};
     for (const dataset of datasetList) {
+      datasetIdx[dataset.shortID] = dataset;
       datasetIdx[dataset.id] = dataset;
       // DEPRECATED: Support legacyID in URLContext
       datasetIdx[dataset.legacyID] = dataset;

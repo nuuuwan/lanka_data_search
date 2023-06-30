@@ -44,7 +44,9 @@ export default class HomePage extends Component {
     const allDatasetIdx = await Dataset.multigetRemoteDatasetIdx();
 
     if (datasetIDList === undefined) {
-      const allDatasetIDList = Object.values(allDatasetIdx).map((x) => x.id);
+      const allDatasetIDList = Object.values(allDatasetIdx).map(
+        (x) => x.shortID
+      );
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
       datasetIDList = randomDatasetIDList.slice(0, 1);
       URLContext.setContext({ datasetIDList });
@@ -56,7 +58,7 @@ export default class HomePage extends Component {
     this.setState({ datasetIDList, datasetList, allDatasetIdx });
   }
   async handleOnChangeDatasetList(datasetList) {
-    const datasetIDList = datasetList.map((x) => x.id);
+    const datasetIDList = datasetList.map((x) => x.shortID);
     URLContext.setContext({ datasetIDList });
     this.setState({ datasetIDList, datasetList });
   }
