@@ -22,7 +22,7 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
       "",
       "#LankaDataSearch by @nuuuwan",
       "",
-      window.location.href,
+      window.location.href.replace('http://localhost:3000', 'https://nuuuwan.github.io'),
     ].join("\n");
     const tweetURL =
       "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
