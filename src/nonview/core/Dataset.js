@@ -154,17 +154,20 @@ export default class Dataset {
   }
 
   get emojis() {
-    const haystack = this.subCategory + ' ' + this.category;
-    return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (s, [emoji, textList]) {
+    const haystack = this.subCategory + " " + this.category;
+    return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (
+      s,
+      [emoji, textList]
+    ) {
       for (const text of textList) {
         if (haystack.toLowerCase().includes(text)) {
           return `${emoji}${s}`;
         }
       }
       return s;
-    }, "");
+    },
+    "");
   }
-
 
   get detailedLabel() {
     return `${this.subCategory} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
@@ -173,7 +176,6 @@ export default class Dataset {
   get detailedLabelWithEmojis() {
     return `${this.emojis} ${this.subCategory} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
   }
-
 
   get minTFormatted() {
     return formatT(this.minT);
