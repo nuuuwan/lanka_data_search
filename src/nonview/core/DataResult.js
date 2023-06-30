@@ -105,13 +105,12 @@ export default class DataResult {
     const labelYears = labels.map((label) => parseInt(label.substring(0, 4)));
     const minYear = Math.min(...labelYears);
     const maxYear = Math.max(...labelYears);
-    
+
     for (let year = minYear; year <= maxYear; year++) {
       if (!labelYears.includes(year)) {
         const yearLabel = year.toString() + "-01-01";
         labels.push(yearLabel);
       }
-      
     }
 
     const uniqueLabels = [...new Set(labels)];
