@@ -4,7 +4,7 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
 import CasinoIcon from "@mui/icons-material/Casino";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import BarChartIcon from "@mui/icons-material/BarChart";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import URLContext from "../../nonview/utils/URLContext";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
@@ -65,7 +65,7 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
 
           <Tooltip title="Download Chart Image">
             <BottomNavigationAction
-              icon={<BarChartIcon onClick={onClickDownloadChartImage} />}
+              icon={<FileDownloadIcon onClick={onClickDownloadChartImage} />}
             />
           </Tooltip>
         </BottomNavigation>
