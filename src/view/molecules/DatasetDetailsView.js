@@ -21,7 +21,7 @@ export default function DatasetDetailsView({ dataset }) {
       <Typography variant="subtitle1">{dataset.subCategory}</Typography>
 
       <Typography variant="body1" color="secondary">
-        {dataset.latestValueFormatted}
+        {dataset.maxValueFormatted}
         <span className="superscript">{dataset.maxT} (Latest)</span>
       </Typography>
 
