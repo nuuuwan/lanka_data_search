@@ -2,7 +2,7 @@ import json
 from utils import WWW, File, Log, hashx
 log = Log('generate_raw_dataset_list.py')
 
-URL_BASE = 'https://raw.githubusercontent.com/nuuuwan/lanka_data_search/data'
+URL_BASE = 'https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data'
 URL = URL_BASE + '/edl_summary.json'
 URL_WORLDBANK = URL_BASE+'/other_sources/world_bank/summary.json'
 
