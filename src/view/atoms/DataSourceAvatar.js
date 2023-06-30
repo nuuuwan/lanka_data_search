@@ -1,5 +1,5 @@
 import Avatar from "@mui/material/Avatar";
-const IMAGE_DIM = 24;
+const IMAGE_DIM = 20;
 export default function DataSourceAvatar({ dataSource }) {
   return (
     <Avatar
