@@ -13,6 +13,8 @@ import { CircularProgress } from "@mui/material";
 import Dataset from "../../nonview/core/Dataset";
 import RandomX from "../../nonview/utils/RandomX";
 
+const N_RANDOM_DATASETS = 2;
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +49,7 @@ export default class HomePage extends Component {
         (x) => x.shortID
       );
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
-      datasetIDList = randomDatasetIDList.slice(0, 1);
+      datasetIDList = randomDatasetIDList.slice(0, N_RANDOM_DATASETS);
       URLContext.setContext({ datasetIDList });
     }
 
