@@ -63,7 +63,7 @@ export default class Dataset {
   }
 
   isValidForVisualization() {
-    return this.n > 1;
+    return this.n >= 1;
   }
 
   get tweetText() {
