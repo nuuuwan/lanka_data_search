@@ -21,6 +21,13 @@ const DATA_SOURCE_IDX = {
     "https://www.imf.org/external/datamapper",
     "IMFNews"
   ),
+  adb: new DataSource(
+    "adb",
+    "Asian Development Bank",
+    "Sri Lanka - Dataset",
+    "https://www.adb.org/countries/sri-lanka/data",
+    "ADB_HQ"
+  ),
 };
 
 export const DATA_SOURCE_LIST = Object.values(DATA_SOURCE_IDX);
