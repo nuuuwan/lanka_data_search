@@ -9,7 +9,7 @@ const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
 function formatT(t) {
-  return t.replaceAll("-01", "");
+  return t.toString().replaceAll("-01", "");
 }
 
 export default class Dataset {
@@ -201,6 +201,9 @@ export default class Dataset {
     const keywordLowerList = keywordsLower.split(" ");
     for (const keywordLower of keywordLowerList) {
       let someFieldContains = false;
+      if (this.sourceID.toLowerCase().includes(keywordLower)) {
+        someFieldContains = true;
+      }
       if (this.category.toLowerCase().includes(keywordLower)) {
         someFieldContains = true;
       }
