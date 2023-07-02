@@ -9,6 +9,9 @@ const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
 function formatT(t) {
+  if (!t) {
+    return "";
+  }
   return t.toString().replaceAll("-01", "");
 }
 
