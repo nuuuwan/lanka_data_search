@@ -67,7 +67,7 @@ export default class Dataset {
   }
 
   get tweetText() {
-    return `📊 ${this.subCategory} - @${this.source.twitterHandle}`;
+    return `📊 ${this.subCategory} - ${this.source.twitterHandle}`;
   }
 
   get legacyID() {
@@ -229,26 +229,10 @@ export default class Dataset {
     }
   }
 
-  static async multigetRemoteDatasetListForSource(sourceID) {
-    const urlRemote = `${URL_BASE}/sources/${sourceID}/summary.json`;
+  static async multigetRemoteDatasetList(sourceID) {
+    const urlRemote = `${URL_BASE}/summary.json`;
     const dataListRaw = await WWW.json(urlRemote);
     return dataListRaw.map((d) => Dataset.fromRaw(d));
-  }
-
-  static async multigetRemoteDatasetList() {
-    const datasetListList = await Promise.all(
-      DATA_SOURCE_ID_LIST.map(async function (sourceID) {
-        return await Dataset.multigetRemoteDatasetListForSource(sourceID);
-      })
-    );
-    const datasetList = datasetListList.flat();
-    const validDatasetList = datasetList.filter((d) =>
-      d.isValidForVisualization()
-    );
-    const sortedValidDatasetList = validDatasetList.sort((a, b) =>
-      a.subCategory.localeCompare(b.subCategory)
-    );
-    return sortedValidDatasetList;
   }
 
   static async multigetRemoteDatasetIdx() {
