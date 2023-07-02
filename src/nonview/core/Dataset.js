@@ -247,7 +247,9 @@ export default class Dataset {
   static async multigetRemoteDatasetList(sourceID) {
     const urlRemote = `${URL_BASE}/summary.json`;
     const dataListRaw = await WWW.json(urlRemote);
-    return dataListRaw.map((d) => Dataset.fromRaw(d)).filter((dataset) => dataset.isValidForVisualization()) ;
+    return dataListRaw
+      .map((d) => Dataset.fromRaw(d))
+      .filter((dataset) => dataset.isValidForVisualization());
   }
 
   static async multigetRemoteDatasetIdx() {
