@@ -5,7 +5,9 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  Title,
   Legend,
+  
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Box } from "@mui/material";
@@ -16,7 +18,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-
+  Title,
   Legend
 );
 
@@ -43,15 +45,25 @@ export default function MultiLineChart({
   }
   const { sameYAxisScale, commonDataOnly } = options;
 
+  let titleText = "", displayTitle = false, positionLegend = "right";
+  if (datasetList.length === 1) {
+    titleText = datasetList[0].detailedLabel;
+    displayTitle = true;
+    positionLegend = "bottom";
+  }
+  
   let chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     spanGaps: true,
     plugins: {
+      title: {
+        display: displayTitle,
+        text: titleText,
+        font: { size: 24 },
+      },
       legend: {
-        position: "top",
-        align: "start",
-        itemWrap: true,
+        position:positionLegend,
       },
     },
     scales: {
