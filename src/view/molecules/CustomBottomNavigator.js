@@ -91,7 +91,7 @@ export default function CustomBottomNavigator({
               onClick={onClickClearAll}
             />
           </Tooltip>
-          
+
           <Tooltip title="Add Random Dataset">
             <BottomNavigationAction
               icon={<AddIcon />}
