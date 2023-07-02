@@ -52,6 +52,11 @@ export default function CustomBottomNavigator({
     navigator.clipboard.writeText(window.location.href);
   };
 
+  const hasDatasets = datasetList.length> 0;
+  const disableButton = !hasDatasets;
+  const iconColor = disableButton ? "#eee" : "#000";
+  const sx={color: iconColor}
+
   return (
     <Box>
       <Paper
@@ -59,24 +64,40 @@ export default function CustomBottomNavigator({
         elevation={3}
       >
         <BottomNavigation>
-          <Tooltip title="Tweet Dataset">
+
+
+     
+      
+                  <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
-              icon={<TwitterIcon onClick={onClickTweet} />}
+              disabled={disableButton}
+              icon={<TwitterIcon onClick={onClickTweet} sx={sx}/>}
             />
           </Tooltip>
 
           <Tooltip title="Download Chart Image">
-            <BottomNavigationAction
-              icon={<FileDownloadIcon onClick={onClickDownloadChartImage} />}
+            <BottomNavigationAction 
+              disabled={disableButton}
+              icon={<FileDownloadIcon onClick={onClickDownloadChartImage} sx={sx}/>}
             />
           </Tooltip>
-
+    
           <Tooltip title="Clear All">
             <BottomNavigationAction
-              icon={<ClearIcon />}
+            disabled={disableButton}
+              icon={<ClearIcon sx={sx}/>}
               onClick={onClickClearAll}
             />
           </Tooltip>
+          <Tooltip title="Copy Link">
+            <BottomNavigationAction
+            disabled={disableButton}
+              icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx}/>}
+            />
+          </Tooltip>
+            
+          ) : null}  
+
           <Tooltip title="Add Random Dataset">
             <BottomNavigationAction
               icon={<AddIcon />}
@@ -84,11 +105,7 @@ export default function CustomBottomNavigator({
             />
           </Tooltip>
 
-          <Tooltip title="Copy Link">
-            <BottomNavigationAction
-              icon={<ContentCopyIcon onClick={onClickCopyLink} />}
-            />
-          </Tooltip>
+
         </BottomNavigation>
       </Paper>
     </Box>
