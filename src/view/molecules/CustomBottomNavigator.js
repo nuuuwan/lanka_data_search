@@ -52,10 +52,10 @@ export default function CustomBottomNavigator({
     navigator.clipboard.writeText(window.location.href);
   };
 
-  const hasDatasets = datasetList.length> 0;
+  const hasDatasets = datasetList.length > 0;
   const disableButton = !hasDatasets;
   const iconColor = disableButton ? "#eee" : "#000";
-  const sx={color: iconColor}
+  const sx = { color: iconColor };
 
   return (
     <Box>
@@ -64,48 +64,40 @@ export default function CustomBottomNavigator({
         elevation={3}
       >
         <BottomNavigation>
-
-
-     
-      
-                  <Tooltip title="Tweet Dataset">
+          <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
               disabled={disableButton}
-              icon={<TwitterIcon onClick={onClickTweet} sx={sx}/>}
+              icon={<TwitterIcon onClick={onClickTweet} sx={sx} />}
             />
           </Tooltip>
-
           <Tooltip title="Download Chart Image">
-            <BottomNavigationAction 
+            <BottomNavigationAction
               disabled={disableButton}
-              icon={<FileDownloadIcon onClick={onClickDownloadChartImage} sx={sx}/>}
+              icon={
+                <FileDownloadIcon onClick={onClickDownloadChartImage} sx={sx} />
+              }
             />
           </Tooltip>
-    
           <Tooltip title="Clear All">
             <BottomNavigationAction
-            disabled={disableButton}
-              icon={<ClearIcon sx={sx}/>}
+              disabled={disableButton}
+              icon={<ClearIcon sx={sx} />}
               onClick={onClickClearAll}
             />
           </Tooltip>
           <Tooltip title="Copy Link">
             <BottomNavigationAction
-            disabled={disableButton}
-              icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx}/>}
+              disabled={disableButton}
+              icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx} />}
             />
           </Tooltip>
-            
-          ) : null}  
-
+          ) : null}
           <Tooltip title="Add Random Dataset">
             <BottomNavigationAction
               icon={<AddIcon />}
               onClick={onClickRandom}
             />
           </Tooltip>
-
-
         </BottomNavigation>
       </Paper>
     </Box>
