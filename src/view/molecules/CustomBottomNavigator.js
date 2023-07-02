@@ -9,6 +9,7 @@ import { useScreenshot } from "use-react-screenshot";
 import Tooltip from "@mui/material/Tooltip";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 export default function CustomBottomNavigator({
   datasetList,
@@ -47,6 +48,10 @@ export default function CustomBottomNavigator({
     takeScreenshot(refChart.current).then(download);
   };
 
+  const onClickCopyLink = function () {
+    navigator.clipboard.writeText(window.location.href)
+  };
+
   return (
     <Box>
       <Paper
@@ -76,6 +81,12 @@ export default function CustomBottomNavigator({
             <BottomNavigationAction
               icon={<AddIcon />}
               onClick={onClickRandom}
+            />
+          </Tooltip>
+
+          <Tooltip title="Copy Link">
+            <BottomNavigationAction
+              icon={<ContentCopyIcon onClick={onClickCopyLink} />}
             />
           </Tooltip>
         </BottomNavigation>
