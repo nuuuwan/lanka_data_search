@@ -28,9 +28,9 @@ const DATA_SOURCE_IDX = {
     "https://www.adb.org/countries/sri-lanka/data",
     "@ADB_HQ"
   ),
-  dmv: new DataSource(
-    "dmv",
-    "Department of Motor Traffic",
+  dmtlk: new DataSource(
+    "dmtlk",
+    "Department of Motor Traffic, Sri Lanka",
     "Statistics",
     "https://dmt.gov.lk/index.php?option=com_content&view=article&id=16&Itemid=132&lang=en",
     "#DeptMotorTrafficLK"
