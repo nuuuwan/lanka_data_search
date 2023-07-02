@@ -153,20 +153,25 @@ export default class DataResult {
     return numerator / denominator;
   }
 
-  static fitLine(dataResult1, dataResult2) {
+  static getXYList(dataResult1, dataResult2) {
     const commonLabels = DataResult.getLabelIntersection([
       dataResult1,
       dataResult2,
     ]);
     const x = dataResult1.getValuesForLabels(commonLabels);
     const y = dataResult2.getValuesForLabels(commonLabels);
-    const n = commonLabels.length;
+    return { x, y };
+  }
+
+  static fitLine(dataResult1, dataResult2) {
+    const { x, y } = DataResult.getXYList(dataResult1, dataResult2);
+    const n = x.length;
     const sumX = x.reduce((a, b) => a + b, 0);
     const sumY = y.reduce((a, b) => a + b, 0);
     const sumXY = x.reduce((a, b, i) => a + b * y[i], 0);
     const sumXSquared = x.reduce((a, b) => a + b * b, 0);
     const m = (n * sumXY - sumX * sumY) / (n * sumXSquared - sumX * sumX);
     const c = (sumY - m * sumX) / n;
-    return { m, c };
+    return { m, c, x, y, n };
   }
 }
