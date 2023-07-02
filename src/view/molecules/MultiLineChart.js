@@ -7,7 +7,6 @@ import {
   LineElement,
   Title,
   Legend,
-  
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Box } from "@mui/material";
@@ -45,13 +44,15 @@ export default function MultiLineChart({
   }
   const { sameYAxisScale, commonDataOnly } = options;
 
-  let titleText = "", displayTitle = false, positionLegend = "right";
+  let titleText = "",
+    displayTitle = false,
+    positionLegend = "right";
   if (datasetList.length === 1) {
     titleText = datasetList[0].detailedLabel;
     displayTitle = true;
     positionLegend = "bottom";
   }
-  
+
   let chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -63,7 +64,7 @@ export default function MultiLineChart({
         font: { size: 24 },
       },
       legend: {
-        position:positionLegend,
+        position: positionLegend,
       },
     },
     scales: {
