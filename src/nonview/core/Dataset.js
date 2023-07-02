@@ -1,6 +1,6 @@
 import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
-import DATA_SOURCE_IDX, { DATA_SOURCE_ID_LIST } from "./DATA_SOURCE_IDX.js";
+import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
 import md5 from "md5-hash";
 import EMOJI_TO_TEXT_LIST from "./EMOJI_TO_TEXT_LIST.js";
 const MIN_KEYWORD_LENGTH = 0;
