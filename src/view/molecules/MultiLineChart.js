@@ -68,7 +68,7 @@ export default function MultiLineChart({
 
   const datasets = dataResultList.map(function (dataResult, i) {
     const data = dataResult.getValuesForLabels(labels);
-    const color = getColor(i, datasetList.length);
+    const color = datasetList[i].color || getColor(i, datasetList.length);
     const label = datasetList[i].detailedLabel;
     let dataset = {
       label,

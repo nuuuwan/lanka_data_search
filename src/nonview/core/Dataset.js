@@ -3,6 +3,7 @@ import DataResult from "./DataResult.js";
 import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
 import md5 from "md5-hash";
 import EMOJI_TO_TEXT_LIST from "./EMOJI_TO_TEXT_LIST.js";
+import COLOR_TO_TEXT_LIST from "./COLOR_TO_TEXT_LIST.js";
 const MIN_KEYWORD_LENGTH = 0;
 
 const URL_BASE =
@@ -190,6 +191,17 @@ export default class Dataset {
 
   get maxTFormatted() {
     return formatT(this.maxT);
+  }
+
+  get color() {
+    for (const [color, keyList] of Object.entries(COLOR_TO_TEXT_LIST)) {
+      for (const key of keyList) {
+        if (this.subCategory.toLowerCase().includes(key)) {
+          return color;
+        }
+      }
+    }
+    return null;
   }
 
   isMatch(keywords) {
