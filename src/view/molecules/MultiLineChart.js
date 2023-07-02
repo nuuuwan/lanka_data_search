@@ -46,7 +46,7 @@ export default function MultiLineChart({
 
   let titleText = "",
     displayTitle = false,
-    positionLegend = "right";
+    positionLegend = "top";
   if (datasetList.length === 1) {
     titleText = datasetList[0].detailedLabel;
     displayTitle = true;
