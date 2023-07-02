@@ -7,13 +7,15 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
 import Tooltip from "@mui/material/Tooltip";
-import ClearIcon from '@mui/icons-material/Clear';
-import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from "@mui/icons-material/Clear";
+import AddIcon from "@mui/icons-material/Add";
 
-export default function CustomBottomNavigator({ datasetList, refChart,onClickClearAll,onClickRandom }) {
-
-
-
+export default function CustomBottomNavigator({
+  datasetList,
+  refChart,
+  onClickClearAll,
+  onClickRandom,
+}) {
   const onClickTweet = function () {
     const dataSetText = datasetList.map((x) => x.tweetText).join("\n");
     const tweetText = [
@@ -52,9 +54,6 @@ export default function CustomBottomNavigator({ datasetList, refChart,onClickCle
         elevation={3}
       >
         <BottomNavigation>
-
-
-
           <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
               icon={<TwitterIcon onClick={onClickTweet} />}
@@ -79,7 +78,6 @@ export default function CustomBottomNavigator({ datasetList, refChart,onClickCle
               onClick={onClickRandom}
             />
           </Tooltip>
-
         </BottomNavigation>
       </Paper>
     </Box>
