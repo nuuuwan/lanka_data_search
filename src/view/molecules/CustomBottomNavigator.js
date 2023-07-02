@@ -78,6 +78,12 @@ export default function CustomBottomNavigator({
               }
             />
           </Tooltip>
+          <Tooltip title="Copy Link">
+            <BottomNavigationAction
+              disabled={disableButton}
+              icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx} />}
+            />
+          </Tooltip>
           <Tooltip title="Clear All">
             <BottomNavigationAction
               disabled={disableButton}
@@ -85,13 +91,7 @@ export default function CustomBottomNavigator({
               onClick={onClickClearAll}
             />
           </Tooltip>
-          <Tooltip title="Copy Link">
-            <BottomNavigationAction
-              disabled={disableButton}
-              icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx} />}
-            />
-          </Tooltip>
-          ) : null}
+          
           <Tooltip title="Add Random Dataset">
             <BottomNavigationAction
               icon={<AddIcon />}
