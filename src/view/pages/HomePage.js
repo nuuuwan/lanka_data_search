@@ -13,6 +13,7 @@ import { CircularProgress } from "@mui/material";
 import Dataset from "../../nonview/core/Dataset";
 import RandomX from "../../nonview/utils/RandomX";
 
+
 const N_RANDOM_DATASETS = 1;
 
 export default class HomePage extends Component {
@@ -62,6 +63,18 @@ export default class HomePage extends Component {
     const datasetIDList = datasetList.map((x) => x.shortID);
     URLContext.setContext({ datasetIDList });
     this.setState({ datasetIDList, datasetList });
+  }
+
+  async handleOnClickClearAll() {
+    await this.handleOnChangeDatasetList([]);
+  }
+
+  async handleOnClickRandom() {
+    const { allDatasetIdx,datasetList } = this.state; 
+    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx);
+    const randomDatasetList = RandomX.shuffle(allDatasetList);
+    const datasetListNew = [].concat(datasetList, randomDatasetList.slice(0, N_RANDOM_DATASETS));
+    await this.handleOnChangeDatasetList(datasetListNew);
   }
 
   renderHeader() {
@@ -115,6 +128,8 @@ export default class HomePage extends Component {
       <CustomBottomNavigator
         datasetList={datasetList}
         refChart={this.refChart}
+        onClickClearAll={this.handleOnClickClearAll.bind(this)}
+        onClickRandom={this.handleOnClickRandom.bind(this)}
       />
     );
   }

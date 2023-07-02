@@ -2,18 +2,17 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
-import CasinoIcon from "@mui/icons-material/Casino";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import URLContext from "../../nonview/utils/URLContext";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
 import Tooltip from "@mui/material/Tooltip";
-export default function CustomBottomNavigator({ datasetList, refChart }) {
-  const onClickRandom = function () {
-    URLContext.setContext({ datasetKeyList: undefined });
-    window.location.reload();
-  };
+import ClearIcon from '@mui/icons-material/Clear';
+import AddIcon from '@mui/icons-material/Add';
+
+export default function CustomBottomNavigator({ datasetList, refChart,onClickClearAll,onClickRandom }) {
+
+
 
   const onClickTweet = function () {
     const dataSetText = datasetList.map((x) => x.tweetText).join("\n");
@@ -53,12 +52,8 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
         elevation={3}
       >
         <BottomNavigation>
-          <Tooltip title="Open Random Dataset">
-            <BottomNavigationAction
-              icon={<CasinoIcon />}
-              onClick={onClickRandom}
-            />
-          </Tooltip>
+
+
 
           <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
@@ -71,6 +66,20 @@ export default function CustomBottomNavigator({ datasetList, refChart }) {
               icon={<FileDownloadIcon onClick={onClickDownloadChartImage} />}
             />
           </Tooltip>
+
+          <Tooltip title="Clear All">
+            <BottomNavigationAction
+              icon={<ClearIcon />}
+              onClick={onClickClearAll}
+            />
+          </Tooltip>
+          <Tooltip title="Add Random Dataset">
+            <BottomNavigationAction
+              icon={<AddIcon />}
+              onClick={onClickRandom}
+            />
+          </Tooltip>
+
         </BottomNavigation>
       </Paper>
     </Box>
