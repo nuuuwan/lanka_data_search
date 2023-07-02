@@ -54,7 +54,11 @@ export default function MultiLineChart({
         itemWrap: true,
       },
     },
-    scales: {},
+    scales: {
+      x: {
+        title: { display: true, text: "Time" },
+      },
+    },
   };
 
   const getLabels = commonDataOnly
