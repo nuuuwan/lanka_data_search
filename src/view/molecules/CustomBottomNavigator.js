@@ -9,7 +9,7 @@ import { useScreenshot } from "use-react-screenshot";
 import Tooltip from "@mui/material/Tooltip";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 export default function CustomBottomNavigator({
   datasetList,
@@ -49,7 +49,7 @@ export default function CustomBottomNavigator({
   };
 
   const onClickCopyLink = function () {
-    navigator.clipboard.writeText(window.location.href)
+    navigator.clipboard.writeText(window.location.href);
   };
 
   return (
