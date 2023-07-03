@@ -16,7 +16,12 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 //     icon={<HelpOutlineIcon onClick={onClickHelp} />}
 //   />
 // </Tooltip>
-
+// const onClickHelp = function () {
+//   window.open(
+//     "https://nuwans.medium.com/discovering-sri-lanka-with-time-series-data-164f89f58047",
+//     "_blank"
+//   );
+// };
 export default function CustomBottomNavigator({
   datasetList,
   refChart,
@@ -58,12 +63,7 @@ export default function CustomBottomNavigator({
     navigator.clipboard.writeText(window.location.href);
   };
 
-  const onClickHelp = function () {
-    window.open(
-      "https://nuwans.medium.com/discovering-sri-lanka-with-time-series-data-164f89f58047",
-      "_blank"
-    );
-  };
+
 
   const hasDatasets = datasetList.length > 0;
   const disableButton = !hasDatasets;
