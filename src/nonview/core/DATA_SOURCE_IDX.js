@@ -35,6 +35,13 @@ const DATA_SOURCE_IDX = {
     "https://dmt.gov.lk/index.php?option=com_content&view=article&id=16&Itemid=132&lang=en",
     "#DeptMotorTrafficLK"
   ),
+  sltda: new DataSource(
+    "sltda",
+    "Sri Lanka Tourism Development Authority",
+    "Statistics",
+    "https://www.sltda.gov.lk/en/statistics",
+    "@sltda_srilanka"
+  ),
 };
 
 export const DATA_SOURCE_LIST = Object.values(DATA_SOURCE_IDX);
