@@ -86,6 +86,7 @@ export default function MultiLineChart({
       .filter((color) => color !== null)
   );
   const showCustomColor = colorSet.size === datasetList.length;
+  const moreThanOne = datasetList.length > 1;
 
   const datasets = dataResultList.map(function (dataResult, i) {
     const datasetCore = datasetList[i];
@@ -108,12 +109,20 @@ export default function MultiLineChart({
           display: true,
           text: datasetCore.scaleAndUnitFormatted,
         },
-        beginAtZero: true,
       };
       dataset.label = datasetCore.subCategory;
+  
+
     } else {
       dataset.yAxisID = "y";
       dataset.label = datasetCore.detailedLabel;
+
+      if (moreThanOne) {
+        if (!chartOptions.scales[dataset.yAxisID]) {
+          chartOptions.scales[dataset.yAxisID] = {}
+        }
+        chartOptions.scales[dataset.yAxisID].beginAtZero= true 
+      }
     }
 
     return dataset;
