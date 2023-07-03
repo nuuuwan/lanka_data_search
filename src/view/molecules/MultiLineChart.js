@@ -114,7 +114,6 @@ export default function MultiLineChart({
     } else {
       dataset.yAxisID = "y";
       dataset.label = datasetCore.detailedLabel;
-
     }
 
     return dataset;
