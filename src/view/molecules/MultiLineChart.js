@@ -108,11 +108,13 @@ export default function MultiLineChart({
           display: true,
           text: datasetCore.scaleAndUnitFormatted,
         },
+        beginAtZero: true,
       };
       dataset.label = datasetCore.subCategory;
     } else {
       dataset.yAxisID = "y";
       dataset.label = datasetCore.detailedLabel;
+
     }
 
     return dataset;
