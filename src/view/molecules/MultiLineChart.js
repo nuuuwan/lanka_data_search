@@ -46,7 +46,7 @@ export default function MultiLineChart({
 
   let titleText = "",
     displayTitle = false,
-    positionLegend = "top";  
+    positionLegend = "top";
   if (datasetList.length === 1) {
     titleText = datasetList[0].detailedLabel;
     displayTitle = true;
@@ -92,7 +92,7 @@ export default function MultiLineChart({
     const color = showCustomColor
       ? datasetCore.color
       : getColor(i, datasetList.length);
-   
+
     let dataset = {
       data,
       backgroundColor: color,
@@ -106,7 +106,7 @@ export default function MultiLineChart({
         title: {
           display: true,
           text: datasetCore.scaleAndUnitFormatted,
-        }
+        },
       };
       dataset.label = datasetCore.subCategory;
     } else {
