@@ -65,6 +65,7 @@ export default function MultiLineChart({
       },
       legend: {
         position: positionLegend,
+        align: "start",
       },
     },
     scales: {
