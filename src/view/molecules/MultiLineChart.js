@@ -44,13 +44,11 @@ export default function MultiLineChart({
   }
   const { sameYAxisScale, commonDataOnly } = options;
 
-  let titleText = "",
-    displayTitle = false,
-    positionLegend = "top";
+  let titleText = "";
+  let displayTitle = false;
   if (datasetList.length === 1) {
     titleText = datasetList[0].subCategory;
     displayTitle = true;
-    positionLegend = "bottom";
   }
 
   let chartOptions = {
@@ -64,7 +62,7 @@ export default function MultiLineChart({
         font: { size: 24 },
       },
       legend: {
-        position: positionLegend,
+        position: "top",
         align: "start",
       },
     },
