@@ -10,7 +10,7 @@ import Tooltip from "@mui/material/Tooltip";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 export default function CustomBottomNavigator({
   datasetList,
   refChart,
@@ -52,6 +52,13 @@ export default function CustomBottomNavigator({
     navigator.clipboard.writeText(window.location.href);
   };
 
+  const onClickHelp = function () {
+    window.open(
+      "https://nuwans.medium.com/discovering-sri-lanka-with-time-series-data-164f89f58047",
+      "_blank"
+    );
+  };
+
   const hasDatasets = datasetList.length > 0;
   const disableButton = !hasDatasets;
   const iconColor = disableButton ? "#eee" : "#000";
@@ -64,6 +71,11 @@ export default function CustomBottomNavigator({
         elevation={3}
       >
         <BottomNavigation>
+          <Tooltip title="Help">
+            <BottomNavigationAction
+              icon={<HelpOutlineIcon onClick={onClickHelp} />}
+            />
+          </Tooltip>
           <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
               disabled={disableButton}
