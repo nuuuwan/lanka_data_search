@@ -48,7 +48,7 @@ export default function MultiLineChart({
     displayTitle = false,
     positionLegend = "top";
   if (datasetList.length === 1) {
-    titleText = datasetList[0].detailedLabel;
+    titleText = datasetList[0].subCategory;
     displayTitle = true;
     positionLegend = "bottom";
   }
