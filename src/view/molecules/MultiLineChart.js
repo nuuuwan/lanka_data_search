@@ -46,7 +46,7 @@ export default function MultiLineChart({
 
   let titleText = "",
     displayTitle = false,
-    positionLegend = "top";
+    positionLegend = "top";  
   if (datasetList.length === 1) {
     titleText = datasetList[0].detailedLabel;
     displayTitle = true;
@@ -87,13 +87,13 @@ export default function MultiLineChart({
   const showCustomColor = colorSet.size === datasetList.length;
 
   const datasets = dataResultList.map(function (dataResult, i) {
+    const datasetCore = datasetList[i];
     const data = dataResult.getValuesForLabels(labels);
     const color = showCustomColor
-      ? datasetList[i].color
+      ? datasetCore.color
       : getColor(i, datasetList.length);
-    const label = datasetList[i].detailedLabel;
+   
     let dataset = {
-      label,
       data,
       backgroundColor: color,
       borderColor: color,
@@ -103,9 +103,15 @@ export default function MultiLineChart({
       chartOptions.scales[dataset.yAxisID] = {
         ticks: { color },
         display: true,
+        title: {
+          display: true,
+          text: datasetCore.scaleAndUnitFormatted,
+        }
       };
+      dataset.label = datasetCore.subCategory;
     } else {
       dataset.yAxisID = "y";
+      dataset.label = datasetCore.detailedLabel;
     }
 
     return dataset;
