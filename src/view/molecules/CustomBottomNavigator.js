@@ -63,8 +63,6 @@ export default function CustomBottomNavigator({
     navigator.clipboard.writeText(window.location.href);
   };
 
-
-
   const hasDatasets = datasetList.length > 0;
   const disableButton = !hasDatasets;
   const iconColor = disableButton ? "#eee" : "#000";
