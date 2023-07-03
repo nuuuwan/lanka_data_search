@@ -86,6 +86,26 @@ export default class Dataset {
     return md5(this.id).slice(0, 8);
   }
 
+  get dataHash() {
+    return md5(
+      JSON.stringify([
+        this.sourceID,
+        // this.category,
+        // this.subCategory,
+        // this.scale,
+        // this.unit,
+        this.frequencyName,
+        this.iSubject,
+        // this.footnotes,
+        this.n,
+        this.minT,
+        this.maxT,
+        this.minValue,
+        this.maxValue,
+      ])
+    );
+  }
+
   get source() {
     return DATA_SOURCE_IDX[this.sourceID];
   }
@@ -247,9 +267,20 @@ export default class Dataset {
   static async multigetRemoteDatasetList(sourceID) {
     const urlRemote = `${URL_BASE}/summary.json`;
     const dataListRaw = await WWW.json(urlRemote);
-    return dataListRaw
+    const filteredDatasetList = dataListRaw
       .map((d) => Dataset.fromRaw(d))
       .filter((dataset) => dataset.isValidForVisualization());
+    const dedupedDatasetList = Object.values(
+      filteredDatasetList.reduce((idx, dataset) => {
+        idx[dataset.dataHash] = dataset;
+        return idx;
+      }, {})
+    );
+    const sortedDatasetList = dedupedDatasetList.sort((a, b) =>
+      a.subCategory.localeCompare(b.subCategory)
+    );
+
+    return sortedDatasetList;
   }
 
   static async multigetRemoteDatasetIdx() {
