@@ -10,7 +10,13 @@ import Tooltip from "@mui/material/Tooltip";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+// import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+// <Tooltip title="Help">
+//   <BottomNavigationAction
+//     icon={<HelpOutlineIcon onClick={onClickHelp} />}
+//   />
+// </Tooltip>
+          
 export default function CustomBottomNavigator({
   datasetList,
   refChart,
@@ -71,11 +77,7 @@ export default function CustomBottomNavigator({
         elevation={3}
       >
         <BottomNavigation>
-          <Tooltip title="Help">
-            <BottomNavigationAction
-              icon={<HelpOutlineIcon onClick={onClickHelp} />}
-            />
-          </Tooltip>
+
           <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
               disabled={disableButton}
