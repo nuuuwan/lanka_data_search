@@ -111,17 +111,15 @@ export default function MultiLineChart({
         },
       };
       dataset.label = datasetCore.subCategory;
-  
-
     } else {
       dataset.yAxisID = "y";
       dataset.label = datasetCore.detailedLabel;
 
       if (moreThanOne) {
         if (!chartOptions.scales[dataset.yAxisID]) {
-          chartOptions.scales[dataset.yAxisID] = {}
+          chartOptions.scales[dataset.yAxisID] = {};
         }
-        chartOptions.scales[dataset.yAxisID].beginAtZero= true 
+        chartOptions.scales[dataset.yAxisID].beginAtZero = true;
       }
     }
 
