@@ -16,7 +16,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 //     icon={<HelpOutlineIcon onClick={onClickHelp} />}
 //   />
 // </Tooltip>
-          
+
 export default function CustomBottomNavigator({
   datasetList,
   refChart,
@@ -77,7 +77,6 @@ export default function CustomBottomNavigator({
         elevation={3}
       >
         <BottomNavigation>
-
           <Tooltip title="Tweet Dataset">
             <BottomNavigationAction
               disabled={disableButton}
