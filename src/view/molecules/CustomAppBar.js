@@ -15,10 +15,15 @@ export default function CustomAppBar({ allDatasetIdx }) {
     );
   }
 
+  const onClick = function () {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={onClick}>
           Lanka Data Search {renderedStats}
         </Typography>
       </Toolbar>
