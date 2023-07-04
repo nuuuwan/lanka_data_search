@@ -2,7 +2,7 @@ import React from "react";
 import DataResult from "../../nonview/core/DataResult";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-
+import { COLOR_PAPER } from "../STYLE.js";
 function getCorrelationText(isPositive, isStrong, isMild) {
   let correlationText = "";
   if (isStrong) {
@@ -59,7 +59,7 @@ export default function StatCorrelationView({ dataResultList }) {
         color,
         margin: 1,
         padding: 1,
-        background: "#fcfcfc",
+        background: COLOR_PAPER,
         borderRadius: 3,
         width: 300,
       }}

@@ -5,6 +5,7 @@ import Link from "@mui/material/Link";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Box from "@mui/material/Box";
 import DataSourceLink from "../atoms/DataSourceLink";
+import { COLOR_PAPER } from "../STYLE.js";
 export default function DatasetDetailsView({ dataset }) {
   return (
     <Paper
@@ -12,7 +13,7 @@ export default function DatasetDetailsView({ dataset }) {
       sx={{
         margin: 1,
         padding: 1,
-        background: "#fcfcfc",
+        background: COLOR_PAPER,
         borderRadius: 3,
         width: 300,
       }}

@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Alert from "@mui/material/Alert";
 import XYPlot from "./XYPlot";
-
+import { COLOR_PAPER } from "../STYLE.js";
 const MIN_N = 5;
 const SYMBOL1 = "𝑥";
 const SYMBOL2 = "𝑦";
@@ -39,7 +39,7 @@ export default function StatEquationView({ dataResultList, datasetList }) {
       sx={{
         margin: 1,
         padding: 1,
-        background: "#fcfcfc",
+        background: COLOR_PAPER,
         borderRadius: 3,
         width: 300,
       }}
