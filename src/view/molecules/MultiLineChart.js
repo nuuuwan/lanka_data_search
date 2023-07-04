@@ -42,7 +42,7 @@ export default function MultiLineChart({
   if (dataResultList.length === 0) {
     return null;
   }
-  const { sameYAxisScale, commonDataOnly } = options;
+  const { sameYAxisScale, commonDataOnly, proportionalAxes } = options;
 
   let titleText = "";
   let displayTitle = false;
@@ -77,6 +77,9 @@ export default function MultiLineChart({
     ? DataResult.getLabelIntersection
     : DataResult.getLabelUnion;
   const labels = getLabels(dataResultList);
+  const dataResultListForLabels = dataResultList.map((dr) =>
+    dr.getDataResultForLabels(labels)
+  );
 
   const colorSet = new Set(
     datasetList
@@ -84,23 +87,34 @@ export default function MultiLineChart({
       .filter((color) => color !== null)
   );
   const showCustomColor = colorSet.size === datasetList.length;
-  const moreThanOne = datasetList.length > 1;
 
-  const datasets = dataResultList.map(function (dataResult, i) {
+  const minSpanRatio = Math.min(
+    ...dataResultListForLabels.map((dr) => dr.min / dr.max)
+  );
+
+  const datasets = dataResultListForLabels.map(function (dataResult, i) {
     const datasetCore = datasetList[i];
-    const data = dataResult.getValuesForLabels(labels);
     const color = showCustomColor
       ? datasetCore.color
       : getColor(i, datasetList.length);
 
     let dataset = {
-      data,
+      data: dataResult.values,
       backgroundColor: color,
       borderColor: color,
     };
     if (!sameYAxisScale) {
       dataset.yAxisID = `y${i}`;
+      const actualMin = dataResult.min;
+      const actualMax = proportionalAxes
+        ? dataResult.min / minSpanRatio
+        : dataResult.max;
+      const span = actualMax - actualMin;
+      const padding = span * 0.01;
+
       chartOptions.scales[dataset.yAxisID] = {
+        min: actualMin - padding,
+        max: actualMax + padding,
         ticks: { color },
         display: true,
         title: {
@@ -113,12 +127,14 @@ export default function MultiLineChart({
       dataset.yAxisID = "y";
       dataset.label = datasetCore.detailedLabel;
 
-      if (moreThanOne) {
-        if (!chartOptions.scales[dataset.yAxisID]) {
-          chartOptions.scales[dataset.yAxisID] = {};
-        }
-        chartOptions.scales[dataset.yAxisID].beginAtZero = true;
-      }
+      chartOptions.scales[dataset.yAxisID] = {
+        ticks: { color },
+        display: true,
+        title: {
+          display: true,
+          text: datasetCore.scaleAndUnitFormatted,
+        },
+      };
     }
 
     return dataset;
@@ -134,6 +150,7 @@ export default function MultiLineChart({
     Math.max(MIN_HEIGHT, parseInt((window.innerWidth * 0.8 * 9) / 16))
   );
   const width = height * ASPECT_RATIO;
+
   return (
     <Box>
       <div id="multi-line-chart" ref={refChart}>

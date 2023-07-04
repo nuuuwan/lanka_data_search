@@ -21,6 +21,7 @@ export default class DatasetListRemoteDataView extends Component {
       options: {
         sameYAxisScale: false,
         commonDataOnly: false,
+        proportionalAxes: false,
       },
     };
   }

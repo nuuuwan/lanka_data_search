@@ -21,6 +21,17 @@ export default class DataResult {
     this.values = values;
   }
 
+  get valuesNonNull() {
+    return this.values.filter((x) => x !== null && x !== undefined);
+  }
+
+  get max() {
+    return Math.max(...this.valuesNonNull);
+  }
+
+  get min() {
+    return Math.min(...this.valuesNonNull);
+  }
   static parseValue(x) {
     if (x === null) {
       return null;
@@ -97,6 +108,11 @@ export default class DataResult {
 
   getValuesForLabels(labels) {
     return labels.map((label) => this.values[this.labels.indexOf(label)]);
+  }
+
+  getDataResultForLabels(labels) {
+    const values = this.getValuesForLabels(labels);
+    return new DataResult(labels, values);
   }
 
   static getLabelUnion(dataResultList) {
