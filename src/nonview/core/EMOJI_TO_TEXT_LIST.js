@@ -10,10 +10,10 @@ const EMOJI_TO_TEXT_LIST = {
   // industries
   "🎓": ["universi", "educat", "school"],
   "🌲": ["forest"],
-  "😎": ["touri"],
+  "🌴": ["touri"],
   "☁️": ["carbon", "CO2", "pollut", "emission", "smoke", "smog"],
-  "⚕️": ["doctor", "nurse", "medic", "pharma", "health", "nurse"],
-  "🛣️": ["transport", "road"],
+  "🩺": ["doctor", "nurse", "medic", "pharma", "health", "nurse"],
+  "🚗": ["transport", "road"],
   "🌾": ["agri", "farm"],
   "☎️": ["phone", "telecom"],
   "🏬": ["business"],
