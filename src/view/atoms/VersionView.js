@@ -1,5 +1,5 @@
 import { Typography, Box, Link } from "@mui/material";
-import { VERSION } from "../../nonview/core/Version";
+import { VERSION, VERSION_INFO } from "../../nonview/core/Version";
 export default function VersionView() {
   return (
     <Box sx={{ margin: 1, padding: 1, textAlign: "center" }}>
@@ -8,6 +8,9 @@ export default function VersionView() {
         <Link href="https://www.github.com/nuuuwan/" target="_blank">
           nuuuwan
         </Link>
+      </Typography>
+      <Typography variant="caption" sx={{ color: "#ccc" }}>
+        {VERSION_INFO}
       </Typography>
     </Box>
   );
