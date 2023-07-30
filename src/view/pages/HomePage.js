@@ -18,14 +18,16 @@ const N_RANDOM_DATASETS = 1;
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
+
     const context = URLContext.getContext();
     const datasetIDList =
       context.datasetIDList || context.datasetKeyList || undefined;
-    const options = {
+    const options = context.options || {
       sameYAxisScale: false,
       commonDataOnly: false,
       proportionalAxes: false,
     };
+
     this.state = {
       datasetIDList,
       options,
@@ -46,7 +48,7 @@ export default class HomePage extends Component {
   }
 
   async componentDidMount() {
-    let { datasetIDList } = this.state;
+    let { datasetIDList, options } = this.state;
 
     const allDatasetIdx = await Dataset.multigetRemoteDatasetIdx();
 
@@ -56,7 +58,7 @@ export default class HomePage extends Component {
       );
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
       datasetIDList = randomDatasetIDList.slice(0, N_RANDOM_DATASETS);
-      URLContext.setContext({ datasetIDList });
+      URLContext.setContext({ datasetIDList, options });
     }
 
     const datasetList = datasetIDList.map(
@@ -65,8 +67,9 @@ export default class HomePage extends Component {
     this.setState({ datasetIDList, datasetList, allDatasetIdx });
   }
   async handleOnChangeDatasetList(datasetList) {
+    const { options } = this.state;
     const datasetIDList = datasetList.map((x) => x.shortID);
-    URLContext.setContext({ datasetIDList });
+    URLContext.setContext({ datasetIDList, options });
     this.setState({ datasetIDList, datasetList });
   }
 
@@ -86,9 +89,11 @@ export default class HomePage extends Component {
   }
 
   handleChangeOptions(newOptions) {
-    let options = this.state.options;
+    let { options } = this.state;
+    const { datasetIDList } = this.state;
     options = { ...options, ...newOptions };
     this.setState({ options });
+    URLContext.setContext({ datasetIDList, options });
   }
 
   renderHeader() {
