@@ -21,8 +21,14 @@ export default class HomePage extends Component {
     const context = URLContext.getContext();
     const datasetIDList =
       context.datasetIDList || context.datasetKeyList || undefined;
+    const options = {
+      sameYAxisScale: false,
+      commonDataOnly: false,
+      proportionalAxes: false,
+    };
     this.state = {
       datasetIDList,
+      options,
     };
     this.refChart = createRef();
   }
@@ -79,13 +85,19 @@ export default class HomePage extends Component {
     await this.handleOnChangeDatasetList(datasetListNew);
   }
 
+  handleChangeOptions(newOptions) {
+    let options = this.state.options;
+    options = { ...options, ...newOptions };
+    this.setState({ options });
+  }
+
   renderHeader() {
     const { allDatasetIdx } = this.state;
     return <CustomAppBar allDatasetIdx={allDatasetIdx} />;
   }
 
   renderBody() {
-    const { allDatasetIdx, datasetList } = this.state;
+    const { allDatasetIdx, datasetList, options } = this.state;
     if (!allDatasetIdx) {
       return <CircularProgress />;
     }
@@ -113,6 +125,8 @@ export default class HomePage extends Component {
           key={key}
           datasetList={datasetList}
           refChart={this.refChart}
+          options={options}
+          handleChangeOptions={this.handleChangeOptions.bind(this)}
         />
         <AlertDatasets nData={nData} />
         <AlertCBSLApp />

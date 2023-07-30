@@ -18,18 +18,7 @@ export default class DatasetListRemoteDataView extends Component {
     super(props);
     this.state = {
       dataResultList: null,
-      options: {
-        sameYAxisScale: false,
-        commonDataOnly: false,
-        proportionalAxes: false,
-      },
     };
-  }
-
-  handleChangeOptions(newOptions) {
-    let options = this.state.options;
-    options = { ...options, ...newOptions };
-    this.setState({ options });
   }
 
   async componentDidMount() {
@@ -46,26 +35,27 @@ export default class DatasetListRemoteDataView extends Component {
     if (!dataResultList || dataResultList.length < 2) {
       return null;
     }
-    const { options } = this.state;
+    const { options, handleChangeOptions } = this.props;
 
-    const renderedInner = Object.entries(options).map(
-      function ([optionName, optionValue]) {
-        const onChange = function (event) {
-          const newOptions = {};
-          newOptions[optionName] = event.target.checked;
-          this.handleChangeOptions(newOptions);
-        }.bind(this);
-        const label = StringX.camelToNormal(optionName);
-        return (
-          <FormControlLabel
-            key={"option-" + optionName}
-            control={<Checkbox checked={optionValue} />}
-            label={label}
-            onChange={onChange}
-          />
-        );
-      }.bind(this)
-    );
+    const renderedInner = Object.entries(options).map(function ([
+      optionName,
+      optionValue,
+    ]) {
+      const onChange = function (event) {
+        const newOptions = {};
+        newOptions[optionName] = event.target.checked;
+        handleChangeOptions(newOptions);
+      };
+      const label = StringX.camelToNormal(optionName);
+      return (
+        <FormControlLabel
+          key={"option-" + optionName}
+          control={<Checkbox checked={optionValue} />}
+          label={label}
+          onChange={onChange}
+        />
+      );
+    });
     return (
       <Stack direction="row" spacing={1}>
         {renderedInner}
@@ -74,8 +64,8 @@ export default class DatasetListRemoteDataView extends Component {
   }
 
   renderMultiLineChart() {
-    const { datasetList, refChart } = this.props;
-    const { dataResultList, options } = this.state;
+    const { datasetList, refChart, options } = this.props;
+    const { dataResultList } = this.state;
     if (!dataResultList) {
       return <CircularProgress />;
     }
