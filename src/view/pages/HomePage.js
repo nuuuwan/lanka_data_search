@@ -14,6 +14,7 @@ import HomePageHandlersMixin, {
   N_RANDOM_DATASETS,
 } from "./HomePageHandlersMixin";
 import { STYLE } from "./HomePageStyle";
+import { DEFAULT_HOME_PAGE_VIEW_NAME } from "./HomePageView";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -27,10 +28,13 @@ export default class HomePage extends Component {
       commonDataOnly: false,
       proportionalAxes: false,
     };
+    const homePageViewName =
+      context.homePageViewName || DEFAULT_HOME_PAGE_VIEW_NAME;
 
     this.state = {
       datasetIDList,
       options,
+      homePageViewName,
     };
     this.refChart = createRef();
   }
@@ -73,6 +77,20 @@ export default class HomePage extends Component {
   }
 
   renderBody() {
+    const { homePageViewName } = this.state;
+    switch (homePageViewName) {
+      case "Chart":
+        return this.renderBodyChart();
+      case "Sources":
+        return this.renderBodySources();
+      case "Datasets":
+        return this.renderBodyDatasets();
+      default:
+        throw new Error(`Unknown homePageViewName: ${homePageViewName}`);
+    }
+  }
+
+  renderBodyChart() {
     const { allDatasetIdx, datasetList, options } = this.state;
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
@@ -107,12 +125,22 @@ export default class HomePage extends Component {
     );
   }
 
+  renderBodySources() {
+    return "Sources";
+  }
+
+  renderBodyDatasets() {
+    return "Datasets";
+  }
+
   renderFooter() {
-    const { datasetList } = this.state;
+    const { homePageViewName } = this.state;
     return (
       <CustomBottomNavigator
-        datasetList={datasetList}
-        refChart={this.refChart}
+        homePageViewName={homePageViewName}
+        handleOnChangeHomePageViewName={this.handleOnChangeHomePageViewName.bind(
+          this
+        )}
       />
     );
   }

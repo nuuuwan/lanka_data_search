@@ -7,7 +7,7 @@ export default function CopyLinkButton() {
   };
   return (
     <IconButton onClick={onClick} color="primary">
-      <ContentCopyIcon  />
+      <ContentCopyIcon />
     </IconButton>
   );
 }

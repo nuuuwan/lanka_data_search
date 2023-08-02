@@ -33,6 +33,10 @@ const HomePageHandlersMixin = {
     this.setState({ options });
     URLContext.setContext({ datasetIDList, options });
   },
+
+  handleOnChangeHomePageViewName(homePageViewName) {
+    this.setState({ homePageViewName });
+  },
 };
 
 export default HomePageHandlersMixin;

@@ -36,7 +36,7 @@ export default function DatasetSelector({
         renderInput={(params) => (
           <TextField {...params} placeholder="Search Datasets" />
         )}
-        sx={{ minWidth: 400 }}
+        sx={{ minWidth: 320 }}
         onChange={onChange}
       />
       <Grid container justifyContent="flex-end">
