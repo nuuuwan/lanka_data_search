@@ -4,18 +4,21 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
-export default function DataSourceLink({ dataSource }) {
+export default function DatasetLink({ dataset, onChangeDatasetList }) {
+  const dataSource = dataset.source;
+
   const onClick = function () {
-    window.open(dataSource.url, "_blank");
+    onChangeDatasetList([dataset]);
   };
+
   return (
-    <ListItemButton onClick={onClick} sx={{ padding: 0, margin: 0 }}>
+    <ListItemButton onClick={onClick} sx={{ margin: 0, padding: 0 }}>
       <ListItemIcon>
         <DataSourceAvatar dataSource={dataSource} />
       </ListItemIcon>
       <ListItemText
-        primary={dataSource.name}
-        secondary={dataSource.subSource}
+        primary={dataset.subCategory}
+        secondary={dataset.lastUpdateTimeFormatted}
       />
     </ListItemButton>
   );

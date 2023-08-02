@@ -10,9 +10,9 @@ export default class HomePageView {
 }
 
 export const HOME_PAGE_VIEW_LIST = [
-  new HomePageView("Chart", BarChartIcon),
   new HomePageView("Datasets", ListIcon),
   new HomePageView("Sources", AccountTreeIcon),
+  new HomePageView("Chart", BarChartIcon),
 ];
 
-export const DEFAULT_HOME_PAGE_VIEW_NAME = HOME_PAGE_VIEW_LIST[0].name;
+export const DEFAULT_HOME_PAGE_VIEW_NAME = HOME_PAGE_VIEW_LIST[2].name;

@@ -47,4 +47,8 @@ export default class DatasetUtils {
   static getDatasetListLength(datasetIdx) {
     return Object.values(DatasetUtils.getUniqueDatasetList(datasetIdx)).length;
   }
+
+  static compareByLastUpdateTime(a, b) {
+    return b.lastUpdatedTimeUT - a.lastUpdatedTimeUT;
+  }
 }

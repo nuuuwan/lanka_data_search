@@ -6,6 +6,7 @@ const MIN_KEYWORD_LENGTH = 0;
 export default class Dataset extends DatasetBaseProps {
   static fromRaw(raw) {
     const summaryStatistics = raw.summary_statistics;
+
     return new Dataset(
       raw.source_id,
       raw.category,
@@ -19,7 +20,8 @@ export default class Dataset extends DatasetBaseProps {
       summaryStatistics.min_t,
       summaryStatistics.max_t,
       summaryStatistics.min_value,
-      summaryStatistics.max_value
+      summaryStatistics.max_value,
+      raw.last_updated_time_ut
     );
   }
 

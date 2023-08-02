@@ -8,7 +8,7 @@ const HomePageHandlersMixin = {
     const { options } = this.state;
     const datasetIDList = datasetList.map((x) => x.shortID);
     URLContext.setContext({ datasetIDList, options });
-    this.setState({ datasetIDList, datasetList });
+    this.setState({ datasetIDList, datasetList, homePageViewName: "Chart" });
   },
 
   async handleOnClickClearAll() {

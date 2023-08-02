@@ -112,4 +112,12 @@ export default class DatasetBaseProps extends DatasetBase {
   get color() {
     return Color.forText(this.subCategory);
   }
+
+  get lastUpdateTimeFormatted() {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(this.lastUpdateTimeUT * 1_000).toLocaleString(
+      "en-US",
+      options
+    );
+  }
 }

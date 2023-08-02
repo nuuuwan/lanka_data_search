@@ -12,7 +12,8 @@ export default class DatasetBase {
     minT,
     maxT,
     minValue,
-    maxValue
+    maxValue,
+    lastUpdateTimeUT
   ) {
     this.sourceID = sourceID;
     this.category = category;
@@ -27,5 +28,6 @@ export default class DatasetBase {
     this.maxT = maxT;
     this.minValue = minValue;
     this.maxValue = maxValue;
+    this.lastUpdateTimeUT = lastUpdateTimeUT;
   }
 }
