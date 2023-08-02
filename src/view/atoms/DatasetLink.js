@@ -11,9 +11,10 @@ export default function DatasetLink({
 }) {
   const onClick = function () {
     if (onChangeDatasetList === undefined) {
-      return;
-    }
+      window.open(dataset.dataURL);
+    }else{
     onChangeDatasetList([dataset]);
+    }
   };
 
   return (

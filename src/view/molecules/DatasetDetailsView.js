@@ -20,8 +20,7 @@ export default function DatasetDetailsView({ dataset }) {
         width: 300,
       }}
     >
-      <DataSourceLink dataSource={dataset.source} />
-      <DatasetLink dataset={dataset} showDataSource={false} />
+      <DatasetLink dataset={dataset} showDataSource={true} />
 
       <Box sx={{ paddingLeft: 2 }}>
         {Object.entries(dataset.footnotes).map(function (entry) {
