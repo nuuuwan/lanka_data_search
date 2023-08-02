@@ -7,7 +7,6 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
 import Tooltip from "@mui/material/Tooltip";
-import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 // import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -95,14 +94,6 @@ export default function CustomBottomNavigator({
               icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx} />}
             />
           </Tooltip>
-          <Tooltip title="Clear All">
-            <BottomNavigationAction
-              disabled={disableButton}
-              icon={<ClearIcon sx={sx} />}
-              onClick={onClickClearAll}
-            />
-          </Tooltip>
-
           <Tooltip title="Add Random Dataset">
             <BottomNavigationAction
               icon={<AddIcon />}
