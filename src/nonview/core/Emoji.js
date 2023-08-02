@@ -5,12 +5,14 @@ export default class Emoji {
   }
 
   get emojis() {
+    const haystack = this.text.toLowerCase();
+
     return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (
       s,
       [emoji, textList]
     ) {
       for (const text of textList) {
-        if (this.text.includes(text.toLowerCase())) {
+        if (haystack.includes(text.toLowerCase())) {
           return `${emoji}${s}`;
         }
       }

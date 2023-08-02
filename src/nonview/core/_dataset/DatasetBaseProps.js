@@ -86,11 +86,10 @@ export default class DatasetBaseProps extends DatasetBase {
   }
 
   get emojis() {
-    const haystack = (
+    const haystack =
       this.subCategory +
       "" +
-      this.category.replace("World Bank - Sri Lanka Data", "")
-    ).toLowerCase();
+      this.category.replace("World Bank - Sri Lanka Data", "");
     return new Emoji(haystack).emojis;
   }
 
