@@ -1,7 +1,7 @@
 import React from "react";
 import DataSourceAvatar from "./DataSourceAvatar";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 
 export default function DatasetLink({ dataset, onChangeDatasetList }) {
@@ -12,10 +12,10 @@ export default function DatasetLink({ dataset, onChangeDatasetList }) {
   };
 
   return (
-    <ListItemButton onClick={onClick} sx={{ margin: 0, padding: 0 }}>
-      <ListItemIcon>
+    <ListItemButton onClick={onClick}>
+      <ListItemAvatar>
         <DataSourceAvatar dataSource={dataSource} />
-      </ListItemIcon>
+      </ListItemAvatar>
       <ListItemText
         primary={dataset.subCategory}
         secondary={dataset.lastUpdateTimeFormatted}
