@@ -15,6 +15,7 @@ import HomePageHandlersMixin, {
 } from "./HomePageHandlersMixin";
 import { STYLE } from "./HomePageStyle";
 import { DEFAULT_HOME_PAGE_VIEW_NAME } from "./HomePageView";
+import DataSourceListView from "../molecules/DataSourceListView";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -126,7 +127,7 @@ export default class HomePage extends Component {
   }
 
   renderBodySources() {
-    return "Sources";
+    return <DataSourceListView />;
   }
 
   renderBodyDatasets() {

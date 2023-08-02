@@ -5,7 +5,7 @@ import DataSourceAvatar from "./DataSourceAvatar";
 import { Typography } from "@mui/material";
 export default function DataSourceLink({ dataSource }) {
   return (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="row" spacing={1} sx={{ marginTop: 1 }}>
       <DataSourceAvatar dataSource={dataSource} />
       <Typography variant="caption">
         {" "}
