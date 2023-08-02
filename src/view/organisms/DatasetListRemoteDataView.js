@@ -32,7 +32,7 @@ export default class DatasetListRemoteDataView extends Component {
 
   renderOptions() {
     const { dataResultList } = this.state;
-    if (!dataResultList || dataResultList.length < 2) {
+    if (dataResultList.length < 2) {
       return null;
     }
     const { options, handleChangeOptions } = this.props;
@@ -66,9 +66,6 @@ export default class DatasetListRemoteDataView extends Component {
   renderMultiLineChart() {
     const { datasetList, refChart, options } = this.props;
     const { dataResultList } = this.state;
-    if (!dataResultList) {
-      return <CircularProgress />;
-    }
 
     if (dataResultList.length === 0) {
       return (
@@ -94,7 +91,7 @@ export default class DatasetListRemoteDataView extends Component {
 
   renderStatistics() {
     const { dataResultList } = this.state;
-    if (!dataResultList || dataResultList.length !== 2) {
+    if (dataResultList.length !== 2) {
       return null;
     }
 
@@ -120,7 +117,7 @@ export default class DatasetListRemoteDataView extends Component {
 
   renderDatasetDetails() {
     const { datasetList } = this.props;
-    if (!datasetList || datasetList.length === 0) {
+    if (datasetList.length === 0) {
       return null;
     }
 
@@ -132,6 +129,10 @@ export default class DatasetListRemoteDataView extends Component {
     );
   }
   render() {
+    const { dataResultList } = this.state;
+    if (!dataResultList) {
+      return <CircularProgress />;
+    }
     return (
       <Box>
         {this.renderMultiLineChart()}
