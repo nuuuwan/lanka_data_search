@@ -15,6 +15,7 @@ import RandomX from "../../nonview/utils/RandomX";
 import HomePageHandlersMixin, {
   N_RANDOM_DATASETS,
 } from "./HomePageHandlersMixin";
+import { STYLE } from "./HomePageStyle";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -128,43 +129,10 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <Box sx={{ margin: 0, padding: 0 }}>
-        <Box
-          sx={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            overflowY: "scroll",
-            overflowX: "hidden",
-          }}
-        >
-          {this.renderHeader()}
-        </Box>
-        <Box
-          sx={{
-            position: "fixed",
-            top: 60,
-            bottom: 60,
-            left: 0,
-            right: 0,
-            overflow: "scroll",
-            paddingLeft: 2,
-            paddingRight: 2,
-          }}
-        >
-          {this.renderBody()}
-        </Box>{" "}
-        <Box
-          sx={{
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-          }}
-        >
-          {this.renderFooter()}
-        </Box>
+      <Box sx={STYLE.ALL}>
+        <Box sx={STYLE.HEADER}>{this.renderHeader()}</Box>
+        <Box sx={STYLE.BODY}>{this.renderBody()}</Box>{" "}
+        <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
       </Box>
     );
   }
