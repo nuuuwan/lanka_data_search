@@ -2,8 +2,7 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import IconButton from "@mui/material/IconButton";
+import AddRandomDatasetButton from "../atoms/AddRandomDatasetButton";
 import Grid from "@mui/material/Grid";
 function renderDataset(dataset) {
   return dataset.detailedLabelWithEmojis;
@@ -40,9 +39,7 @@ export default function DatasetSelector({
         onChange={onChange}
       />
       <Grid container justifyContent="flex-end">
-        <IconButton onClick={onClickRandom} color="primary">
-          <PlaylistAddIcon />
-        </IconButton>
+        <AddRandomDatasetButton onClickRandom={onClickRandom} />
       </Grid>
     </Box>
   );
