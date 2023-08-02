@@ -25,7 +25,7 @@ export default function DatasetLink({
       ) : null}
       <ListItemText
         primary={dataset.subCategory}
-        secondary={dataset.category}
+        secondary={dataset.emojis}
       />
     </ListItemButton>
   );

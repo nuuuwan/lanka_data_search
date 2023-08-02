@@ -10,8 +10,8 @@ export const STYLE = {
   },
   BODY: {
     position: "fixed",
-    top: 60,
-    bottom: 60,
+    top: 80,
+    bottom: 80,
     left: 0,
     right: 0,
     overflowY: "scroll",
