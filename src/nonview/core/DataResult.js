@@ -1,20 +1,4 @@
-const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-const QUARTERS = ["Q1", "Q2", "Q3", "Q4"];
-const HALVES = ["H1", "H2"];
+import { MONTHS, QUARTERS, HALVES } from "./TimeConstants.js";
 export default class DataResult {
   constructor(labels, values) {
     this.labels = labels;
