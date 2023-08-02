@@ -19,6 +19,7 @@ export default function DatasetListView({
         key={key}
         dataset={dataset}
         onChangeDatasetList={onChangeDatasetList}
+        showDataSource={true}
       />
     );
   });
