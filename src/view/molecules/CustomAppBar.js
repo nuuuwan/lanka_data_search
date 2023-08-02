@@ -13,6 +13,8 @@ export default function CustomAppBar({ allDatasetIdx }) {
         ({nData.toLocaleString()} <span className="subscript">Datasets</span>)
       </span>
     );
+  } else {
+    renderedStats = <span> (Loading...)</span>;
   }
 
   const onClick = function () {

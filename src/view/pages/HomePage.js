@@ -79,6 +79,11 @@ export default class HomePage extends Component {
   }
 
   renderBody() {
+    const { allDatasetIdx } = this.state;
+    if (!allDatasetIdx) {
+      return <CircularProgress />;
+    }
+
     const { homePageViewName } = this.state;
     switch (homePageViewName) {
       case "Chart":
@@ -153,18 +158,11 @@ export default class HomePage extends Component {
   }
 
   render() {
-    const { datasetList } = this.state;
     return (
       <Box sx={STYLE.ALL}>
         <Box sx={STYLE.HEADER}>{this.renderHeader()}</Box>
-        {datasetList ? (
-          <>
-            <Box sx={STYLE.BODY}>{this.renderBody()}</Box>
-            <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
-          </>
-        ) : (
-          <CircularProgress />
-        )}
+        <Box sx={STYLE.BODY}>{this.renderBody()}</Box>
+        <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
       </Box>
     );
   }

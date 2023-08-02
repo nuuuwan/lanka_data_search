@@ -23,10 +23,7 @@ export default function DatasetLink({
           <DataSourceAvatar dataSource={dataset.source} />
         </ListItemAvatar>
       ) : null}
-      <ListItemText
-        primary={dataset.subCategory}
-        secondary={dataset.emojis}
-      />
+      <ListItemText primary={dataset.subCategory} secondary={dataset.emojis} />
     </ListItemButton>
   );
 }
