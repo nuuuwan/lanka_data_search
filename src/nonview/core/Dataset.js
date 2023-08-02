@@ -2,6 +2,7 @@ import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
 import DATA_SOURCE_IDX from "./DATA_SOURCE_IDX.js";
 import md5 from "md5-hash";
+import DatasetBase from "./_dataset/DatasetBase.js";
 import EMOJI_TO_TEXT_LIST from "./EMOJI_TO_TEXT_LIST.js";
 import COLOR_TO_TEXT_LIST from "./COLOR_TO_TEXT_LIST.js";
 const MIN_KEYWORD_LENGTH = 0;
@@ -16,37 +17,7 @@ function formatT(t) {
   return t.toString().replaceAll("-01", "");
 }
 
-export default class Dataset {
-  constructor(
-    sourceID,
-    category,
-    subCategory,
-    scale,
-    unit,
-    frequencyName,
-    iSubject,
-    footnotes,
-    n,
-    minT,
-    maxT,
-    minValue,
-    maxValue
-  ) {
-    this.sourceID = sourceID;
-    this.category = category;
-    this.subCategory = subCategory;
-    this.scale = scale;
-    this.unit = unit;
-    this.frequencyName = frequencyName;
-    this.iSubject = iSubject;
-    this.footnotes = footnotes;
-    this.n = n;
-    this.minT = minT;
-    this.maxT = maxT;
-    this.minValue = minValue;
-    this.maxValue = maxValue;
-  }
-
+export default class Dataset extends DatasetBase {
   static fromRaw(raw) {
     const summaryStatistics = raw.summary_statistics;
     return new Dataset(
