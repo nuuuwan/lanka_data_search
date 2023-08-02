@@ -1,11 +1,10 @@
 import DATA_SOURCE_IDX from "../DATA_SOURCE_IDX.js";
 import md5 from "md5-hash";
 import DatasetBase from "./DatasetBase.js";
-import EMOJI_TO_TEXT_LIST from "../EMOJI_TO_TEXT_LIST.js";
 import COLOR_TO_TEXT_LIST from "../COLOR_TO_TEXT_LIST.js";
 import Scale from "../Scale.js";
 import Unit from "../Unit.js";
-
+import Emoji from "../Emoji.js";
 const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
@@ -96,18 +95,7 @@ export default class DatasetBaseProps extends DatasetBase {
       "" +
       this.category.replace("World Bank - Sri Lanka Data", "")
     ).toLowerCase();
-    return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (
-      s,
-      [emoji, textList]
-    ) {
-      for (const text of textList) {
-        if (haystack.includes(text.toLowerCase())) {
-          return `${emoji}${s}`;
-        }
-      }
-      return s;
-    },
-    "");
+    return new Emoji(haystack).emojis;
   }
 
   get detailedLabel() {
