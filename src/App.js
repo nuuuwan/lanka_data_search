@@ -7,7 +7,7 @@ import HomePage from "./view/pages/HomePage.js";
 import "./App.css";
 
 import { defaults } from "chart.js";
-const FONT_FAMILY = "Livvic";
+const FONT_FAMILY = "Bubbler One";
 const THEME = createTheme({
   palette: {
     primary: {
