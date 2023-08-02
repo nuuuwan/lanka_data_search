@@ -3,6 +3,8 @@ import md5 from "md5-hash";
 import DatasetBase from "./DatasetBase.js";
 import EMOJI_TO_TEXT_LIST from "../EMOJI_TO_TEXT_LIST.js";
 import COLOR_TO_TEXT_LIST from "../COLOR_TO_TEXT_LIST.js";
+import Scale from "../Scale.js";
+import Unit from "../Unit.js";
 
 const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
@@ -68,45 +70,11 @@ export default class DatasetBaseProps extends DatasetBase {
   }
 
   get scaleFormatted() {
-    if (
-      this.scale === "Million" ||
-      this.scale === "Mn." ||
-      this.scale === "Millions"
-    ) {
-      return "M";
-    }
-    if (this.scale === "Billion" || this.scale === "Bn.") {
-      return "B";
-    }
-    if (
-      this.scale === "Thousand" ||
-      this.scale === "Th." ||
-      this.scale === "' 000"
-    ) {
-      return "K";
-    }
-
-    if (this.scale === "Percentage") {
-      return "%";
-    }
-    if (
-      this.scale === "Unit" ||
-      this.scale === "Number" ||
-      this.scale === "Numbers"
-    ) {
-      return "";
-    }
-    return this.scale;
+    return new Scale(this.scale).formatted;
   }
 
   get unitFormatted() {
-    if (this.unit === "Unit" || this.unit === "Number") {
-      return "Units";
-    }
-    if (this.unit === "Rs.") {
-      return " LKR";
-    }
-    return this.unit;
+    return new Unit(this.unit).formatted;
   }
 
   get scaleAndUnitFormatted() {
