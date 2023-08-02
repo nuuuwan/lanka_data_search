@@ -59,7 +59,7 @@ export default function MultiLineChart({
       title: {
         display: displayTitle,
         text: titleText,
-        font: { size: 24 },
+        font: { size: 30 },
       },
       legend: {
         position: "top",
