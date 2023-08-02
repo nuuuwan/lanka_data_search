@@ -1,9 +1,10 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
 function renderDataset(dataset) {
   return dataset.detailedLabelWithEmojis;
 }
@@ -25,11 +26,7 @@ export default function DatasetSelector({
   };
 
   return (
-    <Stack
-      sx={{ margin: 2, minWidth: 800 }}
-      direction="row"
-      alignItems="center"
-    >
+    <Box>
       <Autocomplete
         multiple
         filterOptions={filterOptions}
@@ -39,12 +36,14 @@ export default function DatasetSelector({
         renderInput={(params) => (
           <TextField {...params} placeholder="Search Datasets" />
         )}
-        sx={{ minWidth: 800 }}
+        sx={{ minWidth: 400 }}
         onChange={onChange}
       />
-      <IconButton onClick={onClickRandom} sx={{ height: 32, width: 32 }}>
-        <PlaylistAddIcon />
-      </IconButton>
-    </Stack>
+      <Grid container justifyContent="flex-end">
+        <IconButton onClick={onClickRandom}>
+          <PlaylistAddIcon />
+        </IconButton>
+      </Grid>
+    </Box>
   );
 }
