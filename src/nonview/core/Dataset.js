@@ -258,7 +258,7 @@ export default class Dataset {
       return DataResult.fromRemoteData(remoteData);
     } catch (e) {
       console.error(
-        `getRemoteDataResult: Could not acces "${this.dataURL}" (${e})`
+        `getRemoteDataResult: Could not access "${this.dataURL}" (${e})`
       );
       return null;
     }
