@@ -12,8 +12,8 @@ export default function DatasetLink({
   const onClick = function () {
     if (onChangeDatasetList === undefined) {
       window.open(dataset.dataURL);
-    }else{
-    onChangeDatasetList([dataset]);
+    } else {
+      onChangeDatasetList([dataset]);
     }
   };
 
@@ -24,7 +24,10 @@ export default function DatasetLink({
           <DataSourceAvatar dataSource={dataset.source} />
         </ListItemAvatar>
       ) : null}
-      <ListItemText primary={dataset.subCategory} secondary={'Updated ' + dataset.lastUpdateTimeFormatted} />
+      <ListItemText
+        primary={dataset.subCategory}
+        secondary={"Updated " + dataset.lastUpdateTimeFormatted}
+      />
     </ListItemButton>
   );
 }

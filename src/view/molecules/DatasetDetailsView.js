@@ -7,7 +7,8 @@ import { COLOR_PAPER } from "../STYLE.js";
 import DatasetLink from "../atoms/DatasetLink";
 import Grid from "@mui/material/Grid";
 import DownloadDatasetButton from "../atoms/DownloadDatasetButton";
-export default function DatasetDetailsView({ dataset }) {
+import { getColor } from "../molecules/MultiLineChart.js";
+export default function DatasetDetailsView({ dataset, i, n }) {
   return (
     <Paper
       elevation={0}
@@ -15,7 +16,10 @@ export default function DatasetDetailsView({ dataset }) {
         margin: 1,
         padding: 0,
         background: COLOR_PAPER,
+        border: 1,
+        borderWidth: 3,
         borderRadius: 3,
+        borderColor: dataset.color || getColor(i, n),
         width: 300,
       }}
     >
