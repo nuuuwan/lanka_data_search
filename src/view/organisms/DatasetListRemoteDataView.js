@@ -12,6 +12,9 @@ import StringX from "../../nonview/utils/StringX.js";
 import StatCorrelationView from "../molecules/StatCorrelationView.js";
 import StatEquationView from "../molecules/StatEquationView.js";
 import Grid from "@mui/material/Grid";
+import TweetButton from "../atoms/TweetButton.js";
+import DownloadChartImageButton from "../atoms/DownloadChartImageButton.js";
+import CopyLinkButton from "../atoms/CopyLinkButton.js";
 
 export default class DatasetListRemoteDataView extends Component {
   constructor(props) {
@@ -63,6 +66,20 @@ export default class DatasetListRemoteDataView extends Component {
     );
   }
 
+  renderChartButtons() {
+    const { datasetList, refChart } = this.props;
+    return (
+      <Stack direction="row" spacing={2}>
+        <TweetButton datasetList={datasetList} />
+        <DownloadChartImageButton
+          refChart={refChart}
+          datasetList={datasetList}
+        />
+        <CopyLinkButton />
+      </Stack>
+    );
+  }
+
   renderMultiLineChart() {
     const { datasetList, refChart, options } = this.props;
     const { dataResultList } = this.state;
@@ -85,6 +102,7 @@ export default class DatasetListRemoteDataView extends Component {
         />
 
         {this.renderOptions()}
+        {this.renderChartButtons()}
       </Box>
     );
   }
