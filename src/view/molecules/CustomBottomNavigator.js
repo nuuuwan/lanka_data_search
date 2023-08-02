@@ -7,7 +7,6 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useScreenshot } from "use-react-screenshot";
 import Tooltip from "@mui/material/Tooltip";
-import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 // import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 // <Tooltip title="Help">
@@ -21,12 +20,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 //     "_blank"
 //   );
 // };
-export default function CustomBottomNavigator({
-  datasetList,
-  refChart,
-  onClickClearAll,
-  onClickRandom,
-}) {
+export default function CustomBottomNavigator({ datasetList, refChart }) {
   const onClickTweet = function () {
     const dataSetText = datasetList.map((x) => x.tweetText).join("\n");
     const tweetText = [
@@ -92,12 +86,6 @@ export default function CustomBottomNavigator({
             <BottomNavigationAction
               disabled={disableButton}
               icon={<ContentCopyIcon onClick={onClickCopyLink} sx={sx} />}
-            />
-          </Tooltip>
-          <Tooltip title="Add Random Dataset">
-            <BottomNavigationAction
-              icon={<AddIcon />}
-              onClick={onClickRandom}
             />
           </Tooltip>
         </BottomNavigation>

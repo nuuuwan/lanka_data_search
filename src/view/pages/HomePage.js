@@ -124,6 +124,7 @@ export default class HomePage extends Component {
           allDatasetList={allDatasetList}
           selectedDatasetList={datasetList}
           onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
+          onClickRandom={this.handleOnClickRandom.bind(this)}
         />
 
         <DatasetListRemoteDataView
@@ -149,8 +150,6 @@ export default class HomePage extends Component {
       <CustomBottomNavigator
         datasetList={datasetList}
         refChart={this.refChart}
-        onClickClearAll={this.handleOnClickClearAll.bind(this)}
-        onClickRandom={this.handleOnClickRandom.bind(this)}
       />
     );
   }
