@@ -10,7 +10,7 @@ import CustomAppBar from "../molecules/CustomAppBar";
 import VersionView from "../atoms/VersionView";
 import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
 import { CircularProgress } from "@mui/material";
-import Dataset from "../../nonview/core/Dataset";
+import DatasetUtils from "../../nonview/core/DatasetUtils";
 import RandomX from "../../nonview/utils/RandomX";
 import HomePageHandlersMixin, {
   N_RANDOM_DATASETS,
@@ -52,7 +52,7 @@ export default class HomePage extends Component {
   async componentDidMount() {
     let { datasetIDList, options } = this.state;
 
-    const allDatasetIdx = await Dataset.multigetRemoteDatasetIdx();
+    const allDatasetIdx = await DatasetUtils.multigetRemoteDatasetIdx();
 
     if (datasetIDList === undefined) {
       const allDatasetIDList = Object.values(allDatasetIdx).map(
@@ -79,8 +79,8 @@ export default class HomePage extends Component {
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
 
-    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx);
-    const nData = Dataset.getDatasetListLength(allDatasetIdx);
+    const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
+    const nData = DatasetUtils.getDatasetListLength(allDatasetIdx);
 
     return (
       <Box>

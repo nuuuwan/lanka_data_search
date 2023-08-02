@@ -65,7 +65,7 @@ export default class DataResult {
     for (let i = 0; i < HALVES.length; i++) {
       const half = HALVES[i];
       if (label.endsWith(half)) {
-      return (
+        return (
           label.substring(0, 4) +
           "-" +
           (i * 6 + 1).toString().padStart(2, "0") +

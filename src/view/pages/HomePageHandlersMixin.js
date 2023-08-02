@@ -1,5 +1,5 @@
 import URLContext from "../../nonview/utils/URLContext";
-import Dataset from "../../nonview/core/Dataset";
+import DatasetUtils from "../../nonview/core/DatasetUtils";
 import RandomX from "../../nonview/utils/RandomX";
 export const N_RANDOM_DATASETS = 1;
 
@@ -17,7 +17,7 @@ const HomePageHandlersMixin = {
 
   async handleOnClickRandom() {
     const { allDatasetIdx, datasetList } = this.state;
-    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx);
+    const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
     const randomDatasetList = RandomX.shuffle(allDatasetList);
     const datasetListNew = [].concat(
       datasetList,
