@@ -131,7 +131,7 @@ export default class HomePage extends Component {
     return (
       <Box sx={STYLE.ALL}>
         <Box sx={STYLE.HEADER}>{this.renderHeader()}</Box>
-        <Box sx={STYLE.BODY}>{this.renderBody()}</Box>{" "}
+        <Box sx={STYLE.BODY}>{this.renderBody()}</Box>
         <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
       </Box>
     );
