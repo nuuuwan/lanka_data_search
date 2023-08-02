@@ -6,8 +6,8 @@ export default function CopyLinkButton() {
     navigator.clipboard.writeText(window.location.href);
   };
   return (
-    <IconButton>
-      <ContentCopyIcon onClick={onClick} />
+    <IconButton onClick={onClick} color="primary">
+      <ContentCopyIcon  />
     </IconButton>
   );
 }

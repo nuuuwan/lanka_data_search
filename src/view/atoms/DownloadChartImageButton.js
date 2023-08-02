@@ -18,7 +18,7 @@ export default function DownloadChartImageButton({ datasetList, refChart }) {
   };
 
   return (
-    <IconButton onClick={onClick}>
+    <IconButton onClick={onClick} color="primary">
       <FileDownloadIcon />
     </IconButton>
   );

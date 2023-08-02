@@ -20,7 +20,7 @@ export default function TweetButton({ datasetList }) {
   };
 
   return (
-    <IconButton onClick={onClick}>
+    <IconButton onClick={onClick} color="primary">
       <TwitterIcon />
     </IconButton>
   );

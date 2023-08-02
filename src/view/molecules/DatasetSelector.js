@@ -40,7 +40,7 @@ export default function DatasetSelector({
         onChange={onChange}
       />
       <Grid container justifyContent="flex-end">
-        <IconButton onClick={onClickRandom}>
+        <IconButton onClick={onClickRandom} color="primary">
           <PlaylistAddIcon />
         </IconButton>
       </Grid>

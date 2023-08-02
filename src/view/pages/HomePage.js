@@ -78,7 +78,7 @@ export default class HomePage extends Component {
     const { title, description, imageURL } = this;
 
     const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
-   
+
     return (
       <Box>
         <SocialMediaMetaTags
