@@ -1,10 +1,11 @@
 import DATA_SOURCE_IDX from "../DATA_SOURCE_IDX.js";
 import md5 from "md5-hash";
 import DatasetBase from "./DatasetBase.js";
-import COLOR_TO_TEXT_LIST from "../COLOR_TO_TEXT_LIST.js";
 import Scale from "../Scale.js";
 import Unit from "../Unit.js";
 import Emoji from "../Emoji.js";
+import Color from "../Color.js";
+
 const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
@@ -36,13 +37,8 @@ export default class DatasetBaseProps extends DatasetBase {
     return md5(
       JSON.stringify([
         this.sourceID,
-        // this.category,
-        // this.subCategory,
-        // this.scale,
-        // this.unit,
         this.frequencyName,
         this.iSubject,
-        // this.footnotes,
         this.n,
         this.minT,
         this.maxT,
@@ -115,13 +111,6 @@ export default class DatasetBaseProps extends DatasetBase {
   }
 
   get color() {
-    for (const [color, keyList] of Object.entries(COLOR_TO_TEXT_LIST)) {
-      for (const key of keyList) {
-        if (this.subCategory.toLowerCase().includes(key)) {
-          return color;
-        }
-      }
-    }
-    return null;
+    return Color.forText(this.subCategory);
   }
 }
