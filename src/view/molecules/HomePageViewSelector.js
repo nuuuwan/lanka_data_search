@@ -11,16 +11,15 @@ export default function HomePageViewSelector({
     };
     const key = "home-page-view-selector-" + homePageView.name;
     const isActive = homePageViewName === homePageView.name;
-    const sx = {
-      opacity: isActive ? 0.05 : 1,
-    };
+    const opacity = isActive ? 0.2 : 1;
+    const color = isActive ? "#888" : "primary";
 
     return (
       <BottomNavigationAction
         key={key}
         onClick={onClick}
-        icon={<homePageView.Icon color="primary" />}
-        sx={sx}
+        icon={<homePageView.Icon color={color} />}
+        sx={{ opacity }}
       />
     );
   });
