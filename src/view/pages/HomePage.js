@@ -3,8 +3,6 @@ import Box from "@mui/material/Box";
 import DatasetListRemoteDataView from "../organisms/DatasetListRemoteDataView";
 import DatasetSelector from "../molecules/DatasetSelector";
 import URLContext from "../../nonview/utils/URLContext";
-import AlertDatasets from "../atoms/AlertDatasets";
-import AlertCBSLApp from "../atoms/AlertCBSLApp";
 import SocialMediaMetaTags from "../molecules/SocialMediaMetaTags";
 import CustomAppBar from "../molecules/CustomAppBar";
 import VersionView from "../atoms/VersionView";
@@ -80,8 +78,7 @@ export default class HomePage extends Component {
     const { title, description, imageURL } = this;
 
     const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
-    const nData = DatasetUtils.getDatasetListLength(allDatasetIdx);
-
+   
     return (
       <Box>
         <SocialMediaMetaTags
@@ -104,8 +101,7 @@ export default class HomePage extends Component {
           options={options}
           handleChangeOptions={this.handleChangeOptions.bind(this)}
         />
-        <AlertDatasets nData={nData} />
-        <AlertCBSLApp />
+
         <VersionView />
       </Box>
     );
