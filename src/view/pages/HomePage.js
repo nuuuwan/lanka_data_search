@@ -76,9 +76,6 @@ export default class HomePage extends Component {
 
   renderBody() {
     const { allDatasetIdx, datasetList, options } = this.state;
-    if (!allDatasetIdx) {
-      return <CircularProgress />;
-    }
     const key = JSON.stringify(datasetList.map((x) => x.subCategory));
     const { title, description, imageURL } = this;
 
@@ -116,9 +113,6 @@ export default class HomePage extends Component {
 
   renderFooter() {
     const { datasetList } = this.state;
-    if (!datasetList) {
-      return <CircularProgress />;
-    }
     return (
       <CustomBottomNavigator
         datasetList={datasetList}
@@ -128,11 +122,18 @@ export default class HomePage extends Component {
   }
 
   render() {
+    const { datasetList } = this.state;
     return (
       <Box sx={STYLE.ALL}>
         <Box sx={STYLE.HEADER}>{this.renderHeader()}</Box>
-        <Box sx={STYLE.BODY}>{this.renderBody()}</Box>
-        <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
+        {datasetList ? (
+          <>
+            <Box sx={STYLE.BODY}>{this.renderBody()}</Box>
+            <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
+          </>
+        ) : (
+          <CircularProgress />
+        )}
       </Box>
     );
   }
