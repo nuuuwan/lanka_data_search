@@ -3,7 +3,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
 import Box from "@mui/material/Box";
-import DataSourceLink from "../atoms/DataSourceLink";
 import { COLOR_PAPER } from "../STYLE.js";
 import DatasetLink from "../atoms/DatasetLink";
 import Grid from "@mui/material/Grid";
