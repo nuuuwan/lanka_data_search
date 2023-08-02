@@ -12,8 +12,9 @@ import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
 import { CircularProgress } from "@mui/material";
 import Dataset from "../../nonview/core/Dataset";
 import RandomX from "../../nonview/utils/RandomX";
-
-const N_RANDOM_DATASETS = 1;
+import HomePageHandlersMixin, {
+  N_RANDOM_DATASETS,
+} from "./HomePageHandlersMixin";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -65,35 +66,6 @@ export default class HomePage extends Component {
       (datasetID) => allDatasetIdx[datasetID]
     );
     this.setState({ datasetIDList, datasetList, allDatasetIdx });
-  }
-  async handleOnChangeDatasetList(datasetList) {
-    const { options } = this.state;
-    const datasetIDList = datasetList.map((x) => x.shortID);
-    URLContext.setContext({ datasetIDList, options });
-    this.setState({ datasetIDList, datasetList });
-  }
-
-  async handleOnClickClearAll() {
-    await this.handleOnChangeDatasetList([]);
-  }
-
-  async handleOnClickRandom() {
-    const { allDatasetIdx, datasetList } = this.state;
-    const allDatasetList = Dataset.getUniqueDatasetList(allDatasetIdx);
-    const randomDatasetList = RandomX.shuffle(allDatasetList);
-    const datasetListNew = [].concat(
-      datasetList,
-      randomDatasetList.slice(0, N_RANDOM_DATASETS)
-    );
-    await this.handleOnChangeDatasetList(datasetListNew);
-  }
-
-  handleChangeOptions(newOptions) {
-    let { options } = this.state;
-    const { datasetIDList } = this.state;
-    options = { ...options, ...newOptions };
-    this.setState({ options });
-    URLContext.setContext({ datasetIDList, options });
   }
 
   renderHeader() {
@@ -197,3 +169,4 @@ export default class HomePage extends Component {
     );
   }
 }
+Object.assign(HomePage.prototype, HomePageHandlersMixin);
