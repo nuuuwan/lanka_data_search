@@ -49,6 +49,6 @@ export default class DatasetUtils {
   }
 
   static compareByLastUpdateTime(a, b) {
-    return b.lastUpdatedTimeUT - a.lastUpdatedTimeUT;
+    return b.lastUpdateTimeUT - a.lastUpdateTimeUT;
   }
 }
