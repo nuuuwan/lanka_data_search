@@ -16,13 +16,13 @@ export default function HomePageViewSelector({
     const color = isActive ? "#888" : "primary";
 
     return (
-      <Tooltip title={homePageView.name + ' Page'}>
-      <BottomNavigationAction
-        key={key}
-        onClick={onClick}
-        icon={<homePageView.Icon color={color} />}
-        sx={{ opacity }}
-      />
+      <Tooltip title={homePageView.name + " Page"}>
+        <BottomNavigationAction
+          key={key}
+          onClick={onClick}
+          icon={<homePageView.Icon color={color} />}
+          sx={{ opacity }}
+        />
       </Tooltip>
     );
   });
