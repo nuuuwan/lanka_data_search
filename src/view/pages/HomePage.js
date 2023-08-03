@@ -119,6 +119,7 @@ export default class HomePage extends Component {
           selectedDatasetList={datasetList}
           onChangeDatasetList={this.handleOnChangeDatasetList.bind(this)}
           onClickRandom={this.handleOnClickRandom.bind(this)}
+          handleSwapDatasets={this.handleSwapDatasets.bind(this)}
         />
 
         <DatasetListRemoteDataView

@@ -46,6 +46,12 @@ const HomePageHandlersMixin = {
   handleOnCloseSnackbar() {
     this.setState({ snackbarMessage: null });
   },
+  handleSwapDatasets() {
+    const { datasetList } = this.state;
+    const datasetListNew = [].concat(datasetList);
+    datasetListNew.reverse();
+    this.handleOnChangeDatasetList(datasetListNew);
+  },
 };
 
 export default HomePageHandlersMixin;

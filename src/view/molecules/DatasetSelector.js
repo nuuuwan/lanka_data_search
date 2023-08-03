@@ -4,6 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import AddRandomDatasetButton from "../atoms/AddRandomDatasetButton";
 import Grid from "@mui/material/Grid";
+import SwapDatasetsButton from "../atoms/SwapDatasetsButton";
 function renderDataset(dataset) {
   return dataset.detailedLabelWithEmojis;
 }
@@ -13,6 +14,7 @@ export default function DatasetSelector({
   selectedDatasetList,
   onChangeDatasetList,
   onClickRandom,
+  handleSwapDatasets,
 }) {
   const onChange = function (_, datasetList) {
     onChangeDatasetList(datasetList);
@@ -23,6 +25,9 @@ export default function DatasetSelector({
       return dataset.isMatch(state.inputValue);
     });
   };
+
+  const nDatasets = selectedDatasetList.length;
+  console.debug(nDatasets);
 
   return (
     <Box>
@@ -39,6 +44,9 @@ export default function DatasetSelector({
         onChange={onChange}
       />
       <Grid container justifyContent="flex-end">
+        {nDatasets >= 2 ? (
+          <SwapDatasetsButton handleSwapDatasets={handleSwapDatasets} />
+        ) : null}
         <AddRandomDatasetButton onClickRandom={onClickRandom} />
       </Grid>
     </Box>
