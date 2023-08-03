@@ -8,11 +8,12 @@ export default function DatasetListView({
   allDatasetIdx,
   onChangeDatasetList,
 }) {
-  const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx)
-    .sort(DatasetUtils.compareByLastUpdateTime)
-    .slice(0, MAX_DISPLAY_DATASETS);
+  const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx).sort(
+    DatasetUtils.compareByLastUpdateTime
+  );
+  const displayDatasetList = allDatasetList.slice(0, MAX_DISPLAY_DATASETS);
 
-  const inner = allDatasetList.map(function (dataset) {
+  const inner = displayDatasetList.map(function (dataset) {
     const key = "dataset-list-view-" + dataset.id;
     return (
       <DatasetLink
