@@ -1,4 +1,5 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 
 export default function CopyLinkButton() {
@@ -6,8 +7,10 @@ export default function CopyLinkButton() {
     navigator.clipboard.writeText(window.location.href);
   };
   return (
-    <IconButton onClick={onClick} color="primary">
-      <ContentCopyIcon />
-    </IconButton>
+    <Tooltip title="Copy link">
+      <IconButton onClick={onClick} color="primary">
+        <ContentCopyIcon />
+      </IconButton>
+    </Tooltip>
   );
 }

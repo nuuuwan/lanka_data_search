@@ -1,6 +1,6 @@
 import TwitterIcon from "@mui/icons-material/Twitter";
 import IconButton from "@mui/material/IconButton";
-
+import Tooltip from "@mui/material/Tooltip";
 export default function TweetButton({ datasetList }) {
   const onClick = function () {
     const dataSetText = datasetList.map((x) => x.tweetText).join("\n");
@@ -20,8 +20,10 @@ export default function TweetButton({ datasetList }) {
   };
 
   return (
-    <IconButton onClick={onClick} color="primary">
-      <TwitterIcon />
-    </IconButton>
+    <Tooltip title="Tweet">
+      <IconButton onClick={onClick} color="primary">
+        <TwitterIcon />
+      </IconButton>
+    </Tooltip>
   );
 }
