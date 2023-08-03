@@ -7,15 +7,28 @@ export default class DatasetUtils {
   static async multigetRemoteDatasetList() {
     const urlRemote = `${URL_BASE}/summary.json`;
     const dataListRaw = await WWW.json(urlRemote);
+
     const filteredDatasetList = dataListRaw
       .map((d) => Dataset.fromRaw(d))
       .filter((dataset) => dataset.isValidForVisualization());
-    const dedupedDatasetList = Object.values(
+
+    const dupeDatasetGroups = Object.values(
       filteredDatasetList.reduce((idx, dataset) => {
-        idx[dataset.dataHash] = dataset;
+        if (!idx[dataset.dataHash]) {
+          idx[dataset.dataHash] = [];
+        }
+        idx[dataset.dataHash].push(dataset);
         return idx;
       }, {})
     );
+
+    const dedupedDatasetList = dupeDatasetGroups.map(function (datasetList) {
+      const sortedDatasetList = datasetList.sort(
+        DatasetUtils.compareByLastUpdateTime
+      );
+      return sortedDatasetList[0];
+    });
+
     const sortedDatasetList = dedupedDatasetList.sort((a, b) =>
       a.subCategory.localeCompare(b.subCategory)
     );
