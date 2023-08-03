@@ -16,9 +16,12 @@ export const VERSION_INFO = "{version_info}";
     File(VERSION_FILE_PATH).write(content)
     log.info(f'Wrote {version} to {VERSION_FILE_PATH}')
 
+    os.system('npx eslint --fix src')
+
     os.system(f'git add {VERSION_FILE_PATH}')
     os.system(f'git commit -m "Update version {version}"')
 
+    
 if __name__ == '__main__':
     version_info = sys.argv[1]
     main(version_info)
