@@ -4,7 +4,7 @@ const URL_BASE =
   "https://raw.githubusercontent.com/nuuuwan/lanka_data_timeseries/data";
 
 export default class DatasetUtils {
-  static async multigetRemoteDatasetList(sourceID) {
+  static async multigetRemoteDatasetList() {
     const urlRemote = `${URL_BASE}/summary.json`;
     const dataListRaw = await WWW.json(urlRemote);
     const filteredDatasetList = dataListRaw
