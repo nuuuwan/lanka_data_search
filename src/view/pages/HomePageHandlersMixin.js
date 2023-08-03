@@ -5,10 +5,10 @@ export const N_RANDOM_DATASETS = 1;
 
 const HomePageHandlersMixin = {
   async handleOnChangeDatasetList(datasetList) {
-    const { options } = this.state;
+    const { options, homePageViewName } = this.state;
     const datasetIDList = datasetList.map((x) => x.shortID);
-    URLContext.setContext({ datasetIDList, options });
-    this.setState({ datasetIDList, datasetList, homePageViewName: "Chart" });
+    URLContext.setContext({ datasetIDList, options, homePageViewName });
+    this.setState({ datasetIDList, datasetList, homePageViewName });
   },
 
   async handleOnClickClearAll() {
@@ -27,15 +27,17 @@ const HomePageHandlersMixin = {
   },
 
   handleChangeOptions(newOptions) {
-    let { options } = this.state;
+    let { options, homePageViewName } = this.state;
     const { datasetIDList } = this.state;
     options = { ...options, ...newOptions };
     this.setState({ options });
-    URLContext.setContext({ datasetIDList, options });
+    URLContext.setContext({ datasetIDList, options, homePageViewName });
   },
 
   handleOnChangeHomePageViewName(homePageViewName) {
+    let { datasetIDList, options } = this.state;
     this.setState({ homePageViewName });
+    URLContext.setContext({ datasetIDList, options, homePageViewName });
   },
 
   handleOnOpenSnackbar(snackbarMessage) {

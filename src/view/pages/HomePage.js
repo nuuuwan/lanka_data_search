@@ -56,7 +56,7 @@ export default class HomePage extends Component {
   }
 
   async componentDidMount() {
-    let { datasetIDList, options } = this.state;
+    let { datasetIDList, options, homePageViewName } = this.state;
 
     const allDatasetIdx = await DatasetUtils.multigetRemoteDatasetIdx();
 
@@ -66,7 +66,7 @@ export default class HomePage extends Component {
       );
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
       datasetIDList = randomDatasetIDList.slice(0, N_RANDOM_DATASETS);
-      URLContext.setContext({ datasetIDList, options });
+      URLContext.setContext({ datasetIDList, options, homePageViewName });
     }
 
     const datasetList = datasetIDList.map(
