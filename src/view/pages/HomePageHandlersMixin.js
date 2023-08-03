@@ -37,6 +37,13 @@ const HomePageHandlersMixin = {
   handleOnChangeHomePageViewName(homePageViewName) {
     this.setState({ homePageViewName });
   },
+
+  handleOnOpenSnackbar(snackbarMessage) {
+    this.setState({ snackbarMessage });
+  },
+  handleOnCloseSnackbar() {
+    this.setState({ snackbarMessage: null });
+  },
 };
 
 export default HomePageHandlersMixin;

@@ -67,15 +67,16 @@ export default class DatasetListRemoteDataView extends Component {
   }
 
   renderChartButtons() {
-    const { datasetList, refChart } = this.props;
+    const { datasetList, refChart, handleOnOpenSnackbar } = this.props;
     return (
       <Grid container justifyContent="flex-end">
         <TweetButton datasetList={datasetList} />
         <DownloadChartImageButton
           refChart={refChart}
           datasetList={datasetList}
+          handleOnOpenSnackbar={handleOnOpenSnackbar}
         />
-        <CopyLinkButton />
+        <CopyLinkButton handleOnOpenSnackbar={handleOnOpenSnackbar} />
       </Grid>
     );
   }

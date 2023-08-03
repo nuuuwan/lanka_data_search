@@ -17,6 +17,7 @@ import { STYLE } from "./HomePageStyle";
 import { DEFAULT_HOME_PAGE_VIEW_NAME } from "./HomePageView";
 import DataSourceListView from "../molecules/DataSourceListView";
 import DatasetListView from "../molecules/DatasetListView";
+import CustomSnackbar from "../molecules/CustomSnackbar";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ export default class HomePage extends Component {
       datasetIDList,
       options,
       homePageViewName,
+      snackbarMessage: null,
     };
     this.refChart = createRef();
   }
@@ -125,6 +127,7 @@ export default class HomePage extends Component {
           refChart={this.refChart}
           options={options}
           handleChangeOptions={this.handleChangeOptions.bind(this)}
+          handleOnOpenSnackbar={this.handleOnOpenSnackbar.bind(this)}
         />
 
         <VersionView />
@@ -163,6 +166,10 @@ export default class HomePage extends Component {
         <Box sx={STYLE.HEADER}>{this.renderHeader()}</Box>
         <Box sx={STYLE.BODY}>{this.renderBody()}</Box>
         <Box sx={STYLE.FOOTER}>{this.renderFooter()}</Box>
+        <CustomSnackbar
+          snackbarMessage={this.state.snackbarMessage}
+          handleOnCloseSnackbar={this.handleOnCloseSnackbar.bind(this)}
+        />
       </Box>
     );
   }
