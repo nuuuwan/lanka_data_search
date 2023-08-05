@@ -122,13 +122,17 @@ export default class DatasetBaseProps extends DatasetBase {
   }
 
   get subCategoryMultiline() {
-    const MAX_LINE_LENGTH = 80;
+    const MAX_LINE_LENGTH = 64;
+    const text = this.subCategory;
+    const nChars = text.length;
+    const lineLength = nChars / Math.ceil(nChars / MAX_LINE_LENGTH);
+
     const words = this.subCategory.split(" ");
     let lineList = [[]];
     for (let word of words) {
       if (
         lineList[lineList.length - 1].join(" ").length + word.length <
-        MAX_LINE_LENGTH
+        lineLength
       ) {
         lineList[lineList.length - 1].push(word);
       } else {
