@@ -1,6 +1,5 @@
 import { HOME_PAGE_VIEW_LIST } from "../pages/HomePageView";
 import { BottomNavigationAction } from "@mui/material";
-import Tooltip from "@mui/material/Tooltip";
 
 export default function HomePageViewSelector({
   homePageViewName,
@@ -16,14 +15,13 @@ export default function HomePageViewSelector({
     const color = disabled ? "#888" : "primary";
 
     return (
-      <Tooltip key={key} title={homePageView.name + " Page"}>
-        <BottomNavigationAction
-          onClick={onClick}
-          icon={<homePageView.Icon color={color} />}
-          sx={{ opacity }}
-          disabled={disabled}
-        />
-      </Tooltip>
+      <BottomNavigationAction
+        key={key}
+        onClick={onClick}
+        icon={<homePageView.Icon color={color} />}
+        sx={{ opacity }}
+        disabled={disabled}
+      />
     );
   });
 }
