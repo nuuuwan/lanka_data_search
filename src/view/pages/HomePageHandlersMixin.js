@@ -6,8 +6,8 @@ export const N_RANDOM_DATASETS = 1;
 const HomePageHandlersMixin = {
   async handleOnChangeDatasetList(datasetList) {
     const { options } = this.state;
-    const homePageViewName = 'Chart';
-    
+    const homePageViewName = "Chart";
+
     const datasetIDList = datasetList.map((x) => x.shortID);
     URLContext.setContext({ datasetIDList, options, homePageViewName });
     this.setState({ datasetIDList, datasetList, homePageViewName });

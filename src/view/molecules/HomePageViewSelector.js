@@ -11,9 +11,9 @@ export default function HomePageViewSelector({
       handleOnChangeHomePageViewName(homePageView.name);
     };
     const key = "home-page-view-selector-" + homePageView.name;
-    const isActive = homePageViewName === homePageView.name;
-    const opacity = isActive ? 0.2 : 1;
-    const color = isActive ? "#888" : "primary";
+    const disabled = homePageViewName === homePageView.name;
+    const opacity = disabled ? 0.2 : 1;
+    const color = disabled ? "#888" : "primary";
 
     return (
       <Tooltip title={homePageView.name + " Page"}>
@@ -22,6 +22,7 @@ export default function HomePageViewSelector({
           onClick={onClick}
           icon={<homePageView.Icon color={color} />}
           sx={{ opacity }}
+          disabled={disabled}
         />
       </Tooltip>
     );
