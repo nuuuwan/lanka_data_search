@@ -99,13 +99,14 @@ export default function MultiLineChart({
       : getColor(i, datasetList.length);
 
     const values = dataResult.values;
-    const absValues = values.filter(v => v !== undefined ).map((v) => Math.abs(v));
+    const absValues = values
+      .filter((v) => v !== undefined)
+      .map((v) => Math.abs(v));
     const maxAbsValue = Math.max(...absValues);
     const logMaxAbsValue = Math.log10(maxAbsValue);
-    const scale = Math.pow(10, Math.floor(logMaxAbsValue/3)*3);
+    const scale = Math.pow(10, Math.floor(logMaxAbsValue / 3) * 3);
     const scaledValues = values.map((v) => v / scale);
-    const scaleStr = scale === 1 ? "" : ' x ' + scale.toLocaleString();
-
+    const scaleStr = scale === 1 ? "" : " x " + scale.toLocaleString();
 
     let dataset = {
       data: scaledValues,
