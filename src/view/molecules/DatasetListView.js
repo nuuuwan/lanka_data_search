@@ -2,7 +2,8 @@ import DatasetUtils from "../../nonview/core/DatasetUtils";
 import { Box, Typography } from "@mui/material";
 import DatasetLink from "../atoms/DatasetLink";
 import List from "@mui/material/List";
-const MAX_DISPLAY_DATASETS = 100;
+import DatasetHistory from "../../nonview/core/DatasetHistory";
+const MAX_DISPLAY_DATASETS = 30;
 
 export default function DatasetListView({
   allDatasetIdx,
@@ -13,7 +14,24 @@ export default function DatasetListView({
   );
   const displayDatasetList = allDatasetList.slice(0, MAX_DISPLAY_DATASETS);
 
-  const inner = displayDatasetList.map(function (dataset) {
+  const datasetIDListFromHistory = DatasetHistory.getHistory();
+  const historyDatasetList = datasetIDListFromHistory.map(
+    (datasetID) => allDatasetIdx[datasetID]
+  );
+
+  const innerHistory = historyDatasetList.map(function (dataset) {
+    const key = "dataset-list-view-" + dataset.id;
+    return (
+      <DatasetLink
+        key={key}
+        dataset={dataset}
+        onChangeDatasetList={onChangeDatasetList}
+        showDataSource={true}
+      />
+    );
+  });
+
+  const innerLatest = displayDatasetList.map(function (dataset) {
     const key = "dataset-list-view-" + dataset.id;
     return (
       <DatasetLink
@@ -27,8 +45,15 @@ export default function DatasetListView({
 
   return (
     <Box sx={{ margin: 1, padding: 1 }}>
-      <Typography variant="h6">Latest Datasets</Typography>
-      <List>{inner}</List>
+      {historyDatasetList.length > 0 ? (
+        <>
+          {" "}
+          <Typography variant="h6">Recently Accessed Datasets</Typography>
+          <List>{innerHistory}</List>
+        </>
+      ) : null}
+      <Typography variant="h6">Recently Updated Datasets</Typography>
+      <List>{innerLatest}</List>
     </Box>
   );
 }
