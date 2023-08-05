@@ -1,6 +1,7 @@
 import { Typography, Box, Link } from "@mui/material";
 import ButtonRefresh from "./ButtonRefresh";
 import Grid from "@mui/material/Grid";
+import ButtonReportBug from "./ButtonReportBug";
 
 import { VERSION, VERSION_INFO } from "../../nonview/core/Version";
 export default function VersionView() {
@@ -17,6 +18,7 @@ export default function VersionView() {
       </Typography>
       <Grid container justifyContent="center">
         <ButtonRefresh />
+        <ButtonReportBug />
       </Grid>
     </Box>
   );
