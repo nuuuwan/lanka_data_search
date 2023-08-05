@@ -98,17 +98,26 @@ export default function MultiLineChart({
       ? datasetCore.color
       : getColor(i, datasetList.length);
 
+    const values = dataResult.values;
+    const absValues = values.filter(v => v !== undefined ).map((v) => Math.abs(v));
+    const maxAbsValue = Math.max(...absValues);
+    const logMaxAbsValue = Math.log10(maxAbsValue);
+    const scale = Math.pow(10, Math.floor(logMaxAbsValue/3)*3);
+    const scaledValues = values.map((v) => v / scale);
+    const scaleStr = scale === 1 ? "" : ' x ' + scale.toLocaleString();
+
+
     let dataset = {
-      data: dataResult.values,
+      data: scaledValues,
       backgroundColor: color,
       borderColor: color,
     };
     if (!sameYAxisScale) {
       dataset.yAxisID = `y${i}`;
-      const actualMin = dataResult.min;
+      const actualMin = dataResult.min / scale;
       const actualMax = proportionalAxes
-        ? dataResult.min / minSpanRatio
-        : dataResult.max;
+        ? dataResult.min / scale / minSpanRatio
+        : dataResult.max / scale;
       const span = actualMax - actualMin;
       const padding = span * 0.05;
 
@@ -119,7 +128,7 @@ export default function MultiLineChart({
         display: true,
         title: {
           display: true,
-          text: datasetCore.scaleAndUnitFormatted,
+          text: datasetCore.scaleAndUnitFormatted + scaleStr,
         },
       };
       dataset.label = datasetCore.subCategory;
@@ -132,7 +141,7 @@ export default function MultiLineChart({
         display: true,
         title: {
           display: true,
-          text: datasetCore.scaleAndUnitFormatted,
+          text: datasetCore.scaleAndUnitFormatted + scaleStr,
         },
       };
     }
