@@ -80,7 +80,7 @@ export default class HomePage extends Component {
     return <CustomAppBar allDatasetIdx={allDatasetIdx} />;
   }
 
-  renderBody() {
+  renderBodyInner() {
     const { allDatasetIdx } = this.state;
     if (!allDatasetIdx) {
       return <CircularProgress />;
@@ -97,6 +97,15 @@ export default class HomePage extends Component {
       default:
         throw new Error(`Unknown homePageViewName: ${homePageViewName}`);
     }
+  }
+
+  renderBody() {
+    return (
+      <Box>
+        {this.renderBodyInner()}
+        <VersionView />
+      </Box>
+    );
   }
 
   renderBodyChart() {
@@ -130,8 +139,6 @@ export default class HomePage extends Component {
           handleChangeOptions={this.handleChangeOptions.bind(this)}
           handleOnOpenSnackbar={this.handleOnOpenSnackbar.bind(this)}
         />
-
-        <VersionView />
       </Box>
     );
   }
