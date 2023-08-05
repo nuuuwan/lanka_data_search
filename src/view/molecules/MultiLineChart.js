@@ -110,7 +110,7 @@ export default function MultiLineChart({
         ? dataResult.min / minSpanRatio
         : dataResult.max;
       const span = actualMax - actualMin;
-      const padding = span * 0.01;
+      const padding = span * 0.05;
 
       chartOptions.scales[dataset.yAxisID] = {
         min: actualMin - padding,
