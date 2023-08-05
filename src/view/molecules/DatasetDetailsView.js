@@ -21,6 +21,7 @@ export default function DatasetDetailsView({ dataset, i, n, showCustomColor }) {
         borderRadius: 3,
         borderColor: showCustomColor ? dataset.color : getColor(i, n),
         width: 300,
+        minHeight: 150,
       }}
     >
       <DatasetLink dataset={dataset} showDataSource={true} />
