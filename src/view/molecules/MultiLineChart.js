@@ -47,7 +47,7 @@ export default function MultiLineChart({
   let titleText = "";
   let displayTitle = false;
   if (datasetList.length === 1) {
-    titleText = datasetList[0].subCategory;
+    titleText = datasetList[0].subCategoryMultiline;
     displayTitle = true;
   }
 

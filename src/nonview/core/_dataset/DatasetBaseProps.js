@@ -120,4 +120,21 @@ export default class DatasetBaseProps extends DatasetBase {
       options
     );
   }
+
+  get subCategoryMultiline() {
+    const MAX_LINE_LENGTH = 80;
+    const words = this.subCategory.split(" ");
+    let lineList = [[]];
+    for (let word of words) {
+      if (
+        lineList[lineList.length - 1].join(" ").length + word.length <
+        MAX_LINE_LENGTH
+      ) {
+        lineList[lineList.length - 1].push(word);
+      } else {
+        lineList.push([]);
+      }
+    }
+    return lineList.map((line) => line.join(" "));
+  }
 }
