@@ -27,7 +27,6 @@ export default function DatasetSelector({
   };
 
   const nDatasets = selectedDatasetList.length;
-  console.debug(nDatasets);
 
   return (
     <Box>
