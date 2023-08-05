@@ -25,7 +25,7 @@ export default function DatasetLink({
         </ListItemAvatar>
       ) : null}
       <ListItemText
-        primary={dataset.subCategory}
+        primary={dataset.detailedLabelWithEmojis}
         secondary={"Updated " + dataset.lastUpdateTimeFormatted}
       />
     </ListItemButton>

@@ -98,7 +98,7 @@ export default class DatasetBaseProps extends DatasetBase {
   }
 
   get detailedLabelWithEmojis() {
-    return `${this.emojis} ${this.subCategory} [${this.frequencyName} ${this.scaleAndUnitFormatted}]`;
+    return `${this.emojis} ${this.subCategory} [${this.frequencyName}, ${this.scaleAndUnitFormatted}]`;
   }
 
   get minTFormatted() {
