@@ -1,12 +1,15 @@
 import URLContext from "../../nonview/utils/URLContext";
 import DatasetUtils from "../../nonview/core/DatasetUtils";
 import RandomX from "../../nonview/utils/RandomX";
+import DatasetHistory from "../../nonview/core/DatasetHistory";
 export const N_RANDOM_DATASETS = 1;
 
 const HomePageHandlersMixin = {
   async handleOnChangeDatasetList(datasetList) {
     const { options } = this.state;
     const homePageViewName = "Chart";
+
+    DatasetHistory.addToHistory(datasetList);
 
     const datasetIDList = datasetList.map((x) => x.shortID);
     URLContext.setContext({ datasetIDList, options, homePageViewName });
