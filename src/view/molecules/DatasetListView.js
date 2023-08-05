@@ -2,7 +2,7 @@ import DatasetUtils from "../../nonview/core/DatasetUtils";
 import { Box, Typography } from "@mui/material";
 import DatasetLink from "../atoms/DatasetLink";
 import List from "@mui/material/List";
-const MAX_DISPLAY_DATASETS = 20;
+const MAX_DISPLAY_DATASETS = 100;
 
 export default function DatasetListView({
   allDatasetIdx,
