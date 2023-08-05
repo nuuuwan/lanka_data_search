@@ -16,8 +16,7 @@ export default function HomePageViewSelector({
     const color = disabled ? "#888" : "primary";
 
     return (
-      <Tooltip key={key}
-       title={homePageView.name + " Page"}>
+      <Tooltip key={key} title={homePageView.name + " Page"}>
         <BottomNavigationAction
           onClick={onClick}
           icon={<homePageView.Icon color={color} />}
