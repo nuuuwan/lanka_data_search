@@ -64,4 +64,16 @@ export default class DatasetUtils {
   static compareByLastUpdateTime(a, b) {
     return b.lastUpdateTimeUT - a.lastUpdateTimeUT;
   }
+
+  static getDataSourceToDatasetList(allDatasetIdx) {
+    const datasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
+    return datasetList.reduce(function (idx, dataset) {
+      const sourceID = dataset.source.id;
+      if (!idx[sourceID]) {
+        idx[sourceID] = [];
+      }
+      idx[sourceID].push(dataset);
+      return idx;
+    }, {});
+  }
 }

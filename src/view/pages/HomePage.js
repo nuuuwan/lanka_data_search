@@ -144,7 +144,7 @@ export default class HomePage extends Component {
   }
 
   renderBodySources() {
-    return <DataSourceListView />;
+    return <DataSourceListView allDatasetIdx={this.state.allDatasetIdx} />;
   }
 
   renderBodyDatasets() {
