@@ -1,4 +1,7 @@
 import { Typography, Box, Link } from "@mui/material";
+import ButtonRefresh from "./ButtonRefresh";
+import Grid from "@mui/material/Grid";
+
 import { VERSION, VERSION_INFO } from "../../nonview/core/Version";
 export default function VersionView() {
   return (
@@ -12,6 +15,9 @@ export default function VersionView() {
       <Typography variant="caption" sx={{ color: "#ccc" }}>
         {VERSION_INFO}
       </Typography>
+      <Grid container justifyContent="center">
+        <ButtonRefresh />
+      </Grid>
     </Box>
   );
 }
