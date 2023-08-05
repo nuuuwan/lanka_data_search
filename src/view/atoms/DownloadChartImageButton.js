@@ -24,7 +24,6 @@ export default function DownloadChartImageButton({
 
   return (
     <Tooltip title="Download Chart as Image">
-      {" "}
       <IconButton onClick={onClick} color="primary">
         <FileDownloadIcon />
       </IconButton>
