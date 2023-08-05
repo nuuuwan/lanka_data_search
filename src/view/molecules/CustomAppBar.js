@@ -17,11 +17,6 @@ export default function CustomAppBar({ allDatasetIdx }) {
     renderedStats = <span> (Loading...)</span>;
   }
 
-  const onClick = function () {
-    localStorage.clear();
-    window.location.reload();
-  };
-
   return (
     <AppBar position="static">
       <Toolbar>
@@ -29,7 +24,6 @@ export default function CustomAppBar({ allDatasetIdx }) {
           variant="h6"
           component="div"
           sx={{ flexGrow: 1 }}
-          onClick={onClick}
         >
           Lanka Data Search {renderedStats}
         </Typography>
