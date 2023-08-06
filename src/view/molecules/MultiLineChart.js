@@ -104,7 +104,7 @@ export default function MultiLineChart({
       .map((v) => Math.abs(v));
     const maxAbsValue = Math.max(...absValues);
     const logMaxAbsValue = Math.log10(maxAbsValue);
-    const scale = Math.pow(10, Math.floor(logMaxAbsValue / 3) * 3);
+    const scale = Math.max(1, Math.pow(10, Math.floor(logMaxAbsValue / 3) * 3));
     const scaledValues = values.map((v) => v / scale);
     const scaleStr = scale === 1 ? "" : " x " + scale.toLocaleString();
 
