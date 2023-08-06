@@ -21,14 +21,11 @@ const HomePageHandlersMixin = {
   },
 
   async handleOnClickRandom() {
-    const { allDatasetIdx, datasetList } = this.state;
+    const { allDatasetIdx } = this.state;
     const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
     const randomDatasetList = RandomX.shuffle(allDatasetList);
-    const datasetListNew = [].concat(
-      datasetList,
-      randomDatasetList.slice(0, N_RANDOM_DATASETS)
-    );
-    await this.handleOnChangeDatasetList(datasetListNew);
+    const nDatasets = RandomX.randInt(1, N_RANDOM_DATASETS + 1);
+    await this.handleOnChangeDatasetList(randomDatasetList.slice(0, nDatasets));
   },
 
   handleChangeOptions(newOptions) {
