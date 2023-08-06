@@ -15,9 +15,9 @@ export default function DatasetListView({
   const displayDatasetList = allDatasetList.slice(0, MAX_DISPLAY_DATASETS);
 
   const datasetIDListFromHistory = DatasetHistory.getHistory();
-  const historyDatasetList = datasetIDListFromHistory.map(
-    (datasetID) => allDatasetIdx[datasetID]
-  );
+  const historyDatasetList = datasetIDListFromHistory
+    .map((datasetID) => allDatasetIdx[datasetID])
+    .reverse();
 
   const innerHistory = historyDatasetList.map(function (dataset) {
     const key = "dataset-list-view-" + dataset.id;
