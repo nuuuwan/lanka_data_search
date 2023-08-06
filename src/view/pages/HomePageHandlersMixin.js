@@ -2,7 +2,7 @@ import URLContext from "../../nonview/utils/URLContext";
 import DatasetUtils from "../../nonview/core/DatasetUtils";
 import RandomX from "../../nonview/utils/RandomX";
 import DatasetHistory from "../../nonview/core/DatasetHistory";
-export const N_RANDOM_DATASETS = 1;
+export const N_RANDOM_DATASETS = 3;
 
 const HomePageHandlersMixin = {
   async handleOnChangeDatasetList(datasetList) {
@@ -21,14 +21,11 @@ const HomePageHandlersMixin = {
   },
 
   async handleOnClickRandom() {
-    const { allDatasetIdx, datasetList } = this.state;
+    const { allDatasetIdx } = this.state;
     const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx);
     const randomDatasetList = RandomX.shuffle(allDatasetList);
-    const datasetListNew = [].concat(
-      datasetList,
-      randomDatasetList.slice(0, N_RANDOM_DATASETS)
-    );
-    await this.handleOnChangeDatasetList(datasetListNew);
+    const nDatasets = RandomX.randInt(1, N_RANDOM_DATASETS);
+    await this.handleOnChangeDatasetList(randomDatasetList.slice(0, nDatasets));
   },
 
   handleChangeOptions(newOptions) {
