@@ -9,4 +9,8 @@ export default class RandomX {
     }
     return [...array];
   }
+
+  static randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 }
