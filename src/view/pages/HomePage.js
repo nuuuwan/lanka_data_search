@@ -28,7 +28,7 @@ export default class HomePage extends Component {
       context.datasetIDList || context.datasetKeyList || undefined;
     const options = context.options || {
       sameYAxisScale: false,
-      commonDataOnly: false,
+      commonDataOnly: true,
       proportionalAxes: false,
     };
     const homePageViewName =
