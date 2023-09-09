@@ -2,7 +2,7 @@ import WWW from "../utils/WWW.js";
 import DataResult from "./DataResult.js";
 import DatasetBaseProps from "./_dataset/DatasetBaseProps.js";
 const MIN_KEYWORD_LENGTH = 0;
-const MIN_DATASET_SIZE = 10;
+const MIN_DATASET_SIZE = 1;
 
 export default class Dataset extends DatasetBaseProps {
   static fromRaw(raw) {
