@@ -6,8 +6,8 @@ import Box from "@mui/material/Box";
 import { COLOR_PAPER } from "../STYLE.js";
 import DatasetLink from "../atoms/DatasetLink";
 import Grid from "@mui/material/Grid";
+import Color from "../../nonview/core/Color.js";
 import DownloadDatasetButton from "../atoms/DownloadDatasetButton";
-import { getColor } from "../molecules/MultiLineChart.js";
 export default function DatasetDetailsView({ dataset, i, n, showCustomColor }) {
   return (
     <Paper
@@ -19,7 +19,7 @@ export default function DatasetDetailsView({ dataset, i, n, showCustomColor }) {
         borderBottom: 1,
         borderWidth: 3,
         borderRadius: 3,
-        borderColor: showCustomColor ? dataset.color : getColor(i, n),
+        borderColor: showCustomColor ? dataset.color : Color.getColor(i, n),
         width: 300,
         minHeight: 150,
       }}

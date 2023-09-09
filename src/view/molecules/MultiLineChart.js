@@ -11,6 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { Box } from "@mui/material";
 import DataResult from "../../nonview/core/DataResult.js";
+import Color from "../../nonview/core/Color.js";
 
 ChartJS.register(
   CategoryScale,
@@ -24,14 +25,6 @@ ChartJS.register(
 const MAX_HEIGHT = 630;
 const ASPECT_RATIO = 1;
 const MIN_HEIGHT = MAX_HEIGHT * 0.5;
-
-export function getColor(i, n) {
-  if (i < 3) {
-    return ["#080", "#f80", "#800"][i];
-  }
-  const hue = ((i - 3) * 240) / (n - 1 - 3);
-  return `hsla(${hue}, 100%, 50%, 0.5)`;
-}
 
 export default function MultiLineChart({
   datasetList,
@@ -96,7 +89,7 @@ export default function MultiLineChart({
     const datasetCore = datasetList[i];
     const color = showCustomColor
       ? datasetCore.color
-      : getColor(i, datasetList.length);
+      : Color.getColor(i, datasetList.length);
 
     const values = dataResult.values;
     const absValues = values
