@@ -17,7 +17,7 @@ export default class Color {
 
   static getColor(i, n) {
     if (i < 3) {
-      const colors = RandomX.shuffle(COLORS_SL);
+      const colors = n === 1 ? RandomX.shuffle(COLORS_SL) : COLORS_SL;
       return colors[i];
     }
     const hue = ((i - 3) * 240) / (n - 1 - 3);

@@ -65,7 +65,8 @@ export default class HomePage extends Component {
         (x) => x.shortID
       );
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
-      datasetIDList = randomDatasetIDList.slice(0, N_RANDOM_DATASETS);
+      const nDatasets = RandomX.randInt(1, N_RANDOM_DATASETS);
+      datasetIDList = randomDatasetIDList.slice(0, nDatasets);
       URLContext.setContext({ datasetIDList, options, homePageViewName });
     }
 
