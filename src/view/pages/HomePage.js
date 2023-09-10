@@ -10,9 +10,7 @@ import CustomBottomNavigator from "../molecules/CustomBottomNavigator";
 import { CircularProgress } from "@mui/material";
 import DatasetUtils from "../../nonview/core/DatasetUtils";
 import RandomX from "../../nonview/utils/RandomX";
-import HomePageHandlersMixin, {
-  N_RANDOM_DATASETS,
-} from "./HomePageHandlersMixin";
+import HomePageHandlersMixin from "./HomePageHandlersMixin";
 import { STYLE } from "./HomePageStyle";
 import { DEFAULT_HOME_PAGE_VIEW_NAME } from "./HomePageView";
 import DataSourceListView from "../molecules/DataSourceListView";
@@ -65,8 +63,7 @@ export default class HomePage extends Component {
         (x) => x.shortID
       );
       const randomDatasetIDList = RandomX.shuffle(allDatasetIDList);
-      const nDatasets = RandomX.randInt(1, N_RANDOM_DATASETS);
-      datasetIDList = randomDatasetIDList.slice(0, nDatasets);
+      datasetIDList = randomDatasetIDList.slice(0, 1);
       URLContext.setContext({ datasetIDList, options, homePageViewName });
     }
 
