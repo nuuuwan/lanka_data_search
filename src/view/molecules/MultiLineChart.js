@@ -116,8 +116,6 @@ export default function MultiLineChart({
       const padding = span * 0.05;
 
       chartOptions.scales[dataset.yAxisID] = {
-        min: actualMin - padding,
-        max: actualMax + padding,
         ticks: { color },
         display: true,
         title: {
@@ -126,6 +124,11 @@ export default function MultiLineChart({
         },
       };
       dataset.label = datasetCore.subCategory;
+
+      if (proportionalAxes) {
+        chartOptions.scales[dataset.yAxisID].min = actualMin - padding;
+        chartOptions.scales[dataset.yAxisID].max = actualMax + padding;
+      }
     } else {
       dataset.yAxisID = "y";
       dataset.label = datasetCore.detailedLabel;
