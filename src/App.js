@@ -7,7 +7,7 @@ import HomePage from "./view/pages/HomePage.js";
 import "./App.css";
 
 import { defaults } from "chart.js";
-const FONT_FAMILY = "Nunito";
+const FONT_FAMILY = "Akshar";
 const THEME = createTheme({
   palette: {
     primary: {
