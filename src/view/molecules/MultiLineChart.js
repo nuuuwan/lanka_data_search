@@ -6,6 +6,7 @@ import {
   PointElement,
   LineElement,
   Title,
+  SubTitle,
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
@@ -19,6 +20,7 @@ ChartJS.register(
   PointElement,
   LineElement,
   Title,
+  SubTitle,
   Legend
 );
 
@@ -38,9 +40,11 @@ export default function MultiLineChart({
   const { sameYAxisScale, commonDataOnly, proportionalAxes } = options;
 
   let titleText = "";
+  let subtitleText = "";
   let displayTitle = false;
   if (datasetList.length === 1) {
     titleText = datasetList[0].subCategoryMultiline;
+    subtitleText = "Source: " + datasetList[0].source.name;
     displayTitle = true;
   }
 
@@ -53,6 +57,11 @@ export default function MultiLineChart({
         display: displayTitle,
         text: titleText,
         font: { size: 30 },
+      },
+      subtitle: {
+        display: displayTitle,
+        text: subtitleText,
+        font: { size: 12 },
       },
       legend: {
         position: "top",

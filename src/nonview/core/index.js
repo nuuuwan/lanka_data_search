@@ -12,7 +12,6 @@ import Emoji from "./Emoji";
 import Scale from "./Scale";
 import TimeConstants from "./TimeConstants";
 import Unit from "./Unit";
-import Version from "./Version";
 
 export {
   COLOR_TO_TEXT_LIST,
@@ -28,5 +27,4 @@ export {
   Scale,
   TimeConstants,
   Unit,
-  Version,
 };

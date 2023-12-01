@@ -9,7 +9,7 @@ export default function VersionView() {
   return (
     <Box sx={{ marginTop: 10, padding: 2, textAlign: "center" }}>
       <Typography variant="body2">
-        {"Last update at " + VERSION.DATETIME_STR + " by "} 
+        {"Last update at " + VERSION.DATETIME_STR + " by "}
         <Link href="https://www.github.com/nuuuwan/" target="_blank">
           nuuuwan
         </Link>
