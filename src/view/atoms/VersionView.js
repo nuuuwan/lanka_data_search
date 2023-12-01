@@ -3,18 +3,16 @@ import ButtonRefresh from "./ButtonRefresh";
 import Grid from "@mui/material/Grid";
 import ButtonReportBug from "./ButtonReportBug";
 
-import { VERSION, VERSION_INFO } from "../../nonview/core/Version";
+import { VERSION } from "../../nonview/constants";
+
 export default function VersionView() {
   return (
     <Box sx={{ marginTop: 10, padding: 2, textAlign: "center" }}>
       <Typography variant="body2">
-        {VERSION} by{" "}
+        {"Last update at " + VERSION.DATETIME_STR + " by "} 
         <Link href="https://www.github.com/nuuuwan/" target="_blank">
           nuuuwan
         </Link>
-      </Typography>
-      <Typography variant="caption" sx={{ color: "#ccc" }}>
-        {VERSION_INFO}
       </Typography>
       <Grid container justifyContent="center">
         <ButtonRefresh />
