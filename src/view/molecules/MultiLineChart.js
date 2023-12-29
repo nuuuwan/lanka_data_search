@@ -156,7 +156,7 @@ export default function MultiLineChart({
   });
 
   const chartData = {
-    labels: labels,
+    labels: DataResult.simplifyLabels(labels),
     datasets: datasets,
   };
 

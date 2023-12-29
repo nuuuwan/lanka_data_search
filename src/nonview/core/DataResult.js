@@ -174,4 +174,26 @@ export default class DataResult {
     const c = (sumY - m * sumX) / n;
     return { m, c, x, y, n };
   }
+
+  static isSameDayOfYear(labels) {
+    const daysOfYear = labels.map((label) => label.substring(4));
+    const uniqueDaysOfYear = [...new Set(daysOfYear)];
+    return uniqueDaysOfYear.length === 1;
+  }
+
+  static isSameDayOfMonth(labels) {
+    const daysOfMonth = labels.map((label) => label.substring(7));
+    const uniqueDaysOfMonth = [...new Set(daysOfMonth)];
+    return uniqueDaysOfMonth.length === 1;
+  }
+
+  static simplifyLabels(labels) {
+    if (DataResult.isSameDayOfYear(labels)) {
+      return labels.map((label) => label.substring(0, 4));
+    }
+    if (DataResult.isSameDayOfMonth(labels)) {
+      return labels.map((label) => label.substring(0, 7));
+    }
+    return labels;
+  }
 }
