@@ -8,7 +8,6 @@ import DatasetDetailsView from "./DatasetDetailsView";
 import DatasetListView from "./DatasetListView";
 import DatasetSelector from "./DatasetSelector";
 import HomePageViewSelector from "./HomePageViewSelector";
-import MultiLineChart from "./MultiLineChart";
 import SocialMediaMetaTags from "./SocialMediaMetaTags";
 import StatCorrelationView from "./StatCorrelationView";
 import StatEquationView from "./StatEquationView";
@@ -24,7 +23,6 @@ export {
   DatasetListView,
   DatasetSelector,
   HomePageViewSelector,
-  MultiLineChart,
   SocialMediaMetaTags,
   StatCorrelationView,
   StatEquationView,

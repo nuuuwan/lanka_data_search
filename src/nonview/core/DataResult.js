@@ -1,4 +1,17 @@
 import { MONTHS, QUARTERS, HALVES } from "./TimeConstants.js";
+const tf = require("@tensorflow/tfjs");
+
+export function sigmoid(x) {
+  const y = 1.0 / (1.0 + Math.exp(-x));
+
+  return y;
+}
+export function inverseSigmoid(y) {
+  const x = Math.log(y / (1 - y));
+
+  return x;
+}
+
 export default class DataResult {
   constructor(labels, values) {
     this.labels = labels;
@@ -195,5 +208,70 @@ export default class DataResult {
       return labels.map((label) => label.substring(0, 7));
     }
     return labels;
+  }
+
+  static async projectResults({ labels, datasets }) {
+    const nDataSets = datasets.length;
+    if (nDataSets !== 1) {
+      return { labels, datasets };
+    }
+    const zList = datasets[0].data;
+    const nZList = zList.length;
+    const N_MODEL_WINDOW = 36;
+    const N_PREDICTION_WINDOW = 6;
+
+    console.debug({ nZList, N_MODEL_WINDOW, N_PREDICTION_WINDOW });
+    if (nZList < N_MODEL_WINDOW) {
+      return { labels, datasets };
+    }
+
+    const Xs = [];
+    const ys = [];
+
+    for (let i = 0; i < nZList - N_MODEL_WINDOW; i++) {
+      const Xsi = zList.slice(i, i + N_MODEL_WINDOW);
+      const meanXsi = Xsi.reduce((a, b) => a + b, 0) / N_MODEL_WINDOW;
+      const Xsi2 = Xsi.map((x) => x / meanXsi);
+
+      Xs.push(Xsi2);
+      const ysi = zList[i + N_MODEL_WINDOW] / meanXsi;
+      ys.push([ysi]);
+    }
+
+    const n = Xs.length;
+    const m = Xs[0].length;
+    console.debug({ n, m, Xs, ys });
+
+    const tXs = tf.tensor2d(Xs);
+    const tys = tf.tensor2d(ys);
+
+    const model = tf.sequential({
+      layers: [
+        tf.layers.dense({ inputShape: [m], units: 12, activation: "relu" }),
+        tf.layers.dense({ units: 1, activation: "relu" }),
+      ],
+    });
+    model.compile({ loss: "meanSquaredError", optimizer: "sgd" });
+
+    await model.fit(tXs, tys, { epochs: 10, shuffle: false });
+
+    let zListExpanded = zList.slice();
+    for (let i = 0; i < N_PREDICTION_WINDOW; i++) {
+      const iStart = nZList - N_MODEL_WINDOW + i;
+      const Xsi = zListExpanded.slice(iStart, iStart + N_MODEL_WINDOW);
+      const meanXsi = Xsi.reduce((a, b) => a + b, 0) / N_MODEL_WINDOW;
+      const Xsi2 = Xsi.map((x) => x / meanXsi);
+
+      const yHat = model.predict(tf.tensor2d([Xsi2])).dataSync()[0];
+      const v = yHat * meanXsi;
+      zListExpanded.push(v);
+
+      labels.push("+" + (i + 1).toString());
+      datasets[0].data.push(v);
+
+      console.debug({ i, Xsi, meanXsi, Xsi2, yHat, v });
+    }
+
+    return { labels, datasets };
   }
 }

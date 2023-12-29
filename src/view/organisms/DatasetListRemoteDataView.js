@@ -1,6 +1,6 @@
 import { Component } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import MultiLineChart from "../molecules/MultiLineChart.js";
+import MultiLineChart from "./MultiLineChart.js";
 import Box from "@mui/material/Box";
 import DatasetDetailsListView from "../molecules/DatasetDetailsListView.js";
 import { Typography } from "@mui/material";
