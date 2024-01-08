@@ -184,13 +184,10 @@ export default class MultiLineChart extends Component {
       proportionalAxes
     );
 
-    const chartData = await DataResult.projectResults(
-      {
-        labels: DataResult.simplifyLabels(labels),
-        datasets: datasets,
-      },
-      7
-    );
+    const chartData = {
+      labels: DataResult.simplifyLabels(labels),
+      datasets: datasets,
+    };
 
     this.setState({ chartData, chartOptions });
   }
