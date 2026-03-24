@@ -14,7 +14,7 @@ function equationText(m, c, order) {
   const x = order ? SYMBOL1 : SYMBOL2;
 
   return `${y} = ${m.toPrecision(4)}·${x} ${c >= 0 ? "+" : "-"} ${Math.abs(
-    c
+    c,
   ).toPrecision(4)}`;
 }
 

@@ -21,7 +21,7 @@ ChartJS.register(
   LineElement,
   Title,
   SubTitle,
-  Legend
+  Legend,
 );
 
 const MAX_HEIGHT = 630;
@@ -40,21 +40,21 @@ export default class MultiLineChart extends Component {
     datasetList,
     chartOptions,
     sameYAxisScale,
-    proportionalAxes
+    proportionalAxes,
   ) {
     const dataResultListForLabels = dataResultList.map((dr) =>
-      dr.getDataResultForLabels(labels)
+      dr.getDataResultForLabels(labels),
     );
 
     const colorSet = new Set(
       datasetList
         .map((dataset) => dataset.color)
-        .filter((color) => color !== null)
+        .filter((color) => color !== null),
     );
     const showCustomColor = colorSet.size === datasetList.length;
 
     const minSpanRatio = Math.min(
-      ...dataResultListForLabels.map((dr) => dr.min / dr.max)
+      ...dataResultListForLabels.map((dr) => dr.min / dr.max),
     );
 
     return dataResultListForLabels.map(function (dataResult, i) {
@@ -71,7 +71,7 @@ export default class MultiLineChart extends Component {
       const logMaxAbsValue = Math.log10(maxAbsValue);
       const scale = Math.max(
         1,
-        Math.pow(10, Math.floor(logMaxAbsValue / 3) * 3)
+        Math.pow(10, Math.floor(logMaxAbsValue / 3) * 3),
       );
       const scaledValues = values.map((v) => v / scale);
       const scaleStr = scale === 1 ? "" : " x " + scale.toLocaleString();
@@ -181,7 +181,7 @@ export default class MultiLineChart extends Component {
       datasetList,
       chartOptions,
       sameYAxisScale,
-      proportionalAxes
+      proportionalAxes,
     );
 
     const chartData = {
@@ -206,7 +206,7 @@ export default class MultiLineChart extends Component {
 
     const height = Math.min(
       MAX_HEIGHT,
-      Math.max(MIN_HEIGHT, parseInt((window.innerWidth * 0.8 * 9) / 16))
+      Math.max(MIN_HEIGHT, parseInt((window.innerWidth * 0.8 * 9) / 16)),
     );
     const width = height * ASPECT_RATIO;
 

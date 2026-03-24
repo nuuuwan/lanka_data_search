@@ -161,7 +161,7 @@ export default class DataResult {
     const sumProduct = values1.reduce((a, b, i) => a + b * values2[i], 0);
     const numerator = n * sumProduct - sum1 * sum2;
     const denominator = Math.sqrt(
-      (n * sum1Squared - sum1 * sum1) * (n * sum2Squared - sum2 * sum2)
+      (n * sum1Squared - sum1 * sum1) * (n * sum2Squared - sum2 * sum2),
     );
     return numerator / denominator;
   }

@@ -5,42 +5,42 @@ const DATA_SOURCE_IDX = {
     "Central Bank of Sri Lanka",
     "Economic Data Library",
     "https://www.cbsl.lk/eresearch",
-    "@CBSL"
+    "@CBSL",
   ),
   world_bank: new DataSource(
     "world_bank",
     "World Bank",
     "Sri Lanka - Dataset",
     "https://data.worldbank.org/country/LK",
-    "@WorldBank"
+    "@WorldBank",
   ),
   imf: new DataSource(
     "imf",
     "International Monetary Fund",
     "Sri Lanka - Dataset",
     "https://www.imf.org/external/datamapper",
-    "@IMFNews"
+    "@IMFNews",
   ),
   adb: new DataSource(
     "adb",
     "Asian Development Bank",
     "Sri Lanka - Dataset",
     "https://www.adb.org/countries/sri-lanka/data",
-    "@ADB_HQ"
+    "@ADB_HQ",
   ),
   dmtlk: new DataSource(
     "dmtlk",
     "Department of Motor Traffic, Sri Lanka",
     "Statistics",
     "https://dmt.gov.lk/index.php?option=com_content&view=article&id=16&Itemid=132&lang=en",
-    "#DeptMotorTrafficLK"
+    "#DeptMotorTrafficLK",
   ),
   sltda: new DataSource(
     "sltda",
     "Sri Lanka Tourism Development Authority",
     "Statistics",
     "https://www.sltda.gov.lk/en/statistics",
-    "@sltda_srilanka"
+    "@sltda_srilanka",
   ),
 };
 

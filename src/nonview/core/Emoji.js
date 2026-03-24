@@ -9,7 +9,7 @@ export default class Emoji {
 
     return Object.entries(EMOJI_TO_TEXT_LIST).reduce(function (
       s,
-      [emoji, textList]
+      [emoji, textList],
     ) {
       for (const text of textList) {
         if (haystack.includes(text.toLowerCase())) {
@@ -17,7 +17,6 @@ export default class Emoji {
         }
       }
       return s;
-    },
-    "");
+    }, "");
   }
 }

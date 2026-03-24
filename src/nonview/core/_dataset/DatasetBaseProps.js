@@ -44,7 +44,7 @@ export default class DatasetBaseProps extends DatasetBase {
         this.maxT,
         this.minValue,
         this.maxValue,
-      ])
+      ]),
     );
   }
 
@@ -117,7 +117,7 @@ export default class DatasetBaseProps extends DatasetBase {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(this.lastUpdateTimeUT * 1_000).toLocaleString(
       "en-US",
-      options
+      options,
     );
   }
 

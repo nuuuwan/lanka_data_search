@@ -10,7 +10,7 @@ export default function DatasetListView({
   onChangeDatasetList,
 }) {
   const allDatasetList = DatasetUtils.getUniqueDatasetList(allDatasetIdx).sort(
-    DatasetUtils.compareByLastUpdateTime
+    DatasetUtils.compareByLastUpdateTime,
   );
   const displayDatasetList = allDatasetList.slice(0, MAX_DISPLAY_DATASETS);
 

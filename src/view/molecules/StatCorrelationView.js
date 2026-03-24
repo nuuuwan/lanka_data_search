@@ -38,7 +38,7 @@ export default function StatCorrelationView({ dataResultList }) {
   }
   const correlation = DataResult.getCorrelation(
     dataResultList[0],
-    dataResultList[1]
+    dataResultList[1],
   );
 
   if (!(correlation && correlation <= 1 && correlation >= -1)) {

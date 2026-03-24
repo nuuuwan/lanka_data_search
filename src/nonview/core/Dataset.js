@@ -22,7 +22,7 @@ export default class Dataset extends DatasetBaseProps {
       summaryStatistics.max_t,
       summaryStatistics.min_value,
       summaryStatistics.max_value,
-      raw.last_updated_time_ut
+      raw.last_updated_time_ut,
     );
   }
 
@@ -64,7 +64,7 @@ export default class Dataset extends DatasetBaseProps {
       return DataResult.fromRemoteData(remoteData);
     } catch (e) {
       console.error(
-        `getRemoteDataResult: Could not access "${this.dataURL}" (${e})`
+        `getRemoteDataResult: Could not access "${this.dataURL}" (${e})`,
       );
       return null;
     }

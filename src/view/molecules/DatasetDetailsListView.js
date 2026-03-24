@@ -5,7 +5,7 @@ export default function DatasetDetailsListView({ datasetList }) {
   const colorSet = new Set(
     datasetList
       .map((dataset) => dataset.color)
-      .filter((color) => color !== null)
+      .filter((color) => color !== null),
   );
   const showCustomColor = colorSet.size === datasetList.length;
 

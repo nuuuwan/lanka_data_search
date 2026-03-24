@@ -11,7 +11,7 @@ export default function TweetButton({ datasetList }) {
       "",
       window.location.href.replace(
         "http://localhost:3000",
-        "https://nuuuwan.github.io"
+        "https://nuuuwan.github.io",
       ),
     ].join("\n");
     const tweetURL =

@@ -17,7 +17,6 @@ import DataSourceListView from "../molecules/DataSourceListView";
 import DatasetListView from "../molecules/DatasetListView";
 import CustomSnackbar from "../molecules/CustomSnackbar";
 
-
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -61,23 +60,24 @@ export default class HomePage extends Component {
 
     if (datasetIDList === undefined) {
       const allDatasetIDList = Object.values(allDatasetIdx).map(
-        (x) => x.shortID
+        (x) => x.shortID,
       );
 
       const N_RANDOM_OPEN_DATASETS = 3;
-      const randomDatasetIDList = RandomX.shuffle(allDatasetIDList).slice(0, N_RANDOM_OPEN_DATASETS);
-      const randomDatasetList = randomDatasetIDList.map(
-        (datasetID) => allDatasetIdx[datasetID]
-      ).sort(
-        (a,b) => b.n - a.n,
+      const randomDatasetIDList = RandomX.shuffle(allDatasetIDList).slice(
+        0,
+        N_RANDOM_OPEN_DATASETS,
       );
+      const randomDatasetList = randomDatasetIDList
+        .map((datasetID) => allDatasetIdx[datasetID])
+        .sort((a, b) => b.n - a.n);
       console.debug(randomDatasetList);
       datasetIDList = [randomDatasetList[0].id];
       URLContext.setContext({ datasetIDList, options, homePageViewName });
     }
 
     const datasetList = datasetIDList.map(
-      (datasetID) => allDatasetIdx[datasetID]
+      (datasetID) => allDatasetIdx[datasetID],
     );
     this.setState({ datasetIDList, datasetList, allDatasetIdx });
   }
@@ -169,7 +169,7 @@ export default class HomePage extends Component {
       <CustomBottomNavigator
         homePageViewName={homePageViewName}
         handleOnChangeHomePageViewName={this.handleOnChangeHomePageViewName.bind(
-          this
+          this,
         )}
       />
     );

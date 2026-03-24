@@ -27,7 +27,7 @@ export default class DatasetListRemoteDataView extends Component {
   async componentDidMount() {
     const { datasetList } = this.props;
     const dataResultListUnfiltered = await Promise.all(
-      datasetList.map((dataset) => dataset.getRemoteDataResult())
+      datasetList.map((dataset) => dataset.getRemoteDataResult()),
     );
     const dataResultList = dataResultListUnfiltered.filter((x) => x !== null);
     this.setState({ dataResultList });

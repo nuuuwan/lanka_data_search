@@ -19,18 +19,18 @@ export default class DatasetUtils {
         }
         idx[dataset.dataHash].push(dataset);
         return idx;
-      }, {})
+      }, {}),
     );
 
     const dedupedDatasetList = dupeDatasetGroups.map(function (datasetList) {
       const sortedDatasetList = datasetList.sort(
-        DatasetUtils.compareByLastUpdateTime
+        DatasetUtils.compareByLastUpdateTime,
       );
       return sortedDatasetList[0];
     });
 
     const sortedDatasetList = dedupedDatasetList.sort((a, b) =>
-      a.subCategory.localeCompare(b.subCategory)
+      a.subCategory.localeCompare(b.subCategory),
     );
 
     return sortedDatasetList;
